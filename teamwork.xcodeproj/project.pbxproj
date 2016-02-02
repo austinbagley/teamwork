@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63B1A45CF31D8C7B20B180F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFD12A2EEBE640CB7B37206 /* Pods.framework */; };
+		9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1516091C61241D00BF42D8 /* FirebaseTest.swift */; };
 		9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */; };
 		9D5FE29E1C6122DD0023B040 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29D1C6122DD0023B040 /* ViewController.swift */; };
 		9D5FE2A11C6122DD0023B040 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE29F1C6122DD0023B040 /* Main.storyboard */; };
@@ -15,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EFD12A2EEBE640CB7B37206 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D1516091C61241D00BF42D8 /* FirebaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTest.swift; sourceTree = "<group>"; };
+		9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "teamwork-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D5FE2981C6122DD0023B040 /* teamwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D5FE29D1C6122DD0023B040 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,8 @@
 		9D5FE2A21C6122DD0023B040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D5FE2A51C6122DD0023B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D5FE2A71C6122DD0023B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +36,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B1A45CF31D8C7B20B180F1 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		018440E0BD220C7E87B2A8B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EFD12A2EEBE640CB7B37206 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		603827B74EB4D09FE23979E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */,
+				A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9D5FE28F1C6122DD0023B040 = {
 			isa = PBXGroup;
 			children = (
 				9D5FE29A1C6122DD0023B040 /* teamwork */,
 				9D5FE2991C6122DD0023B040 /* Products */,
+				603827B74EB4D09FE23979E9 /* Pods */,
+				018440E0BD220C7E87B2A8B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +81,48 @@
 		9D5FE29A1C6122DD0023B040 /* teamwork */ = {
 			isa = PBXGroup;
 			children = (
+				9DDF13321C614AC80024F643 /* Model */,
+				9DDF13311C614AC20024F643 /* View */,
+				9DDF13301C614AB80024F643 /* Controller */,
+				9DDF132F1C614AB20024F643 /* Assets */,
 				9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */,
 				9D5FE29D1C6122DD0023B040 /* ViewController.swift */,
 				9D5FE29F1C6122DD0023B040 /* Main.storyboard */,
 				9D5FE2A21C6122DD0023B040 /* Assets.xcassets */,
 				9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */,
 				9D5FE2A71C6122DD0023B040 /* Info.plist */,
+				9D1516091C61241D00BF42D8 /* FirebaseTest.swift */,
+				9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */,
 			);
 			path = teamwork;
+			sourceTree = "<group>";
+		};
+		9DDF132F1C614AB20024F643 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		9DDF13301C614AB80024F643 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9DDF13311C614AC20024F643 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9DDF13321C614AC80024F643 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D5FE2AA1C6122DD0023B040 /* Build configuration list for PBXNativeTarget "teamwork" */;
 			buildPhases = (
+				F137671AE0D5F3543DA591D2 /* Check Pods Manifest.lock */,
 				9D5FE2941C6122DD0023B040 /* Sources */,
 				9D5FE2951C6122DD0023B040 /* Frameworks */,
 				9D5FE2961C6122DD0023B040 /* Resources */,
+				6C0AD9D448EDC143A2FC5B3E /* Embed Pods Frameworks */,
+				681F25A1174062611170B149 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +194,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		681F25A1174062611170B149 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C0AD9D448EDC143A2FC5B3E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F137671AE0D5F3543DA591D2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9D5FE2941C6122DD0023B040 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +249,7 @@
 			files = (
 				9D5FE29E1C6122DD0023B040 /* ViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
+				9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,23 +358,30 @@
 		};
 		9D5FE2AB1C6122DD0023B040 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = teamwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abagley.teamwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "teamwork/teamwork-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		9D5FE2AC1C6122DD0023B040 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = teamwork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abagley.teamwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "teamwork/teamwork-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -284,6 +404,7 @@
 				9D5FE2AC1C6122DD0023B040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
