@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 
 class CreateTeamViewController: UIViewController {
@@ -15,25 +14,21 @@ class CreateTeamViewController: UIViewController {
     
     let SEGUE_TO_GOAL_TYPE = "showGoalType"
     
-    
     // MARK: Properties
     
     var signup = SignUp()
-
-    //    var user = User().users
-//    var currentUser = User().user
     
     // MARK: Outlets
     
     @IBOutlet weak var teamName: UITextField!
     @IBOutlet weak var teamPassword: UITextField!
     @IBOutlet weak var endDate: UIDatePicker!
+    @IBOutlet weak var teamChallengeName: UITextField!
     
     // MARK: View Controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // MARK: Actions
@@ -42,13 +37,12 @@ class CreateTeamViewController: UIViewController {
         let teamName = self.teamName.text!
         let teamPassword = self.teamPassword.text!
         let endDate = self.endDate.date
-        
-        
-        signup.team = signup.createTeam(teamName, teamPassword: teamPassword, endDate: endDate, callBack: {
+        let challenge = self.teamChallengeName.text!
+
+        signup.team = signup.createTeam(teamName, teamChallengeName: challenge, teamPassword: teamPassword, endDate: endDate, callBack: {
             print("create team vc team is \(self.signup.team)")
             self.performSegueWithIdentifier("showGoalType", sender: self)
         })
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -58,9 +52,4 @@ class CreateTeamViewController: UIViewController {
             }
         }
     }
-    
-    
-        
-    
-    
 }

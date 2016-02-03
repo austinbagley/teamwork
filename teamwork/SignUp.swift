@@ -7,130 +7,92 @@
 //
 
 import Foundation
-import Parse
+import Firebase
 
 
 class SignUp {
     
     // Properties
     
-    var team = Team() {
-        didSet {
-            if team != oldValue  {
-                teamChanged = true
-                print(teamChanged)
-            }
+    let constants = FirebaseConstants.sharedInstance
+    var team: Team?
+    var baseRef: Firebase {
+        get {
+            return Firebase(url: constants.firebaseUrl)
         }
     }
     
-    var teamChanged = false
-
-    
-    
-    
     // Signup user with Parse
     
-    func signUpNewUser(password: String?, email: String?, firstName: String?, lastName: String?, callBack: () -> Void) -> String? {
+    func signUpNewUser(password: String?, email: String?, firstName: String?, lastName: String?, callBack: () -> Void) {
+        let user = User(pw: password!, email: email!, firstName: firstName!, lastName: lastName!)
+        let ref = self.baseRef
+        let usersRef = ref.childByAppendingPath(constants.firebaseUsers)
         
-        var responseString = ""
+        ref.createUser(user.email, password: user.pw,
+            withValueCompletionBlock: { error, result in
+                if error != nil {
+                    // There was an error creating the account
+                    print(error)
+                } else {
+                    let uid = result["uid"] as? String
+                    print("Successfully created user account with uid: \(uid)")
+                    user.uid = uid!
+                    CurrentUser.sharedInstance.user = user
+                    CurrentUser.sharedInstance.user!.uid = result["uid"] as? String
+                    print("the current user is \(CurrentUser.sharedInstance.user!.uid))")
         
-        
-        
-        
-        // Insert User Signup Here
-        
-        let user = PFUser()
-        
-        user.username = email
-        user.password = password
-        user.email = email
-        // other fields can be set just like with PFObject
-        user["firstName"] = firstName
-        user["lastName"] = lastName
-        
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                let errorString = error.userInfo["error"] as! String?
-                responseString = errorString!
-                print(responseString)
-            } else {
-                // Hooray! Let them use the app now.
-                responseString = "Success"
-                print(responseString)
-                callBack()
-            }
-        }
-        return responseString
+                    // Create User Object on Firebase
+                    
+                    print(usersRef)
+                    let firebaseUser = ["uid": user.uid!, "email": user.email!, "username": user.email!, "firstName": user.firstName!, "lastName": user.lastName!]
+                    print(firebaseUser)
+                    
+                    usersRef.childByAppendingPath(user.uid!).setValue(firebaseUser)
+                    callBack()
+                }
+        })
     }
     
     // Create Team Object, Push to Parse
     
-    func createTeam(teamName: String, teamPassword: String, endDate: NSDate?, callBack: () -> Void) -> Team {
+    func createTeam(teamName: String!, teamChallengeName: String!, teamPassword: String!, endDate: NSDate!, callBack: () -> Void) -> Team {
+        self.team = Team(teamName: teamName, teamChallengeName: teamChallengeName, teamPassword: teamPassword, endDate: endDate!)
         
-        self.team = Team(teamName: teamName, teamChallengeName: teamName, teamPassword: teamPassword, endDate: endDate!)
         
-        team.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("team creation succeeded")
-                callBack()
+        // upload team to firebase
+        let ref = self.baseRef
+        let teamRef = ref.childByAppendingPath(constants.firebaseTeams)
+        let endDateInterval = team?.teamEndDate?.timeIntervalSince1970
+        let uid = CurrentUser.sharedInstance.user!.uid!
+        print("curernt uid is: \(uid)")
+        
+        let firebaseTeam = ["teamName": team!.teamName!, "teamChallengeName" : team!.teamChallengeName!, "teamEndDate" : endDateInterval!, "users": [uid : "true"] ]
+        
+        
+        teamRef.childByAutoId().setValue(firebaseTeam, withCompletionBlock: {
+            (error:NSError?, ref:Firebase!) in
+            if (error != nil) {
+                print("Data could not be saved.")
             } else {
-                print("team creation failed")
+                print("Team saved successfully!")
+                callBack()
             }
-        }
-        return(team)
-    }
-    
-    // Update user with Team Id
-    
-    func updateUserWithTeamId(team: Team) {
-        let currentUser = (PFUser.currentUser()!.objectId!)
-        print("User Object ID is: \(currentUser)")
+            
+        })
         
-        let query = PFUser.query()
-        query!.getObjectInBackgroundWithId(currentUser) {
-            (user: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            } else if let user = user {
-                user["teamObjectId"] = team.objectId! as String
-                user.saveInBackground()
-            }
-        }
-    
-        
+        return(team)!
     }
-    
     
     // Create Goal
     
     func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, team: Team, callBack: () -> Void) -> Goal {
         var result: Goal?
         let goal = Goal(startWeight: startWeight, endWeight: endWeight)
-//        let team: PFObject = PFObject(className: "team")
         
         goal.team = team
         
-        print("Goal team is: \(goal.team)")
-        print(goal)
-        print(goal.team?.teamName)
-        
-        result = goal
-        
-        goal.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("goal creation succeeded")
-                print(goal)
-                
-                callBack()
-                
-            } else {
-                print("goal creation failed")
-            }
-        }
-        
+        // save goal to firebase
         
         return result!
     }

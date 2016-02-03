@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 
 class GoalTypeViewController: UIViewController {
@@ -35,11 +34,6 @@ class GoalTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("goal type vc team is: \(team!)")
-        self.signup.updateUserWithTeamId(self.team!)
-
-        
-    
-        
     }
     
     // MARK: Actions

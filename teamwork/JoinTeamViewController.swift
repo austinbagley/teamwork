@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import Parse
 
 
 class JoinTeamViewController: UIViewController {
     
     // MARK: Properties
+    
+    var user: User?
     
     // MARK: Outlets
     

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class LoginViewController: UIViewController {
     
@@ -17,7 +16,6 @@ class LoginViewController: UIViewController {
     
     // MARK: Properties
     
-    var currentUser = PFUser.currentUser()
     var userDashboard = UserDashboardData.sharedInstance
     
     // MARK: Outlets
@@ -31,16 +29,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
 
-//     Segue past Login if Current User isn't nil
-        print("current user is \(currentUser)")
-        
-        if currentUser != nil {
-            self.userDashboard.refresh(PFUser.currentUser()!.objectId!, callBack: {
-            self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
-            })
-        } else {
-            // DO Nothing
-        }
     }
     
     // MARK: Actions
@@ -49,19 +37,8 @@ class LoginViewController: UIViewController {
         let username = self.username.text!
         let pw = self.pw.text!
         
-        PFUser.logInWithUsernameInBackground(username, password: pw) {
-            (user: PFUser?, error: NSError?) -> Void in
-            
-            if user != nil {
-                print("user logged in as \(PFUser.currentUser()!)")
-                self.userDashboard.refresh(PFUser.currentUser()!.objectId!, callBack: {
-                    self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
-                })
-            } else {
-                print("login failed")
-                print(error)
-            }
-        }
+        // insert login code here
+    
     }
     
     

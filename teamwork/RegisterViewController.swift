@@ -8,7 +8,6 @@
  */
 
 import UIKit
-import Parse
 
 class RegisterViewController: UIViewController {
     
@@ -16,27 +15,20 @@ class RegisterViewController: UIViewController {
     
     var signUp = SignUp()
     
+    let SEGUE_TO_TEAM_SELECTION = "showTeamSelection"
+    
     // MARK: Outlets
     
-    @IBOutlet weak var username: UITextField!
     @IBOutlet weak var pw: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     
-    
-    
-    
-    
     // MARK: View controller lifecycle
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
     }
-    
     
     // MARK: Actions
     
@@ -47,13 +39,8 @@ class RegisterViewController: UIViewController {
         let lastName = self.lastName.text!
         
         signUp.signUpNewUser(pw, email: email, firstName: firstName, lastName: lastName, callBack: {
-            self.performSegueWithIdentifier("showTeamSelection", sender: self)
+            self.performSegueWithIdentifier(self.SEGUE_TO_TEAM_SELECTION, sender: self)
         })
-        
-        
     }
-    
-    
-    
     
 }

@@ -47,7 +47,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="email@email.com" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5RB-la-18y">
                                 <rect key="frame" x="120" y="195" width="134" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -82,7 +82,6 @@
                                 <state key="normal" title="Create a team"/>
                                 <connections>
                                     <action selector="createTeam:" destination="a3t-HV-fu5" eventType="touchUpInside" id="6tA-CT-Mkn"/>
-                                    <segue destination="w5k-wj-CMc" kind="show" id="ksm-dd-K8H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0k-v4-5qj">
@@ -90,13 +89,16 @@
                                 <state key="normal" title="Join a team"/>
                                 <connections>
                                     <action selector="joinTeam:" destination="a3t-HV-fu5" eventType="touchUpInside" id="uZS-8b-7Qt"/>
-                                    <segue destination="Vwq-pT-Ygn" kind="show" id="SDq-Og-2xw"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="w5k-wj-CMc" kind="show" identifier="showTeamCreation" id="h4D-r4-M33"/>
+                        <segue destination="Vwq-pT-Ygn" kind="show" identifier="showJoinTeam" id="jl3-HV-x6Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibc-WD-f6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,11 +188,17 @@
                                     <action selector="createTeam:" destination="w5k-wj-CMc" eventType="touchUpInside" id="RLV-Kl-JZb"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Challenge Name" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-8h-DMH">
+                                <rect key="frame" x="28" y="104" width="312" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="endDate" destination="FM2-TM-ufk" id="lJq-xe-nNH"/>
+                        <outlet property="teamChallengeName" destination="SEq-8h-DMH" id="kBd-9U-b4B"/>
                         <outlet property="teamName" destination="wET-RH-TQE" id="zZ1-fL-k1N"/>
                         <outlet property="teamPassword" destination="GTB-6E-QYJ" id="9Om-Qa-Mkr"/>
                         <segue destination="gLT-t4-zK7" kind="show" identifier="showGoalType" id="Rea-JU-7Xk"/>

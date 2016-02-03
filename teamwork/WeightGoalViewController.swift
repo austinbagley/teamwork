@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 
 class WeightGoalViewController: UIViewController {
@@ -42,7 +41,7 @@ class WeightGoalViewController: UIViewController {
         let goalWeight = Double(self.goalWeight.text!)!
         
         self.goal = signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, team: team!, callBack: ({
-            self.userDashboard.user = PFUser.currentUser()
+            self.userDashboard.user = nil
             self.userDashboard.team = self.team
             self.userDashboard.goal = self.goal
             self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)

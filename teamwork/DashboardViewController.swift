@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -18,12 +17,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: Properties
     
-    var currentUser = PFUser.currentUser()
-    var currentUserId = (PFUser.currentUser()?.objectId!)!
+    var currentUser = ""
+    var currentUserId = ""
     var teamObjectId = ""
-    var teamInfo: PFObject?
-    var goalType: PFObject?
-    var weightGoal: PFObject?
     var goalId: String?
     var isWeightGoal: Bool?
     var teamName: String?
@@ -71,7 +67,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func updateUI() {
         challengeName.text = userDashboard.team?.teamChallengeName!
-        userFullName.text = (userDashboard.user!["firstName"] as? String)! + " " + (userDashboard.user!["lastName"] as? String)!
+        userFullName.text = ""
         userGoal.text = "Lose \(String(userDashboard.goal!.totalWeightLoss!)) pounds"
         endDate.text = convertDate((userDashboard.team?.teamEndDate)!)
     }
