@@ -14,6 +14,8 @@
 		9D5FE2A11C6122DD0023B040 /* _Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE29F1C6122DD0023B040 /* _Main.storyboard */; };
 		9D5FE2A31C6122DD0023B040 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A21C6122DD0023B040 /* Assets.xcassets */; };
 		9D5FE2A61C6122DD0023B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */; };
+		9D8192521C6436F60050B942 /* UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8192511C6436F60050B942 /* UpdateData.swift */; };
+		9D8192541C6444AD0050B942 /* TeamNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8192531C6444AD0050B942 /* TeamNames.swift */; };
 		9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E449E1C629108005CDA52 /* CurrentUser.swift */; };
 		9DDF13721C614CF00024F643 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136C1C614CF00024F643 /* Goal.swift */; };
 		9DDF13731C614CF00024F643 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136D1C614CF00024F643 /* SignUp.swift */; };
@@ -34,6 +36,7 @@
 		9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF138C1C614DBB0024F643 /* RegisterViewController.swift */; };
 		9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */; };
 		9DDF13911C615A4F0024F643 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13901C615A4F0024F643 /* User.swift */; };
+		9DEE9FBD1C6459EA001BC4C3 /* TeamList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,8 @@
 		9D5FE2A21C6122DD0023B040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D5FE2A51C6122DD0023B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D5FE2A71C6122DD0023B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D8192511C6436F60050B942 /* UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateData.swift; sourceTree = "<group>"; };
+		9D8192531C6444AD0050B942 /* TeamNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamNames.swift; sourceTree = "<group>"; };
 		9D8E449E1C629108005CDA52 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		9DDF136C1C614CF00024F643 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		9DDF136D1C614CF00024F643 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -67,6 +72,7 @@
 		9DDF138C1C614DBB0024F643 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		9DDF13901C615A4F0024F643 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamList.swift; sourceTree = "<group>"; };
 		A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +194,8 @@
 				9DDF13711C614CF00024F643 /* UserDashboardData.swift */,
 				9DDF13701C614CF00024F643 /* TeamDashboardData.swift */,
 				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
+				9D8192531C6444AD0050B942 /* TeamNames.swift */,
+				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 			children = (
 				9DDF136D1C614CF00024F643 /* SignUp.swift */,
 				9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */,
+				9D8192511C6436F60050B942 /* UpdateData.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -324,11 +333,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DEE9FBD1C6459EA001BC4C3 /* TeamList.swift in Sources */,
 				9DDF13721C614CF00024F643 /* Goal.swift in Sources */,
 				9D5FE29E1C6122DD0023B040 /* ViewController.swift in Sources */,
 				9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */,
 				9DDF13751C614CF00024F643 /* Team.swift in Sources */,
 				9DDF13861C614D410024F643 /* LoginViewController.swift in Sources */,
+				9D8192541C6444AD0050B942 /* TeamNames.swift in Sources */,
 				9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */,
 				9DDF13821C614D410024F643 /* CreateTeamViewController.swift in Sources */,
 				9DDF13761C614CF00024F643 /* TeamDashboardData.swift in Sources */,
@@ -336,6 +347,7 @@
 				9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
+				9D8192521C6436F60050B942 /* UpdateData.swift in Sources */,
 				9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */,
 				9DDF13831C614D410024F643 /* DashboardViewController.swift in Sources */,
 				9DDF13771C614CF00024F643 /* UserDashboardData.swift in Sources */,

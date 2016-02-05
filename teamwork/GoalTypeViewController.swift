@@ -33,7 +33,10 @@ class GoalTypeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("goal type vc team is: \(team!)")
+        print("current user id = \(CurrentUser.sharedInstance.user?.uid)")
+        print("current team id = \(CurrentUser.sharedInstance.user?.currentTeam)")
+        print("current user name = \(CurrentUser.sharedInstance.user?.firstName)")
+        print("current team name = \(CurrentUser.sharedInstance.currentTeam?.teamName)")
     }
     
     // MARK: Actions

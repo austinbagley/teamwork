@@ -12,6 +12,7 @@ class Team {
     
     // Constants
     
+    var teamId: String?
     var teamName: String?
     var teamChallengeName: String?
     var teamPassword: String?
@@ -20,10 +21,23 @@ class Team {
     // Create
     
     init(teamName: String, teamChallengeName: String, teamPassword: String, endDate: NSDate) {
+        self.teamId = nil
         self.teamName = teamName
         self.teamChallengeName = teamChallengeName
         self.teamPassword = teamPassword
         self.teamEndDate = endDate
         print("team original creation: \(self)")
     }
+    
+    
+    init(teamId: String, teamName: String, teamChallengeName: String, endDate: NSDate) {
+        self.teamId = teamId
+        self.teamName = teamName
+        self.teamChallengeName = teamChallengeName
+        self.teamPassword = nil
+        self.teamEndDate = endDate
+        print("team original creation: \(self)")
+    }
+    
+    
 }

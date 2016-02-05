@@ -17,4 +17,5 @@ class CurrentUser {
     
     var user: User?
     var currentTeam: Team?
+    var currentGoal: Goal?
 }

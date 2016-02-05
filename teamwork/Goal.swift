@@ -13,6 +13,7 @@ class Goal {
      var user: User?
      var team: Team?
     
+     var goalId: String?
      var isWeightGoal: String?
      var startWeight: NSNumber?
      var endWeight: NSNumber?
@@ -23,7 +24,9 @@ class Goal {
     // Create
     
     init(startWeight: Double, endWeight: Double) {
-        user = nil
+        self.user = nil
+        self.team = nil
+        self.goalId = nil
         isWeightGoal = "true"
         self.startWeight = startWeight
         self.endWeight = endWeight
@@ -31,7 +34,6 @@ class Goal {
         achieveTitle = nil
         isAchieved = nil
         
-        self.team = nil
         
     }
 }

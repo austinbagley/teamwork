@@ -34,14 +34,20 @@ class LoginViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func login(sender: UIButton) {
-        let username = self.username.text!
-        let pw = self.pw.text!
+//        let username = self.username.text!
+//        let pw = self.pw.text!
         
         // insert login code here
     
     }
     
     
+    @IBAction func testTeam(sender: UIButton) {
+        
+        UpdateData().getTeamNames() {
+            
+        }
+    }
     
     
     

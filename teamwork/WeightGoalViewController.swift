@@ -40,21 +40,12 @@ class WeightGoalViewController: UIViewController {
         let startWeight = Double(self.startWeight.text!)!
         let goalWeight = Double(self.goalWeight.text!)!
         
-        self.goal = signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, team: team!, callBack: ({
-            self.userDashboard.user = nil
-            self.userDashboard.team = self.team
-            self.userDashboard.goal = self.goal
+        signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, team: team!, callBack: ({
+            self.userDashboard.user = CurrentUser.sharedInstance.user
+            self.userDashboard.team = CurrentUser.sharedInstance.currentTeam
+            self.userDashboard.goal = CurrentUser.sharedInstance.currentGoal
             self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
         }))
-       
-    
+
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue == SEGUE_TO_DASHBOARD {
-//            
-//            
-//        }
-//    }
-    
 }

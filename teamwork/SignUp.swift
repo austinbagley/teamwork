@@ -80,12 +80,17 @@ class SignUp {
                 print("Data could not be saved.")
             } else {
                 print("Team saved successfully!")
+                CurrentUser.sharedInstance.currentTeam?.teamId = ref.key
+                CurrentUser.sharedInstance.user?.currentTeam = ref.key
+                print("Current User Team = \(CurrentUser.sharedInstance.currentTeam)")
+                userRef.updateChildValues(["currentTeam": ref.key])
                 userRef.childByAppendingPath("teams").setValue([ref.key: "true"], withCompletionBlock : {
                     (error: NSError?, ref: Firebase!) in
                     if (error != nil) {
                         print("Data could not be saved")
                     } else {
                         print("user updated with team id")
+                        print(CurrentUser.sharedInstance.currentTeam?.teamId)
                         callBack()
                     }
                 })
@@ -96,18 +101,77 @@ class SignUp {
         return(team)
     }
     
+    ///// THIS IS WHERE I'M WORKING. THIS SEEMED TO DELETE THE CHILD NODES FOR teams UNDER user AND FOR users UNDER team ///
+    
+    func updateTeamandUser(team: Team, callBack: () -> Void) {
+        
+        let ref = self.baseRef
+        let teamRef = ref.childByAppendingPath("teams")
+        let uid = (CurrentUser.sharedInstance.user?.uid)! as String
+        let teamId = team.teamId! as String
+        let targetTeamRef = teamRef.childByAppendingPath(team.teamId).childByAppendingPath("users")
+        let newUser = [ uid : "true"]
+        let userRef = ref.childByAppendingPath("users").childByAppendingPath(uid)
+        
+        
+        // Update Team with New User
+        
+
+        targetTeamRef.updateChildValues(newUser, withCompletionBlock: {
+            (error: NSError?, ref: Firebase!) in
+            if (error != nil) {
+                print("Data could not be saved")
+            } else {
+                
+                // Update User
+                
+                userRef.childByAppendingPath("teams").setValue([teamId: "true"], withCompletionBlock: {
+                    (error: NSError?, ref: Firebase!) in
+                    if (error != nil) {
+                        print("Data could not be saved")
+                    } else {
+                        userRef.updateChildValues(["currentTeam": teamId])
+                        callBack()
+                        print("woohoo!!!! we updated the user & team by joining an existing team")
+                    }
+                })
+            }
+        })
+    }
+    
     // Create Goal
     
-    func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, team: Team, callBack: () -> Void) -> Goal {
-        var result: Goal?
+    func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, team: Team, callBack: () -> Void) {
         
-        let goal = Goal(startWeight: startWeight, endWeight: endWeight)
+        let ref = self.baseRef
+        let goalRef = ref.childByAppendingPath("goals")
         
-        goal.team = team
+        let weightGoal = Goal(startWeight: startWeight, endWeight: endWeight)
+        let firebaseGoal =
+            [
+            "uid":(CurrentUser.sharedInstance.user?.uid)! as String,
+            "teamId": (CurrentUser.sharedInstance.user?.currentTeam)! as String,
+            "isWeightGoal": "true" as String,
+            "startWeight": weightGoal.startWeight! as NSNumber,
+            "endWeight" : weightGoal.endWeight! as NSNumber,
+            "totalWeightLoss": weightGoal.totalWeightLoss! as NSNumber
+            ]
         
-        // save goal to firebase
-        
-        return result!
+        goalRef.childByAutoId().setValue(firebaseGoal, withCompletionBlock:  {
+            (error: NSError?, ref: Firebase!) in
+            if (error != nil) {
+                print("Data could not be saved")
+            } else {
+                print("goal created for current user")
+                
+                weightGoal.goalId = ref.key
+                weightGoal.team = CurrentUser.sharedInstance.currentTeam
+                weightGoal.user = CurrentUser.sharedInstance.user
+                CurrentUser.sharedInstance.currentGoal = weightGoal
+                callBack()
+            }
+        })
+    
     }
     
     
