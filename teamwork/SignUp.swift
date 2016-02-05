@@ -57,37 +57,50 @@ class SignUp {
     // Create Team Object, Push to Parse
     
     func createTeam(teamName: String!, teamChallengeName: String!, teamPassword: String!, endDate: NSDate!, callBack: () -> Void) -> Team {
-        self.team = Team(teamName: teamName, teamChallengeName: teamChallengeName, teamPassword: teamPassword, endDate: endDate!)
         
+        let team = Team(teamName: teamName, teamChallengeName: teamChallengeName, teamPassword: teamPassword, endDate: endDate!)
+        self.team = team
+        CurrentUser.sharedInstance.currentTeam = team
         
         // upload team to firebase
         let ref = self.baseRef
         let teamRef = ref.childByAppendingPath(constants.firebaseTeams)
-        let endDateInterval = team?.teamEndDate?.timeIntervalSince1970
+        let endDateInterval = team.teamEndDate?.timeIntervalSince1970
         let uid = CurrentUser.sharedInstance.user!.uid!
+        let usersRef = ref.childByAppendingPath(constants.firebaseUsers)
+        let userRef = usersRef.childByAppendingPath(uid)
+        
         print("curernt uid is: \(uid)")
         
-        let firebaseTeam = ["teamName": team!.teamName!, "teamChallengeName" : team!.teamChallengeName!, "teamEndDate" : endDateInterval!, "users": [uid : "true"] ]
+        let firebaseTeam = ["teamName": team.teamName!, "teamChallengeName" : team.teamChallengeName!, "teamEndDate" : endDateInterval!, "users": [uid : "true"] ]
         
-        
-        teamRef.childByAutoId().setValue(firebaseTeam, withCompletionBlock: {
+        teamRef.childByAutoId().setValue(firebaseTeam, withCompletionBlock : {
             (error:NSError?, ref:Firebase!) in
             if (error != nil) {
                 print("Data could not be saved.")
             } else {
                 print("Team saved successfully!")
-                callBack()
+                userRef.childByAppendingPath("teams").setValue([ref.key: "true"], withCompletionBlock : {
+                    (error: NSError?, ref: Firebase!) in
+                    if (error != nil) {
+                        print("Data could not be saved")
+                    } else {
+                        print("user updated with team id")
+                        callBack()
+                    }
+                })
             }
             
         })
         
-        return(team)!
+        return(team)
     }
     
     // Create Goal
     
     func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, team: Team, callBack: () -> Void) -> Goal {
         var result: Goal?
+        
         let goal = Goal(startWeight: startWeight, endWeight: endWeight)
         
         goal.team = team
