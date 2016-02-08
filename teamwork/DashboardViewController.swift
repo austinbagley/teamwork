@@ -24,8 +24,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var userFirstName: String?
     var userGoalText: String?
     var refreshControl:UIRefreshControl!
-    var userDashboard = UserDashboardData.sharedInstance
-    
     
     var currentUser = CurrentUser.sharedInstance
 
@@ -44,50 +42,40 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl)
-      
     }
     
     // MARK: Actions
     
-    func refresh(sender:AnyObject)
-    {
-        // put refresh code in here
-        
-//        userDashboard.refresh(self.currentUserId, callBack: {
-//            self.updateUI()
-//            self.refreshControl.endRefreshing()
-//        })
+    func refresh(sender:AnyObject){
+
     }
     
+    func addPullToRefresh() {
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+    }
     
     func updateUI() {
-        challengeName.text = userDashboard.team?.teamChallengeName!
-        userFullName.text = ""
-        userGoal.text = "Lose \(String(userDashboard.goal!.totalWeightLoss!)) pounds"
-        endDate.text = convertDate((userDashboard.team?.teamEndDate)!)
+        challengeName.text = CurrentUser.sharedInstance.currentTeam!.teamChallengeName!
+        userFullName.text = "\(CurrentUser.sharedInstance.user!.firstName!)" + " " + "\(CurrentUser.sharedInstance.user!.lastName!)"
+        userGoal.text = "Lose \(String(CurrentUser.sharedInstance.currentGoal!.totalWeightLoss!)) pounds"
+        endDate.text = convertDate((CurrentUser.sharedInstance.currentTeam!.teamEndDate)!)
     }
     
     func convertDate(date: NSDate) -> String {
-        
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MMMM DD, YYYY"
+        dateFormatter.dateStyle = .LongStyle
         let dateString = dateFormatter.stringFromDate(date)
         return dateString
-        
     }
-    
     
     // MARK : Table view delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
      
         // NEEDSWORK
-        
     }
     
     // MARK : Table view data source
@@ -108,16 +96,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 reuseIdentifier: DASHBOARD_CELL_IDENTIFIER)
         }
         
-        cell!.textLabel!.text = CurrentUser.sharedInstance.teamUsers![indexPath.row].user?.firstName
+        cell!.textLabel!.text = CurrentUser.sharedInstance.teamUsers![indexPath.row].user!.firstName!
         
-        let weightLoss = CurrentUser.sharedInstance.teamUsers![indexPath.row].goal?.totalWeightLoss
+        let weightLoss = CurrentUser.sharedInstance.teamUsers![indexPath.row].goal!.totalWeightLoss!
         cell!.detailTextLabel!.text = "Lose \(weightLoss) pounds."
         return cell!
     }
-    
-
-    
-    
-    
     
 }

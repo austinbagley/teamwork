@@ -53,7 +53,6 @@ class UpdateData {
             }
 
             TeamList.sharedInstance.teamList = teamsArray
-            TeamNames.sharedInstance.teamNames = teamArray
             
             dispatch_async(dispatch_get_main_queue()) {
                 callBack()

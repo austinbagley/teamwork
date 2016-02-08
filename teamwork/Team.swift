@@ -26,7 +26,6 @@ class Team {
         self.teamChallengeName = teamChallengeName
         self.teamPassword = teamPassword
         self.teamEndDate = endDate
-        print("team original creation: \(self)")
     }
     
     
@@ -36,7 +35,6 @@ class Team {
         self.teamChallengeName = teamChallengeName
         self.teamPassword = nil
         self.teamEndDate = endDate
-        print("team original creation: \(self)")
     }
     
     

@@ -34,11 +34,9 @@ class TeamSelectionViewController: UIViewController {
         }
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_TO_JOIN_TEAM {
             if let destVC = segue.destinationViewController as? JoinTeamViewController {
-                    destVC.teams = TeamNames.sharedInstance.teamNames!
                     destVC.teamList = TeamList.sharedInstance.teamList!
                     print("dest VC team names consist of : \(destVC.teams)")
             }

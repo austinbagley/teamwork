@@ -9,20 +9,19 @@
 /* Begin PBXBuildFile section */
 		63B1A45CF31D8C7B20B180F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFD12A2EEBE640CB7B37206 /* Pods.framework */; };
 		9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1516091C61241D00BF42D8 /* FirebaseTest.swift */; };
+		9D2A53341C6902FD00543E9C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53331C6902FD00543E9C /* Login.swift */; };
+		9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */; };
 		9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */; };
 		9D5FE29E1C6122DD0023B040 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29D1C6122DD0023B040 /* ViewController.swift */; };
 		9D5FE2A11C6122DD0023B040 /* _Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE29F1C6122DD0023B040 /* _Main.storyboard */; };
 		9D5FE2A31C6122DD0023B040 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A21C6122DD0023B040 /* Assets.xcassets */; };
 		9D5FE2A61C6122DD0023B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */; };
 		9D8192521C6436F60050B942 /* UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8192511C6436F60050B942 /* UpdateData.swift */; };
-		9D8192541C6444AD0050B942 /* TeamNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8192531C6444AD0050B942 /* TeamNames.swift */; };
 		9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E449E1C629108005CDA52 /* CurrentUser.swift */; };
 		9DDF13721C614CF00024F643 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136C1C614CF00024F643 /* Goal.swift */; };
 		9DDF13731C614CF00024F643 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136D1C614CF00024F643 /* SignUp.swift */; };
 		9DDF13741C614CF00024F643 /* SubGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136E1C614CF00024F643 /* SubGoal.swift */; };
 		9DDF13751C614CF00024F643 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136F1C614CF00024F643 /* Team.swift */; };
-		9DDF13761C614CF00024F643 /* TeamDashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13701C614CF00024F643 /* TeamDashboardData.swift */; };
-		9DDF13771C614CF00024F643 /* UserDashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13711C614CF00024F643 /* UserDashboardData.swift */; };
 		9DDF13811C614D410024F643 /* AchieveGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13781C614D410024F643 /* AchieveGoalViewController.swift */; };
 		9DDF13821C614D410024F643 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13791C614D410024F643 /* CreateTeamViewController.swift */; };
 		9DDF13831C614D410024F643 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF137A1C614D410024F643 /* DashboardViewController.swift */; };
@@ -44,6 +43,8 @@
 		1EFD12A2EEBE640CB7B37206 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1516091C61241D00BF42D8 /* FirebaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTest.swift; sourceTree = "<group>"; };
 		9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "teamwork-Bridging-Header.h"; sourceTree = "<group>"; };
+		9D2A53331C6902FD00543E9C /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightUpdateViewController.swift; sourceTree = "<group>"; };
 		9D5FE2981C6122DD0023B040 /* teamwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D5FE29D1C6122DD0023B040 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,14 +53,11 @@
 		9D5FE2A51C6122DD0023B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D5FE2A71C6122DD0023B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D8192511C6436F60050B942 /* UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateData.swift; sourceTree = "<group>"; };
-		9D8192531C6444AD0050B942 /* TeamNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamNames.swift; sourceTree = "<group>"; };
 		9D8E449E1C629108005CDA52 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		9DDF136C1C614CF00024F643 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		9DDF136D1C614CF00024F643 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		9DDF136E1C614CF00024F643 /* SubGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubGoal.swift; sourceTree = "<group>"; };
 		9DDF136F1C614CF00024F643 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		9DDF13701C614CF00024F643 /* TeamDashboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDashboardData.swift; sourceTree = "<group>"; };
-		9DDF13711C614CF00024F643 /* UserDashboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDashboardData.swift; sourceTree = "<group>"; };
 		9DDF13781C614D410024F643 /* AchieveGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchieveGoalViewController.swift; sourceTree = "<group>"; };
 		9DDF13791C614D410024F643 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		9DDF137A1C614D410024F643 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +162,7 @@
 				9DDF13781C614D410024F643 /* AchieveGoalViewController.swift */,
 				9DDF137A1C614D410024F643 /* DashboardViewController.swift */,
 				9DDF137E1C614D410024F643 /* MilestoneViewController.swift */,
+				9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -205,6 +204,7 @@
 				9DDF136D1C614CF00024F643 /* SignUp.swift */,
 				9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */,
 				9D8192511C6436F60050B942 /* UpdateData.swift */,
+				9D2A53331C6902FD00543E9C /* Login.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -212,10 +212,7 @@
 		9DEE9FC01C64675A001BC4C3 /* Singletons */ = {
 			isa = PBXGroup;
 			children = (
-				9DDF13711C614CF00024F643 /* UserDashboardData.swift */,
-				9DDF13701C614CF00024F643 /* TeamDashboardData.swift */,
 				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
-				9D8192531C6444AD0050B942 /* TeamNames.swift */,
 				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
 			);
 			name = Singletons;
@@ -350,18 +347,17 @@
 				9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */,
 				9DDF13751C614CF00024F643 /* Team.swift in Sources */,
 				9DDF13861C614D410024F643 /* LoginViewController.swift in Sources */,
-				9D8192541C6444AD0050B942 /* TeamNames.swift in Sources */,
+				9D2A53341C6902FD00543E9C /* Login.swift in Sources */,
 				9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */,
 				9DDF13821C614D410024F643 /* CreateTeamViewController.swift in Sources */,
-				9DDF13761C614CF00024F643 /* TeamDashboardData.swift in Sources */,
 				9DDF13851C614D410024F643 /* JoinTeamViewController.swift in Sources */,
 				9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
 				9D8192521C6436F60050B942 /* UpdateData.swift in Sources */,
 				9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */,
+				9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */,
 				9DDF13831C614D410024F643 /* DashboardViewController.swift in Sources */,
-				9DDF13771C614CF00024F643 /* UserDashboardData.swift in Sources */,
 				9DDF13811C614D410024F643 /* AchieveGoalViewController.swift in Sources */,
 				9DDF13731C614CF00024F643 /* SignUp.swift in Sources */,
 				9DDF13881C614D410024F643 /* TeamSelectionViewController.swift in Sources */,

@@ -19,7 +19,6 @@ class WeightGoalViewController: UIViewController {
     
     var signUp = SignUp()
     var team: Team?
-    var userDashboard = UserDashboardData.sharedInstance
     var goal: Goal?
     
     // MARK: Outlets
@@ -48,11 +47,8 @@ class WeightGoalViewController: UIViewController {
         
         signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, callBack: ({
             let teamList = CurrentUser.sharedInstance.teamList
-                        
+            
             self.signUp.populateTeamData(teamList!, team: currentTeam) {
-                self.userDashboard.user = CurrentUser.sharedInstance.user
-                self.userDashboard.team = CurrentUser.sharedInstance.currentTeam
-                self.userDashboard.goal = CurrentUser.sharedInstance.currentGoal
                 self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
             }
         }))

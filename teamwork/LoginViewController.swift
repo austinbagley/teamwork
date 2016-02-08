@@ -16,8 +16,8 @@ class LoginViewController: UIViewController {
     
     // MARK: Properties
     
-    var userDashboard = UserDashboardData.sharedInstance
-    
+    var login = Login()
+        
     // MARK: Outlets
     
     @IBOutlet weak var username: UITextField!
@@ -34,10 +34,12 @@ class LoginViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func login(sender: UIButton) {
-//        let username = self.username.text!
-//        let pw = self.pw.text!
+        let username = self.username.text!
+        let pw = self.pw.text!
         
-        // insert login code here
+        login.login(username, pw: pw) {
+            self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
+        }
     
     }
     

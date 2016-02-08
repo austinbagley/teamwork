@@ -207,13 +207,10 @@ class SignUp {
                 for (user, _) in users {
                     let userId = (user as! String)
                     userList.append(userId)
-                    print(userId)
                 }
                 
                 dispatch_async(dispatch_get_main_queue()) {
-                    print(userList)
                     CurrentUser.sharedInstance.teamList = userList
-                    print(CurrentUser.sharedInstance.teamList)
                     callBack()
                 }
             }
@@ -225,8 +222,8 @@ class SignUp {
         let usersRef = ref.childByAppendingPath("users")
         let goalsRef = ref.childByAppendingPath("goals")
         let userList = userList
-        print("input user list: \(userList)")
         var teamUsers = [TeamUser]()
+        
         let maxQueryCount = userList.count
         var queryCount = 0
         
