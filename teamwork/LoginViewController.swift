@@ -44,9 +44,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func testTeam(sender: UIButton) {
         
-        UpdateData().getTeamNames() {
-            
-        }
     }
     
     

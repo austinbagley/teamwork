@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+
+class TeamDashboardData {
+    
+    
+    static var sharedInstance = TeamDashboardData()
+    private init() {}
+    
+
+
+
+}

@@ -51,8 +51,6 @@ class UpdateData {
                     )
                 teamsArray.append(fbTeam)
             }
-            print(teamsArray[0].teamName)
-            print(teamsArray[0].teamId)
 
             TeamList.sharedInstance.teamList = teamsArray
             TeamNames.sharedInstance.teamNames = teamArray

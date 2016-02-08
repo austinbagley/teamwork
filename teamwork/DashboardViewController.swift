@@ -17,9 +17,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: Properties
     
-    var currentUser = ""
-    var currentUserId = ""
-    var teamObjectId = ""
     var goalId: String?
     var isWeightGoal: Bool?
     var teamName: String?
@@ -28,6 +25,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var userGoalText: String?
     var refreshControl:UIRefreshControl!
     var userDashboard = UserDashboardData.sharedInstance
+    
+    
+    var currentUser = CurrentUser.sharedInstance
 
     
     // MARK: Outlets
@@ -58,10 +58,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     {
         // put refresh code in here
         
-        userDashboard.refresh(self.currentUserId, callBack: {
-            self.updateUI()
-            self.refreshControl.endRefreshing()
-        })
+//        userDashboard.refresh(self.currentUserId, callBack: {
+//            self.updateUI()
+//            self.refreshControl.endRefreshing()
+//        })
     }
     
     
@@ -75,7 +75,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func convertDate(date: NSDate) -> String {
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MMMM D, YYYY"
+        dateFormatter.dateFormat = "MMMM DD, YYYY"
         let dateString = dateFormatter.stringFromDate(date)
         return dateString
         
@@ -93,10 +93,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK : Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // NEEDSWORK
-        
-        let rows = 5
+        let rows = CurrentUser.sharedInstance.teamUsers!.count
         return rows
     }
     
@@ -111,9 +108,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 reuseIdentifier: DASHBOARD_CELL_IDENTIFIER)
         }
         
-        cell!.textLabel!.text = "Test Name"
-        cell!.detailTextLabel!.text = "Test Goal"
+        cell!.textLabel!.text = CurrentUser.sharedInstance.teamUsers![indexPath.row].user?.firstName
         
+        let weightLoss = CurrentUser.sharedInstance.teamUsers![indexPath.row].goal?.totalWeightLoss
+        cell!.detailTextLabel!.text = "Lose \(weightLoss) pounds."
         return cell!
     }
     

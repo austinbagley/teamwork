@@ -33,7 +33,31 @@ class Goal {
         totalWeightLoss = startWeight - endWeight
         achieveTitle = nil
         isAchieved = nil
-        
-        
     }
+    
+    init(goalId: String, user: User?, isWeightGoal: String?, startWeight: Double?, endWeight: Double?, achieveTitle: String?, isAchieved: String?) {
+        self.user = user
+        self.team = nil
+        self.goalId = goalId
+        self.isWeightGoal = isWeightGoal
+        self.startWeight = startWeight
+        self.endWeight = endWeight
+        
+        if startWeight != nil && endWeight != nil {
+            totalWeightLoss = startWeight! - endWeight!
+        } else {
+            totalWeightLoss = 0
+        }
+       
+        if isWeightGoal != "true" {
+            self.achieveTitle = achieveTitle!
+            self.isAchieved = isAchieved!
+        } else {
+            self.achieveTitle = nil
+            self.isAchieved = nil
+        }
+    }
+
+    
+    
 }

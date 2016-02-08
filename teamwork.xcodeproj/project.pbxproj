@@ -37,6 +37,7 @@
 		9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */; };
 		9DDF13911C615A4F0024F643 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13901C615A4F0024F643 /* User.swift */; };
 		9DEE9FBD1C6459EA001BC4C3 /* TeamList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */; };
+		9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		9DDF13901C615A4F0024F643 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamList.swift; sourceTree = "<group>"; };
+		9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamUser.swift; sourceTree = "<group>"; };
 		A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,11 +193,8 @@
 				9DDF13901C615A4F0024F643 /* User.swift */,
 				9DDF136E1C614CF00024F643 /* SubGoal.swift */,
 				9DDF136F1C614CF00024F643 /* Team.swift */,
-				9DDF13711C614CF00024F643 /* UserDashboardData.swift */,
-				9DDF13701C614CF00024F643 /* TeamDashboardData.swift */,
-				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
-				9D8192531C6444AD0050B942 /* TeamNames.swift */,
-				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
+				9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */,
+				9DEE9FC01C64675A001BC4C3 /* Singletons */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -208,6 +207,18 @@
 				9D8192511C6436F60050B942 /* UpdateData.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		9DEE9FC01C64675A001BC4C3 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				9DDF13711C614CF00024F643 /* UserDashboardData.swift */,
+				9DDF13701C614CF00024F643 /* TeamDashboardData.swift */,
+				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
+				9D8192531C6444AD0050B942 /* TeamNames.swift */,
+				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
+			);
+			name = Singletons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +367,7 @@
 				9DDF13881C614D410024F643 /* TeamSelectionViewController.swift in Sources */,
 				9DDF13741C614CF00024F643 /* SubGoal.swift in Sources */,
 				9DDF13841C614D410024F643 /* GoalTypeViewController.swift in Sources */,
+				9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */,
 				9DDF13891C614D410024F643 /* WeightGoalViewController.swift in Sources */,
 				9DDF13911C615A4F0024F643 /* User.swift in Sources */,
 			);

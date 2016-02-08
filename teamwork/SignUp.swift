@@ -101,7 +101,6 @@ class SignUp {
         return(team)
     }
     
-    ///// THIS IS WHERE I'M WORKING. THIS SEEMED TO DELETE THE CHILD NODES FOR teams UNDER user AND FOR users UNDER team ///
     
     func updateTeamandUser(team: Team, callBack: () -> Void) {
         
@@ -141,7 +140,7 @@ class SignUp {
     
     // Create Goal
     
-    func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, team: Team, callBack: () -> Void) {
+    func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, callBack: () -> Void) {
         
         let ref = self.baseRef
         let goalRef = ref.childByAppendingPath("goals")
@@ -154,7 +153,9 @@ class SignUp {
             "isWeightGoal": "true" as String,
             "startWeight": weightGoal.startWeight! as NSNumber,
             "endWeight" : weightGoal.endWeight! as NSNumber,
-            "totalWeightLoss": weightGoal.totalWeightLoss! as NSNumber
+            "totalWeightLoss": weightGoal.totalWeightLoss! as NSNumber,
+            "achieveTitle": "",
+            "isAchieved": "false"
             ]
         
         goalRef.childByAutoId().setValue(firebaseGoal, withCompletionBlock:  {
@@ -173,13 +174,101 @@ class SignUp {
         })
     
     }
-    
-    
-    
 
     
+    // Pull Users & Goals from within team
+    
+    func getListandPopulateTeamNames(team: Team?, callBack: () -> Void) {
+        
+        getUserList(team) {
+            let userList = CurrentUser.sharedInstance.teamList
+            self.populateTeamData(userList!, team: team) {
+                callBack()
+            }
+        }
+    }
     
     
+    func getUserList(team: Team?, callBack: () -> Void) {
+        
+        var userList = [String]()
+
+        let ref = self.baseRef
+        let teamsRef = ref.childByAppendingPath("teams")
+        let currentTeamUsersRef = teamsRef.childByAppendingPath(team?.teamId).childByAppendingPath("users")
+        
+        
+        currentTeamUsersRef.observeEventType(.Value, withBlock: { snapshot in
+            let users = snapshot.value as! NSDictionary
+            
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                
+                for (user, _) in users {
+                    let userId = (user as! String)
+                    userList.append(userId)
+                    print(userId)
+                }
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    print(userList)
+                    CurrentUser.sharedInstance.teamList = userList
+                    print(CurrentUser.sharedInstance.teamList)
+                    callBack()
+                }
+            }
+        })
+    }
+    
+    func populateTeamData(userList: [String], team: Team?, callBack: () -> Void) {
+        let ref = self.baseRef
+        let usersRef = ref.childByAppendingPath("users")
+        let goalsRef = ref.childByAppendingPath("goals")
+        let userList = userList
+        print("input user list: \(userList)")
+        var teamUsers = [TeamUser]()
+        let maxQueryCount = userList.count
+        var queryCount = 0
+        
+        
+        for user in userList {
+            
+            let teamUserRef = usersRef.childByAppendingPath(user)
+            teamUserRef.observeEventType(.Value, withBlock:  { result in
+                
+                let userObject = result.value as! NSDictionary
+                let newUser = User(uid: ((userObject["uid"]) as! String), email: ((userObject["email"]) as! String), currentTeam: ((userObject["currentTeam"]) as! String), firstName: ((userObject["firstName"]) as! String), lastName: ((userObject["lastName"]) as! String))
+                
+                let query = goalsRef.queryOrderedByChild("uid").queryEqualToValue(user)
+                
+                query.observeEventType(.Value, withBlock: { goalResult in
+                    let goalData = goalResult.value as! NSDictionary
+                    let goalId = goalResult.key
+                    
+                    for (_, goalObject) in goalData {
+                        let isWeightGoal = goalObject["isWeightGoal"] as! String
+                        let startWeight = goalObject["startWeight"] as! Double
+                        let endWeight = goalObject["endWeight"] as! Double
+                        let isAchieved = ""
+                        let achieveTitle = ""
+                        
+                        let newGoal = Goal(goalId: goalId, user: newUser, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
+                        
+                        let newTeamUser = TeamUser(user: newUser, goal: newGoal)
+                        teamUsers.append(newTeamUser)
+                        queryCount += 1
+                    }
+                    
+                    if queryCount == maxQueryCount {
+                        CurrentUser.sharedInstance.teamUsers = teamUsers
+                        callBack()
+                    }
+                })
+            })
+        }
+    }
+    
+
     
     
     

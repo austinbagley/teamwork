@@ -32,6 +32,11 @@ class WeightGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let team = CurrentUser.sharedInstance.currentTeam
+        signUp.getUserList(team) {
+            // any call back here
+        }
+        
     }
     
     // MARK: Actions
@@ -39,12 +44,17 @@ class WeightGoalViewController: UIViewController {
     @IBAction func done(sender: UIButton) {
         let startWeight = Double(self.startWeight.text!)!
         let goalWeight = Double(self.goalWeight.text!)!
+        let currentTeam = CurrentUser.sharedInstance.currentTeam!
         
-        signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, team: team!, callBack: ({
-            self.userDashboard.user = CurrentUser.sharedInstance.user
-            self.userDashboard.team = CurrentUser.sharedInstance.currentTeam
-            self.userDashboard.goal = CurrentUser.sharedInstance.currentGoal
-            self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
+        signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, callBack: ({
+            let teamList = CurrentUser.sharedInstance.teamList
+                        
+            self.signUp.populateTeamData(teamList!, team: currentTeam) {
+                self.userDashboard.user = CurrentUser.sharedInstance.user
+                self.userDashboard.team = CurrentUser.sharedInstance.currentTeam
+                self.userDashboard.goal = CurrentUser.sharedInstance.currentGoal
+                self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
+            }
         }))
 
     }

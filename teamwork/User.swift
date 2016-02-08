@@ -26,5 +26,17 @@ class User {
         self.firstName = firstName
         self.lastName = lastName
     }
+    
+    
+    init(uid: String, email: String, currentTeam: String, firstName: String, lastName: String) {
+        self.uid = uid
+        self.pw = nil
+        self.email = email
+        self.currentTeam = currentTeam
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    
 }
 
