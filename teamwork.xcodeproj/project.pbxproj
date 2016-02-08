@@ -201,8 +201,8 @@
 		9DDF13931C615A6F0024F643 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				9DDF136D1C614CF00024F643 /* SignUp.swift */,
 				9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */,
+				9DDF136D1C614CF00024F643 /* SignUp.swift */,
 				9D8192511C6436F60050B942 /* UpdateData.swift */,
 				9D2A53331C6902FD00543E9C /* Login.swift */,
 			);

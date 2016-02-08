@@ -14,6 +14,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Constants
     
     let DASHBOARD_CELL_IDENTIFIER = "dashboardCell"
+    let SEGUE_TO_WEIGHT_UPDATE = "showWeightUpdate"
     
     // MARK: Properties
     
@@ -71,6 +72,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         return dateString
     }
     
+    func updateProgress() {
+        if currentUser.currentGoal?.isWeightGoal! == "true" {
+            performSegueWithIdentifier(self.SEGUE_TO_WEIGHT_UPDATE, sender: self)
+        }
+    }
+    
     // MARK : Table view delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -99,7 +106,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.textLabel!.text = CurrentUser.sharedInstance.teamUsers![indexPath.row].user!.firstName!
         
         let weightLoss = CurrentUser.sharedInstance.teamUsers![indexPath.row].goal!.totalWeightLoss!
-        cell!.detailTextLabel!.text = "Lose \(weightLoss) pounds."
+        let lost = currentUser.teamUsers![indexPath.row].goal!.lostSoFar!
+       
+        cell!.detailTextLabel!.text = "Lose \(weightLoss) pounds." + "Lost \(lost) pounds so far."
         return cell!
     }
     

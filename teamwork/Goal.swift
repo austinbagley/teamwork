@@ -17,6 +17,8 @@ class Goal {
      var isWeightGoal: String?
      var startWeight: NSNumber?
      var endWeight: NSNumber?
+     var currentWeight: NSNumber?
+     var lostSoFar: NSNumber?
      var totalWeightLoss: NSNumber?
      var achieveTitle: String?
      var isAchieved: String?
@@ -30,23 +32,29 @@ class Goal {
         isWeightGoal = "true"
         self.startWeight = startWeight
         self.endWeight = endWeight
+        self.currentWeight = startWeight
         totalWeightLoss = startWeight - endWeight
+        self.lostSoFar = 0
         achieveTitle = nil
         isAchieved = nil
     }
     
-    init(goalId: String, user: User?, isWeightGoal: String?, startWeight: Double?, endWeight: Double?, achieveTitle: String?, isAchieved: String?) {
+    init(goalId: String, user: User?, isWeightGoal: String?, startWeight: Double?, endWeight: Double?, currentWeight: Double?, achieveTitle: String?, isAchieved: String?) {
         self.user = user
         self.team = nil
         self.goalId = goalId
         self.isWeightGoal = isWeightGoal
         self.startWeight = startWeight
         self.endWeight = endWeight
+        self.currentWeight = currentWeight
+        
         
         if startWeight != nil && endWeight != nil {
             totalWeightLoss = startWeight! - endWeight!
+            lostSoFar = startWeight! - currentWeight!
         } else {
             totalWeightLoss = 0
+            lostSoFar = 0
         }
        
         if isWeightGoal != "true" {

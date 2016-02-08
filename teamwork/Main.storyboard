@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zue-my-Ah9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zue-my-Ah9">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -131,14 +131,14 @@
                                                     <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ea2-xy-tOR">
                                                     <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -265,20 +265,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50B-1U-fwA">
-                                <rect key="frame" x="77" y="421" width="71" height="30"/>
-                                <state key="normal" title="Test Team"/>
-                                <connections>
-                                    <action selector="testTeam:" destination="zue-my-Ah9" eventType="touchUpInside" id="T0y-Or-OK5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AhR-tn-ZWW">
-                                <rect key="frame" x="77" y="514" width="141" height="30"/>
-                                <state key="normal" title="TEST TEAM NAMES"/>
-                                <connections>
-                                    <segue destination="a3t-HV-fu5" kind="show" id="vKF-bd-nrk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -332,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQk-Tj-dFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3676.5" y="287.5"/>
+            <point key="canvasLocation" x="2812.5" y="83.5"/>
         </scene>
         <!--Weight Goal View Controller-->
         <scene sceneID="SCF-Kr-Lyb">
@@ -374,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzn-HN-fCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161.5" y="287.5"/>
+            <point key="canvasLocation" x="3369.5" y="83.5"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="hJk-c5-Cpb">
@@ -485,17 +471,17 @@
                         <outlet property="tableView" destination="8aF-AF-11r" id="6iX-Nm-ICV"/>
                         <outlet property="userFullName" destination="dDW-Jo-EAn" id="Oma-kb-YPJ"/>
                         <outlet property="userGoal" destination="mHw-uX-chd" id="hKC-j7-d8Y"/>
-                        <segue destination="K2b-9w-nKV" kind="show" identifier="showUpdateScreen" id="y00-5c-Qzc"/>
+                        <segue destination="K2b-9w-nKV" kind="show" identifier="showWeightUpdate" id="y00-5c-Qzc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVc-w1-GOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960.5" y="1719.5"/>
+            <point key="canvasLocation" x="3375.5" y="1319.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Weight Update View Controller-->
         <scene sceneID="jPC-zc-hES">
             <objects>
-                <viewController id="K2b-9w-nKV" sceneMemberID="viewController">
+                <viewController id="K2b-9w-nKV" customClass="WeightUpdateViewController" customModule="teamwork" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ekq-Wm-hXS"/>
                         <viewControllerLayoutGuide type="bottom" id="NrG-Ly-WD8"/>
@@ -508,12 +494,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lY-sH-hME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2492.5" y="1719.5"/>
+            <point key="canvasLocation" x="3972.5" y="1319.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hke-cZ-aqo"/>
-        <segue reference="vKF-bd-nrk"/>
         <segue reference="zRL-TC-TQ3"/>
     </inferredMetricsTieBreakers>
 </document>

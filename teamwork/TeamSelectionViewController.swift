@@ -29,7 +29,7 @@ class TeamSelectionViewController: UIViewController {
     }
     
     @IBAction func joinTeam(sender: UIButton) {
-        UpdateData().getTeamNames() {
+        SignUp().getTeamNames() {
         self.performSegueWithIdentifier(self.SEGUE_TO_JOIN_TEAM, sender: self)
         }
     }
