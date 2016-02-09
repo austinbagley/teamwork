@@ -60,8 +60,8 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         
-        cell!.textLabel!.text = teamList![indexPath.row].teamName
-        cell!.detailTextLabel!.text = teamList![indexPath.row].teamId
+        cell!.textLabel!.text = teamList![indexPath.row].teamName!
+        cell!.detailTextLabel!.text = teamList![indexPath.row].teamChallengeName!
         return cell!
     }
     

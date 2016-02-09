@@ -51,6 +51,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    @IBAction func update(sender: UIButton) {
+        print(currentUser.currentGoal!.isWeightGoal!)
+        if currentUser.currentGoal!.isWeightGoal! == "true" {
+            performSegueWithIdentifier(self.SEGUE_TO_WEIGHT_UPDATE, sender: self)
+        }
+    }
     func addPullToRefresh() {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -61,7 +67,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func updateUI() {
         challengeName.text = CurrentUser.sharedInstance.currentTeam!.teamChallengeName!
         userFullName.text = "\(CurrentUser.sharedInstance.user!.firstName!)" + " " + "\(CurrentUser.sharedInstance.user!.lastName!)"
-        userGoal.text = "Lose \(String(CurrentUser.sharedInstance.currentGoal!.totalWeightLoss!)) pounds"
+        userGoal.text = "Lose \(String(CurrentUser.sharedInstance.currentGoal!.totalWeightLoss!)) pounds. Lost \(currentUser.currentGoal!.lostSoFar!) pounds so far."
         endDate.text = convertDate((CurrentUser.sharedInstance.currentTeam!.teamEndDate)!)
     }
     
@@ -72,11 +78,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         return dateString
     }
     
-    func updateProgress() {
-        if currentUser.currentGoal?.isWeightGoal! == "true" {
-            performSegueWithIdentifier(self.SEGUE_TO_WEIGHT_UPDATE, sender: self)
-        }
+    @IBAction func cancelUpdate(segue: UIStoryboardSegue) {
+        self.updateUI()
     }
+    
+    @IBAction func finishUpdate(segue: UIStoryboardSegue) {
+        self.updateUI()
+        self.tableView.reloadData()
+        print(self.currentUser.currentGoal?.totalWeightLoss!)
+    }
+
+
     
     // MARK : Table view delegate
     
