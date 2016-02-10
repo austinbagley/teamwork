@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63B1A45CF31D8C7B20B180F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFD12A2EEBE640CB7B37206 /* Pods.framework */; };
+		9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D070A751C69CFC1003DE60A /* DashboardCellView.swift */; };
 		9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1516091C61241D00BF42D8 /* FirebaseTest.swift */; };
 		9D2A53341C6902FD00543E9C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53331C6902FD00543E9C /* Login.swift */; };
 		9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		1EFD12A2EEBE640CB7B37206 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D070A751C69CFC1003DE60A /* DashboardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCellView.swift; sourceTree = "<group>"; };
 		9D1516091C61241D00BF42D8 /* FirebaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTest.swift; sourceTree = "<group>"; };
 		9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "teamwork-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D2A53331C6902FD00543E9C /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				9DDF138A1C614D4F0024F643 /* Main.storyboard */,
 				9D5FE29F1C6122DD0023B040 /* _Main.storyboard */,
+				9D070A751C69CFC1003DE60A /* DashboardCellView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				TargetAttributes = {
 					9D5FE2971C6122DD0023B040 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = UP8S528XY6;
 					};
 				};
 			};
@@ -352,6 +356,7 @@
 				9DDF13821C614D410024F643 /* CreateTeamViewController.swift in Sources */,
 				9DDF13851C614D410024F643 /* JoinTeamViewController.swift in Sources */,
 				9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */,
+				9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
 				9D8192521C6436F60050B942 /* UpdateData.swift in Sources */,
@@ -478,10 +483,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = teamwork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abagley.teamwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "teamwork/teamwork-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -493,10 +502,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = teamwork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abagley.teamwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "teamwork/teamwork-Bridging-Header.h";
 			};
 			name = Release;

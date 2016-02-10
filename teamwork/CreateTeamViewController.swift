@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CreateTeamViewController: UIViewController {
+class CreateTeamViewController: UIViewController, UITextFieldDelegate {
     // MARK: Constants
     
     let SEGUE_TO_GOAL_TYPE = "showGoalType"
@@ -27,11 +27,42 @@ class CreateTeamViewController: UIViewController {
     
     // MARK: View Controller lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.hidden = false
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.teamName.delegate = self
+        self.teamPassword.delegate = self
+        self.teamChallengeName.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
     }
     
     // MARK: Actions
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+       
+        textField.resignFirstResponder()
+        
+        if let nextField = view.viewWithTag(textField.tag + 1) {
+            nextField.becomeFirstResponder()
+        }
+        
+        return true
+        
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     @IBAction func createTeam(sender: UIButton) {
         let teamName = self.teamName.text!

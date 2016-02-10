@@ -20,6 +20,17 @@ class TeamSelectionViewController: UIViewController {
     
     // MARK: View Controller lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.hidden = false
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
+
+        
+    }
+    
+    
     // MARK: Actions
     
     @IBAction func createTeam(sender: UIButton) {

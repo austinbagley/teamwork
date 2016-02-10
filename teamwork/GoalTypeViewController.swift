@@ -31,6 +31,14 @@ class GoalTypeViewController: UIViewController {
     
     // MARK: View Controller lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.hidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("current user id = \(CurrentUser.sharedInstance.user?.uid)")

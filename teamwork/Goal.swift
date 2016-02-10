@@ -65,6 +65,21 @@ class Goal {
             self.isAchieved = nil
         }
     }
+    
+    
+    init() {
+        self.user = nil
+        self.team = nil
+        self.goalId = nil
+        self.isWeightGoal = nil
+        self.startWeight = nil
+        self.endWeight = nil
+        self.currentWeight = nil
+        self.totalWeightLoss = nil
+        self.lostSoFar = nil
+        self.achieveTitle = nil
+        self.isAchieved = nil
+    }
 
     
     

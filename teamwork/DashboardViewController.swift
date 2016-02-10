@@ -40,6 +40,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: View Controller lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        updateUI()
+        self.navigationController!.navigationBar.hidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -51,12 +59,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
-    @IBAction func update(sender: UIButton) {
-        print(currentUser.currentGoal!.isWeightGoal!)
+    @IBAction func updateGoal(sender: UIBarButtonItem) {
         if currentUser.currentGoal!.isWeightGoal! == "true" {
             performSegueWithIdentifier(self.SEGUE_TO_WEIGHT_UPDATE, sender: self)
         }
     }
+    
     func addPullToRefresh() {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -67,7 +75,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func updateUI() {
         challengeName.text = CurrentUser.sharedInstance.currentTeam!.teamChallengeName!
         userFullName.text = "\(CurrentUser.sharedInstance.user!.firstName!)" + " " + "\(CurrentUser.sharedInstance.user!.lastName!)"
-        userGoal.text = "Lose \(String(CurrentUser.sharedInstance.currentGoal!.totalWeightLoss!)) pounds. Lost \(currentUser.currentGoal!.lostSoFar!) pounds so far."
+        userGoal.text = "Lose \(String(CurrentUser.sharedInstance.currentGoal!.totalWeightLoss!)) pounds.  Lost \(currentUser.currentGoal!.lostSoFar!) pounds so far."
         endDate.text = convertDate((CurrentUser.sharedInstance.currentTeam!.teamEndDate)!)
     }
     
@@ -117,10 +125,18 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell!.textLabel!.text = CurrentUser.sharedInstance.teamUsers![indexPath.row].user!.firstName!
         
-        let weightLoss = CurrentUser.sharedInstance.teamUsers![indexPath.row].goal!.totalWeightLoss!
-        let lost = currentUser.teamUsers![indexPath.row].goal!.lostSoFar!
+        var weightLoss: NSNumber?
+        var lost: NSNumber?
+        
+        if CurrentUser.sharedInstance.teamUsers![indexPath.row].goal?.goalId == nil {
+            weightLoss = 0 as NSNumber
+            lost = 0 as NSNumber
+        } else {
+            weightLoss = CurrentUser.sharedInstance.teamUsers![indexPath.row].goal!.totalWeightLoss!
+            lost = currentUser.teamUsers![indexPath.row].goal!.lostSoFar!
+        }
        
-        cell!.detailTextLabel!.text = "Lose \(weightLoss) pounds." + "Lost \(lost) pounds so far."
+        cell!.detailTextLabel!.text = "Lose \(weightLoss!) pounds. " + "Lost \(lost!) pounds so far."
         return cell!
     }
     

@@ -28,6 +28,12 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: View Controller lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController!.navigationBar.hidden = false
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

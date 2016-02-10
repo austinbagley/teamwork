@@ -9,7 +9,7 @@
 import UIKit
 
 
-class WeightGoalViewController: UIViewController {
+class WeightGoalViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Constants
     
@@ -36,9 +36,25 @@ class WeightGoalViewController: UIViewController {
             // any call back here
         }
         
+        self.startWeight.delegate = self
+        self.goalWeight.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
     }
     
     // MARK: Actions
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     @IBAction func done(sender: UIButton) {
         let startWeight = Double(self.startWeight.text!)!

@@ -283,26 +283,42 @@ class SignUp {
                 let query = goalsRef.queryOrderedByChild("uid").queryEqualToValue(user)
                 
                 query.observeEventType(.Value, withBlock: { goalResult in
-                    let goalData = goalResult.value as! NSDictionary
-                    let goalId = goalResult.key
                     
-                    for (_, goalObject) in goalData {
-                        let isWeightGoal = goalObject["isWeightGoal"] as! String
-                        let startWeight = goalObject["startWeight"] as! Double
-                        let endWeight = goalObject["endWeight"] as! Double
-                        let currentWeight = goalObject["currentWeight"] as! Double
-                        let isAchieved = ""
-                        let achieveTitle = ""
-                        
-                        let newGoal = Goal(goalId: goalId, user: newUser, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, currentWeight: currentWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
-                        
+                    if goalResult.value is NSNull {
+                        let newGoal = Goal()
                         let newTeamUser = TeamUser(user: newUser, goal: newGoal)
                         teamUsers.append(newTeamUser)
                         queryCount += 1
+                        
+                    } else {
+                        let goalData = goalResult.value as! NSDictionary
+                        let goalId = goalResult.key
+                        
+                        for (_, goalObject) in goalData {
+                            let isWeightGoal = goalObject["isWeightGoal"] as! String
+                            let startWeight = goalObject["startWeight"] as! Double
+                            let endWeight = goalObject["endWeight"] as! Double
+                            let currentWeight = goalObject["currentWeight"] as! Double
+                            let isAchieved = ""
+                            let achieveTitle = ""
+                            
+                            let newGoal = Goal(goalId: goalId, user: newUser, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, currentWeight: currentWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
+                            
+                            let newTeamUser = TeamUser(user: newUser, goal: newGoal)
+                            teamUsers.append(newTeamUser)
+                            queryCount += 1
+                        }
                     }
                     
                     if queryCount == maxQueryCount {
                         CurrentUser.sharedInstance.teamUsers = teamUsers
+                        
+                        // remove current user
+                        
+                        
+                        
+                        
+                        
                         callBack()
                     }
                 })

@@ -17,7 +17,15 @@ class FirebaseConstants {
     
     private init() {}
     
-    let firebaseUrl = "https://radiant-fire-3697.firebaseio.com/"
+    
+    // enable persistance
+    func enableFirebasePersistance() {
+        Firebase.defaultConfig().persistenceEnabled = true
+    }
+    
+    
+    let firebaseUrl = "https://dev-teamwork.firebaseio.com/"
+//    let firebaseUrl = "https://beta-teamwork.firebaseio.com/"
     let firebaseUsers = "users"
     let firebaseTeams = "teams"
     let firebaseGoals = "goals"
