@@ -15,6 +15,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let DASHBOARD_CELL_IDENTIFIER = "dashboardCell"
     let SEGUE_TO_WEIGHT_UPDATE = "showWeightUpdate"
+    let SEGUE_TO_POST = "showCreatePost"
     
     // MARK: Properties
     
@@ -64,6 +65,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             performSegueWithIdentifier(self.SEGUE_TO_WEIGHT_UPDATE, sender: self)
         }
     }
+    @IBAction func post(sender: UIBarButtonItem) {
+        performSegueWithIdentifier(SEGUE_TO_POST, sender: self)
+    }
     
     func addPullToRefresh() {
         self.refreshControl = UIRefreshControl()
@@ -94,6 +98,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.updateUI()
         self.tableView.reloadData()
         print(self.currentUser.currentGoal?.totalWeightLoss!)
+    }
+    
+    @IBAction func savePost(segue: UIStoryboardSegue) {
+        self.updateUI()
+    }
+    
+    @IBAction func cancelPost(segue: UIStoryboardSegue) {
+        self.updateUI()
     }
 
 

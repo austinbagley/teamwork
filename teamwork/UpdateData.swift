@@ -71,6 +71,41 @@ class UpdateData {
     
     
     
+    func createPost(content: String, callBack: () -> Void) {
+        
+        let postContent = content
+        let user = currentUser.user!
+        let team = currentUser.user!.currentTeam!
+        let date = NSDate()
+        
+        let ref = self.baseRef
+        let teamsRef = ref.childByAppendingPath(fb.firebaseTeams)
+        let teamRef = teamsRef.childByAppendingPath(team)
+        let teamPostRef = teamRef.childByAppendingPath("posts")
+        let postRef = teamPostRef.childByAutoId()
+        
+        
+        let post = Post(postContent: postContent, dateTime: date, user: user)
+        
+        let newPost = [ "postContent" : post.postContent!, "uid": post.user!.uid!, "dateTime" : (((post.dateTime?.timeIntervalSince1970)! as NSNumber))]
+        
+        
+        postRef.setValue(newPost, withCompletionBlock: {
+            (error:NSError?, ref:Firebase!) in
+            if (error != nil) {
+                print(error)
+            } else {
+                print("new post created with key: \(ref.key)")
+                callBack()
+                
+            }
+        
+        })
+
+    }
+    
+    
+    
     
     
     
