@@ -18,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        firebase.enableFirebasePersistance()
+//        firebase.enableFirebasePersistance()
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         
         return true
     }

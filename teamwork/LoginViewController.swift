@@ -37,6 +37,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Actions
     
+    @IBAction func logout(segue: UIStoryboardSegue) {
+        
+    }
+
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

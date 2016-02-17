@@ -22,7 +22,7 @@ class SignUp {
         }
     }
     
-    // Signup user with Parse
+    // Signup user 
     
     func signUpNewUser(password: String?, email: String?, firstName: String?, lastName: String?, callBack: () -> Void) {
         let user = User(pw: password!, email: email!, firstName: firstName!, lastName: lastName!)
@@ -40,16 +40,27 @@ class SignUp {
                     user.uid = uid!
                     CurrentUser.sharedInstance.user = user
                     CurrentUser.sharedInstance.user!.uid = result["uid"] as? String
-                    print("the current user is \(CurrentUser.sharedInstance.user!.uid))")
-        
-                    // Create User Object on Firebase
                     
-                    print(usersRef)
-                    let firebaseUser = ["uid": user.uid!, "email": user.email!, "username": user.email!, "firstName": user.firstName!, "lastName": user.lastName!]
-                    print(firebaseUser)
-                    
-                    usersRef.childByAppendingPath(user.uid!).setValue(firebaseUser)
-                    callBack()
+                    ref.authUser(user.email!, password: user.pw!, withCompletionBlock: { error, result in
+                        if error != nil {
+                            print(error)
+                        } else {
+                            
+                            print("the current user is \(CurrentUser.sharedInstance.user!.uid))")
+                            // Create User Object on Firebase
+                            let firebaseUser = ["uid": user.uid!, "email": user.email!, "username": user.email!, "firstName": user.firstName!, "lastName": user.lastName!]
+
+                            usersRef.childByAppendingPath(user.uid!).setValue(firebaseUser, withCompletionBlock: { error, result in
+                                if error != nil {
+                                    print(error)
+                                } else {
+                                    print("Successfully added user to database")
+                                    callBack()
+                                    
+                                }
+                            })
+                        }
+                    })
                 }
         })
     }
@@ -70,7 +81,7 @@ class SignUp {
         let usersRef = ref.childByAppendingPath(constants.firebaseUsers)
         let userRef = usersRef.childByAppendingPath(uid)
         
-        print("curernt uid is: \(uid)")
+        print("current uid is: \(uid)")
         
         let firebaseTeam = ["teamName": team.teamName!, "teamChallengeName" : team.teamChallengeName!, "teamEndDate" : endDateInterval!, "users": [uid : "true"] ]
         
@@ -104,6 +115,7 @@ class SignUp {
     
     func updateTeamandUser(team: Team, callBack: () -> Void) {
         
+        
         let ref = self.baseRef
         let teamRef = ref.childByAppendingPath("teams")
         let uid = (CurrentUser.sharedInstance.user?.uid)! as String
@@ -121,7 +133,7 @@ class SignUp {
             if (error != nil) {
                 print("Data could not be saved")
             } else {
-                
+                print("updated team with new user")
                 // Update User
                 
                 userRef.childByAppendingPath("teams").setValue([teamId: "true"], withCompletionBlock: {
@@ -129,9 +141,18 @@ class SignUp {
                     if (error != nil) {
                         print("Data could not be saved")
                     } else {
-                        userRef.updateChildValues(["currentTeam": teamId])
-                        callBack()
-                        print("woohoo!!!! we updated the user & team by joining an existing team")
+                        print("updated user with team list")
+                        userRef.updateChildValues(["currentTeam": teamId], withCompletionBlock: {
+                            (error: NSError?, ref: Firebase!) in
+                            if (error != nil) {
+                                print("issue updating current team")
+                                print(error)
+                            } else {
+                                callBack()
+                                print("woohoo!!!! we updated the user & team by joining an existing team")
+                            }
+                        })
+                        
                     }
                 })
             }
@@ -193,6 +214,7 @@ class SignUp {
     func getUserList(team: Team?, callBack: () -> Void) {
         
         var userList = [String]()
+        CurrentUser.sharedInstance.teamList = [String]()
 
         let ref = self.baseRef
         let teamsRef = ref.childByAppendingPath("teams")
@@ -276,7 +298,6 @@ class SignUp {
             
             let teamUserRef = usersRef.childByAppendingPath(user)
             teamUserRef.observeEventType(.Value, withBlock:  { result in
-                
                 let userObject = result.value as! NSDictionary
                 let newUser = User(uid: ((userObject["uid"]) as! String), email: ((userObject["email"]) as! String), currentTeam: ((userObject["currentTeam"]) as! String), firstName: ((userObject["firstName"]) as! String), lastName: ((userObject["lastName"]) as! String))
                 

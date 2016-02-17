@@ -15,6 +15,8 @@ class TeamList {
     private init() {
     }
     
+    deinit {}
+    
     var teamList: [Team]?
     
 }

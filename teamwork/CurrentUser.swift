@@ -15,6 +15,8 @@ class CurrentUser {
     private init() {
     }
     
+    deinit {}
+    
     var user: User?
     var currentTeam: Team?
     var currentGoal: Goal?

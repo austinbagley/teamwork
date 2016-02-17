@@ -49,7 +49,6 @@ class TeamSelectionViewController: UIViewController {
         if segue.identifier == SEGUE_TO_JOIN_TEAM {
             if let destVC = segue.destinationViewController as? JoinTeamViewController {
                     destVC.teamList = TeamList.sharedInstance.teamList!
-                    print("dest VC team names consist of : \(destVC.teams)")
             }
         }
     }

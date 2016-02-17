@@ -18,6 +18,10 @@ class DashboardCellView: UITableViewCell {
     
     
     
+    @IBOutlet weak var toGo: UILabel!
+    @IBOutlet weak var poundsLost: UILabel!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var lineProgressView: LineProgressView!
     
     
 }

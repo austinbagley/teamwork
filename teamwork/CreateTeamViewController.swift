@@ -71,7 +71,6 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
         let challenge = self.teamChallengeName.text!
 
         signup.team = signup.createTeam(teamName, teamChallengeName: challenge, teamPassword: teamPassword, endDate: endDate, callBack: {
-            print("create team vc team is \(self.signup.team)")
             self.performSegueWithIdentifier("showGoalType", sender: self)
         })
     }

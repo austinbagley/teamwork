@@ -81,6 +81,7 @@ class Login {
         let teamRef = baseRef.childByAppendingPath(fb.firebaseTeams).childByAppendingPath(teamId)
         
         teamRef.observeEventType(.Value, withBlock: { result in
+            
             let teamObject = result.value as! NSDictionary
             
             let newTeam = Team(
@@ -130,6 +131,18 @@ class Login {
                 }
             }
         })
+    }
+    
+    
+    func logout(callBack: () -> Void) {
+        
+        let ref = baseRef
+        ref.unauth()
+        currentUser.currentGoal = nil
+        currentUser.currentTeam = nil
+        currentUser.user = nil
+        currentUser.teamList = nil
+        callBack()
     }
     
     

@@ -9,18 +9,24 @@
 /* Begin PBXBuildFile section */
 		63B1A45CF31D8C7B20B180F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFD12A2EEBE640CB7B37206 /* Pods.framework */; };
 		9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D070A751C69CFC1003DE60A /* DashboardCellView.swift */; };
-		9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1516091C61241D00BF42D8 /* FirebaseTest.swift */; };
+		9D084FA81C73E37900481288 /* ButtonOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D084FA71C73E37900481288 /* ButtonOutline.swift */; };
 		9D1D9CD61C6B8DA9000232FA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1D9CD51C6B8DA9000232FA /* Post.swift */; };
 		9D2A53341C6902FD00543E9C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53331C6902FD00543E9C /* Login.swift */; };
 		9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */; };
 		9D57DE881C6B9F4A0022A722 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D57DE871C6B9F4A0022A722 /* CreatePostViewController.swift */; };
 		9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */; };
-		9D5FE29E1C6122DD0023B040 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29D1C6122DD0023B040 /* ViewController.swift */; };
-		9D5FE2A11C6122DD0023B040 /* _Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE29F1C6122DD0023B040 /* _Main.storyboard */; };
 		9D5FE2A31C6122DD0023B040 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A21C6122DD0023B040 /* Assets.xcassets */; };
 		9D5FE2A61C6122DD0023B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */; };
+		9D6E798E1C6C172200F76A78 /* CustomMessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */; };
+		9D6E79901C6C17D200F76A78 /* CustomMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */; };
 		9D8192521C6436F60050B942 /* UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8192511C6436F60050B942 /* UpdateData.swift */; };
 		9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E449E1C629108005CDA52 /* CurrentUser.swift */; };
+		9DAB93AD1C728ABE0058FC9B /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */; };
+		9DAB93AF1C728F090058FC9B /* LineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93AE1C728F090058FC9B /* LineProgressView.swift */; };
+		9DAB93B11C72D4730058FC9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93B01C72D4730058FC9B /* Extensions.swift */; };
+		9DAB93B31C72E0BE0058FC9B /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */; };
+		9DB352AF1C73972000905E17 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB352AE1C73972000905E17 /* BasicButton.swift */; };
+		9DCF3FF31C6BB648001B52B3 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF3FF21C6BB648001B52B3 /* Posts.swift */; };
 		9DDF13721C614CF00024F643 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136C1C614CF00024F643 /* Goal.swift */; };
 		9DDF13731C614CF00024F643 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136D1C614CF00024F643 /* SignUp.swift */; };
 		9DDF13741C614CF00024F643 /* SubGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136E1C614CF00024F643 /* SubGoal.swift */; };
@@ -45,7 +51,7 @@
 /* Begin PBXFileReference section */
 		1EFD12A2EEBE640CB7B37206 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D070A751C69CFC1003DE60A /* DashboardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCellView.swift; sourceTree = "<group>"; };
-		9D1516091C61241D00BF42D8 /* FirebaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTest.swift; sourceTree = "<group>"; };
+		9D084FA71C73E37900481288 /* ButtonOutline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonOutline.swift; sourceTree = "<group>"; };
 		9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "teamwork-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D1D9CD51C6B8DA9000232FA /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9D2A53331C6902FD00543E9C /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -53,13 +59,19 @@
 		9D57DE871C6B9F4A0022A722 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		9D5FE2981C6122DD0023B040 /* teamwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D5FE29D1C6122DD0023B040 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9D5FE2A01C6122DD0023B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/_Main.storyboard; sourceTree = "<group>"; };
 		9D5FE2A21C6122DD0023B040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D5FE2A51C6122DD0023B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D5FE2A71C6122DD0023B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCellView.swift; sourceTree = "<group>"; };
+		9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMessageCell.xib; sourceTree = "<group>"; };
 		9D8192511C6436F60050B942 /* UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateData.swift; sourceTree = "<group>"; };
 		9D8E449E1C629108005CDA52 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		9DAB93AE1C728F090058FC9B /* LineProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineProgressView.swift; sourceTree = "<group>"; };
+		9DAB93B01C72D4730058FC9B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
+		9DB352AE1C73972000905E17 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		9DCF3FF21C6BB648001B52B3 /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		9DDF136C1C614CF00024F643 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		9DDF136D1C614CF00024F643 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		9DDF136E1C614CF00024F643 /* SubGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubGoal.swift; sourceTree = "<group>"; };
@@ -137,13 +149,6 @@
 				9DDF13311C614AC20024F643 /* View */,
 				9DDF13301C614AB80024F643 /* Controller */,
 				9DDF132F1C614AB20024F643 /* Assets */,
-				9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */,
-				9D5FE29D1C6122DD0023B040 /* ViewController.swift */,
-				9D5FE2A21C6122DD0023B040 /* Assets.xcassets */,
-				9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */,
-				9D5FE2A71C6122DD0023B040 /* Info.plist */,
-				9D1516091C61241D00BF42D8 /* FirebaseTest.swift */,
-				9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */,
 			);
 			path = teamwork;
 			sourceTree = "<group>";
@@ -151,6 +156,10 @@
 		9DDF132F1C614AB20024F643 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				9D5FE2A21C6122DD0023B040 /* Assets.xcassets */,
+				9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */,
+				9D5FE2A71C6122DD0023B040 /* Info.plist */,
+				9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 		9DDF13301C614AB80024F643 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */,
 				9DDF137D1C614D410024F643 /* LoginViewController.swift */,
 				9DDF138C1C614DBB0024F643 /* RegisterViewController.swift */,
 				9DDF137F1C614D410024F643 /* TeamSelectionViewController.swift */,
@@ -170,6 +180,7 @@
 				9DDF137E1C614D410024F643 /* MilestoneViewController.swift */,
 				9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */,
 				9D57DE871C6B9F4A0022A722 /* CreatePostViewController.swift */,
+				9DAB93B01C72D4730058FC9B /* Extensions.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -178,8 +189,14 @@
 			isa = PBXGroup;
 			children = (
 				9DDF138A1C614D4F0024F643 /* Main.storyboard */,
-				9D5FE29F1C6122DD0023B040 /* _Main.storyboard */,
 				9D070A751C69CFC1003DE60A /* DashboardCellView.swift */,
+				9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */,
+				9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */,
+				9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */,
+				9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */,
+				9DAB93AE1C728F090058FC9B /* LineProgressView.swift */,
+				9DB352AE1C73972000905E17 /* BasicButton.swift */,
+				9D084FA71C73E37900481288 /* ButtonOutline.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -223,6 +240,7 @@
 			children = (
 				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
 				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
+				9DCF3FF21C6BB648001B52B3 /* Posts.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -292,7 +310,8 @@
 				9D5FE2A61C6122DD0023B040 /* LaunchScreen.storyboard in Resources */,
 				9D5FE2A31C6122DD0023B040 /* Assets.xcassets in Resources */,
 				9DDF138B1C614D4F0024F643 /* Main.storyboard in Resources */,
-				9D5FE2A11C6122DD0023B040 /* _Main.storyboard in Resources */,
+				9DAB93B31C72E0BE0058FC9B /* DashboardCell.xib in Resources */,
+				9D6E79901C6C17D200F76A78 /* CustomMessageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,20 +372,23 @@
 			files = (
 				9DEE9FBD1C6459EA001BC4C3 /* TeamList.swift in Sources */,
 				9DDF13721C614CF00024F643 /* Goal.swift in Sources */,
-				9D5FE29E1C6122DD0023B040 /* ViewController.swift in Sources */,
 				9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */,
 				9DDF13751C614CF00024F643 /* Team.swift in Sources */,
 				9DDF13861C614D410024F643 /* LoginViewController.swift in Sources */,
+				9DCF3FF31C6BB648001B52B3 /* Posts.swift in Sources */,
 				9D2A53341C6902FD00543E9C /* Login.swift in Sources */,
 				9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */,
+				9DAB93AF1C728F090058FC9B /* LineProgressView.swift in Sources */,
 				9DDF13821C614D410024F643 /* CreateTeamViewController.swift in Sources */,
 				9DDF13851C614D410024F643 /* JoinTeamViewController.swift in Sources */,
+				9DB352AF1C73972000905E17 /* BasicButton.swift in Sources */,
+				9D084FA81C73E37900481288 /* ButtonOutline.swift in Sources */,
+				9D6E798E1C6C172200F76A78 /* CustomMessageCellView.swift in Sources */,
 				9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */,
 				9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
 				9D8192521C6436F60050B942 /* UpdateData.swift in Sources */,
-				9D15160A1C61241D00BF42D8 /* FirebaseTest.swift in Sources */,
 				9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */,
 				9DDF13831C614D410024F643 /* DashboardViewController.swift in Sources */,
 				9DDF13811C614D410024F643 /* AchieveGoalViewController.swift in Sources */,
@@ -378,6 +400,8 @@
 				9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */,
 				9D1D9CD61C6B8DA9000232FA /* Post.swift in Sources */,
 				9DDF13891C614D410024F643 /* WeightGoalViewController.swift in Sources */,
+				9DAB93AD1C728ABE0058FC9B /* CircleProgressView.swift in Sources */,
+				9DAB93B11C72D4730058FC9B /* Extensions.swift in Sources */,
 				9DDF13911C615A4F0024F643 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,14 +409,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9D5FE29F1C6122DD0023B040 /* _Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D5FE2A01C6122DD0023B040 /* Base */,
-			);
-			name = _Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -494,7 +510,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = teamwork/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abagley.teamwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,7 +529,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = teamwork/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.abagley.teamwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";

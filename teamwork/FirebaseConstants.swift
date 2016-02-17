@@ -24,8 +24,8 @@ class FirebaseConstants {
     }
     
     
-    let firebaseUrl = "https://dev-teamwork.firebaseio.com/"
-//    let firebaseUrl = "https://beta-teamwork.firebaseio.com/"
+//    let firebaseUrl = "https://dev-teamwork.firebaseio.com/"
+    let firebaseUrl = "https://beta-teamwork.firebaseio.com/"
     let firebaseUsers = "users"
     let firebaseTeams = "teams"
     let firebaseGoals = "goals"

@@ -50,8 +50,6 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         let cells = self.teamList!.count
-        
-        print("cell count is \(cells)")
         return cells
     }
     
@@ -81,21 +79,16 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
         
         team = teamList![position]
         
-        CurrentUser.sharedInstance.user?.currentTeam = team?.teamId
-        CurrentUser.sharedInstance.currentTeam = team
+        print("We're sending along this team \(team!.teamId!)")
         
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            // do some task
-            
-            SignUp().updateTeamandUser(team!, callBack: {
-             // do we need this? probably get rid of async
-            })
-
-            dispatch_async(dispatch_get_main_queue()) {
-                self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_SELECTION, sender: self)
-            }
-        }
+        CurrentUser.sharedInstance.user!.currentTeam = team!.teamId!
+        CurrentUser.sharedInstance.currentTeam = team!
+        
+        
+        
+        SignUp().updateTeamandUser(team!, callBack: {
+            self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_SELECTION, sender: self)
+        })
     }
 
     

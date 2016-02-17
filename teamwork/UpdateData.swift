@@ -21,12 +21,12 @@ class UpdateData {
     }
     
     var currentUser = CurrentUser.sharedInstance
+    var posts = Posts.sharedInstance.posts
     
     // MARK: Actions
     
     
     func updateWeight(weight: Double, callBack: () -> Void) {
-        print("update started")
         
         let currentGoalId = currentUser.currentGoal!.goalId!
         let priorWeight = currentUser.currentGoal!.currentWeight!
@@ -43,21 +43,17 @@ class UpdateData {
             "lastWeightLogged" : priorWeight,
             "currentDate" : currentDate
         ]
-       
-        print(newUpdateValue)
         
         goalRef.updateChildValues(newCurrentWeight, withCompletionBlock: {
             (error: NSError?, ref: Firebase!) in
             if (error != nil) {
                 print("Data could not be saved")
             } else {
-                
                 newUpdate.setValue(newUpdateValue, withCompletionBlock: {
                     (error:NSError?, ref:Firebase!) in
                     if (error != nil) {
                         print("Data could not be saved.")
                     } else {
-                        print("update created")
                         callBack()
                     }
                 })
@@ -95,13 +91,53 @@ class UpdateData {
             if (error != nil) {
                 print(error)
             } else {
-                print("new post created with key: \(ref.key)")
-                callBack()
+                self.updatePosts() {
+                    callBack()
+                }
                 
             }
         
         })
 
+    }
+    
+    
+    
+    func updatePosts(callBack: () -> Void) {
+        
+        let teamId = currentUser.user!.currentTeam!
+
+        let ref = baseRef
+        let postsRef = ref.childByAppendingPath(fb.firebaseTeams).childByAppendingPath(teamId).childByAppendingPath("posts")
+        
+        postsRef.observeEventType(.Value, withBlock: { snapshot in
+            
+            if snapshot.value is NSNull {
+                print("we gotaa problem houston")
+                callBack()
+            } else {
+                let results = snapshot.value as! NSDictionary
+                
+                Posts.sharedInstance.posts = [Post]()
+                
+                for (_, post) in results {
+                    let postId = ""
+                    let interval = post["dateTime"] as! NSTimeInterval
+                    let postContent = post["postContent"] as! String
+                    let uid = post["uid"] as! String
+                    let teamUsers = self.currentUser.teamUsers!
+                    
+                    let newPost = Post(postId: postId, postContent: postContent, dateTime: interval, uid: uid, teamUsers: teamUsers)
+                    
+                      Posts.sharedInstance.posts.append(newPost)
+                }
+                callBack()
+            }
+        })
+        
+        
+        
+        
     }
     
     

@@ -53,22 +53,12 @@ class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
     @IBAction func save(sender: UIBarButtonItem) {
         let weight = Double(currentWeight.text!)
         update.updateWeight(weight!) {
-            print("it worked?")
-            self.performSegueWithIdentifier(self.SEGUE_UNWIND_SAVE_ALT, sender: self)
-        }
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue == SEGUE_UNWIND_SAVE {
-            let weight = Double(currentWeight.text!)
-            update.updateWeight(weight!) {
-                print("it worked?")
+            Login().getCurrentGoalForUser(CurrentUser.sharedInstance.user!) {
+                SignUp().populateTeamData(CurrentUser.sharedInstance.teamList!, team: CurrentUser.sharedInstance.currentTeam!) {
+                    self.performSegueWithIdentifier(self.SEGUE_UNWIND_SAVE_ALT, sender: self)
+                }
             }
         }
     }
-    
-   
-    
-    
+
 }
