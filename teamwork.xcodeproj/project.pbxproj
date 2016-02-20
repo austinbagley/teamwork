@@ -26,6 +26,7 @@
 		9DAB93B11C72D4730058FC9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93B01C72D4730058FC9B /* Extensions.swift */; };
 		9DAB93B31C72E0BE0058FC9B /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */; };
 		9DB352AF1C73972000905E17 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB352AE1C73972000905E17 /* BasicButton.swift */; };
+		9DC72CC61C74C39500738701 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC72CC51C74C39500738701 /* Server.swift */; };
 		9DCF3FF31C6BB648001B52B3 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF3FF21C6BB648001B52B3 /* Posts.swift */; };
 		9DDF13721C614CF00024F643 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136C1C614CF00024F643 /* Goal.swift */; };
 		9DDF13731C614CF00024F643 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136D1C614CF00024F643 /* SignUp.swift */; };
@@ -71,6 +72,7 @@
 		9DAB93B01C72D4730058FC9B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
 		9DB352AE1C73972000905E17 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		9DC72CC51C74C39500738701 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		9DCF3FF21C6BB648001B52B3 /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		9DDF136C1C614CF00024F643 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		9DDF136D1C614CF00024F643 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				9DDF136D1C614CF00024F643 /* SignUp.swift */,
 				9D8192511C6436F60050B942 /* UpdateData.swift */,
 				9D2A53331C6902FD00543E9C /* Login.swift */,
+				9DC72CC51C74C39500738701 /* Server.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				9DB352AF1C73972000905E17 /* BasicButton.swift in Sources */,
 				9D084FA81C73E37900481288 /* ButtonOutline.swift in Sources */,
 				9D6E798E1C6C172200F76A78 /* CustomMessageCellView.swift in Sources */,
+				9DC72CC61C74C39500738701 /* Server.swift in Sources */,
 				9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */,
 				9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,

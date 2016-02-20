@@ -17,11 +17,10 @@ class FirebaseConstants {
     
     private init() {}
     
-    
-    // enable persistance
-    func enableFirebasePersistance() {
-        Firebase.defaultConfig().persistenceEnabled = true
-    }
+//    // enable persistance
+//    func enableFirebasePersistance() {
+//        Firebase.defaultConfig().persistenceEnabled = true
+//    }
     
     
 //    let firebaseUrl = "https://dev-teamwork.firebaseio.com/"
