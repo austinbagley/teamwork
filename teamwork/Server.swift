@@ -170,7 +170,7 @@ class Server {
         let query = goalsRef.queryOrderedByChild("uid").queryEqualToValue(uid)
         
         query.observeEventType(.Value, withBlock: { goalResult in
-            if goalResult != nil {
+            if goalResult.exists() {
                 let goalData = goalResult.value as! NSDictionary
                 
                 for (goal, goalObject) in goalData {

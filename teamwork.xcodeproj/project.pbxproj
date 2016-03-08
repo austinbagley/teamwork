@@ -20,7 +20,6 @@
 		9D5FE2A61C6122DD0023B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */; };
 		9D6E798E1C6C172200F76A78 /* CustomMessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */; };
 		9D6E79901C6C17D200F76A78 /* CustomMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */; };
-		9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E449E1C629108005CDA52 /* CurrentUser.swift */; };
 		9DAB93AD1C728ABE0058FC9B /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */; };
 		9DAB93AF1C728F090058FC9B /* LineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93AE1C728F090058FC9B /* LineProgressView.swift */; };
 		9DAB93B11C72D4730058FC9B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93B01C72D4730058FC9B /* Extensions.swift */; };
@@ -45,7 +44,6 @@
 		9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF138C1C614DBB0024F643 /* RegisterViewController.swift */; };
 		9DDF138F1C614F2B0024F643 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */; };
 		9DDF13911C615A4F0024F643 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13901C615A4F0024F643 /* User.swift */; };
-		9DEE9FBD1C6459EA001BC4C3 /* TeamList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */; };
 		9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +64,6 @@
 		9D5FE2A71C6122DD0023B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCellView.swift; sourceTree = "<group>"; };
 		9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMessageCell.xib; sourceTree = "<group>"; };
-		9D8E449E1C629108005CDA52 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		9DAB93AE1C728F090058FC9B /* LineProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineProgressView.swift; sourceTree = "<group>"; };
 		9DAB93B01C72D4730058FC9B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -91,7 +88,6 @@
 		9DDF138C1C614DBB0024F643 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		9DDF13901C615A4F0024F643 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamList.swift; sourceTree = "<group>"; };
 		9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamUser.swift; sourceTree = "<group>"; };
 		A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,7 +217,6 @@
 				9DDF136F1C614CF00024F643 /* Team.swift */,
 				9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */,
 				9D1D9CD51C6B8DA9000232FA /* Post.swift */,
-				9DEE9FC01C64675A001BC4C3 /* Singletons */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -237,15 +232,6 @@
 				9D52B0651C7B7D0C00687576 /* DateTools.swift */,
 			);
 			name = API;
-			sourceTree = "<group>";
-		};
-		9DEE9FC01C64675A001BC4C3 /* Singletons */ = {
-			isa = PBXGroup;
-			children = (
-				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
-				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
-			);
-			name = Singletons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,9 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DEE9FBD1C6459EA001BC4C3 /* TeamList.swift in Sources */,
 				9DDF13721C614CF00024F643 /* Goal.swift in Sources */,
-				9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */,
 				9DDF13751C614CF00024F643 /* Team.swift in Sources */,
 				9DDF13861C614D410024F643 /* LoginViewController.swift in Sources */,
 				9D2A53341C6902FD00543E9C /* Login.swift in Sources */,

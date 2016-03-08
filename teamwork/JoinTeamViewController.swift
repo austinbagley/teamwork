@@ -81,10 +81,11 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var team: Team?
         let position = indexPath.row
-        
-        team = teamList[position].id!
-        
-        server.addTeamToCurrentUser(team) { (success, message) in
+
+        team = teamList[position]
+        let teamId = team!.id!
+
+        self.server.addTeamToCurrentUser(teamId) { (success, message) in
             if success {
                 self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_SELECTION, sender: self)
             } else {
