@@ -12,7 +12,6 @@ class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     
-    let update = UpdateData()
     let SEGUE_UNWIND_SAVE = "finishUpdate"
     let SEGUE_UNWIND_SAVE_ALT = "finishSave"
     
@@ -20,6 +19,13 @@ class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
     // MARK : Outlets
     
     @IBOutlet weak var currentWeight: UITextField!
+    
+    // MARK: Properties
+    
+    var goalId: String?
+    var priorWeight: Double?
+    var newWeight: Double?
+    var server = Server.sharedInstance
     
     
     // MARK : View Controller Lifecycle
@@ -52,11 +58,14 @@ class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func save(sender: UIBarButtonItem) {
         let weight = Double(currentWeight.text!)
-        update.updateWeight(weight!) {
-            Login().getCurrentGoalForUser(CurrentUser.sharedInstance.user!) {
-                SignUp().populateTeamData(CurrentUser.sharedInstance.teamList!, team: CurrentUser.sharedInstance.currentTeam!) {
-                    self.performSegueWithIdentifier(self.SEGUE_UNWIND_SAVE_ALT, sender: self)
-                }
+        let priorWeight = self.priorWeight!
+        let goalId = self.goalId!
+        
+        server.updateWeight(goalId, currentWeight: weight!, priorWeight: priorWeight) { (success, message) in
+            if success {
+                self.performSegueWithIdentifier(self.SEGUE_UNWIND_SAVE, sender: self)
+            } else {
+                print(message)
             }
         }
     }

@@ -20,7 +20,6 @@
 		9D5FE2A61C6122DD0023B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FE2A41C6122DD0023B040 /* LaunchScreen.storyboard */; };
 		9D6E798E1C6C172200F76A78 /* CustomMessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */; };
 		9D6E79901C6C17D200F76A78 /* CustomMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */; };
-		9D8192521C6436F60050B942 /* UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8192511C6436F60050B942 /* UpdateData.swift */; };
 		9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8E449E1C629108005CDA52 /* CurrentUser.swift */; };
 		9DAB93AD1C728ABE0058FC9B /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */; };
 		9DAB93AF1C728F090058FC9B /* LineProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB93AE1C728F090058FC9B /* LineProgressView.swift */; };
@@ -68,7 +67,6 @@
 		9D5FE2A71C6122DD0023B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D6E798D1C6C172200F76A78 /* CustomMessageCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMessageCellView.swift; sourceTree = "<group>"; };
 		9D6E798F1C6C17D200F76A78 /* CustomMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMessageCell.xib; sourceTree = "<group>"; };
-		9D8192511C6436F60050B942 /* UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateData.swift; sourceTree = "<group>"; };
 		9D8E449E1C629108005CDA52 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		9DAB93AC1C728ABE0058FC9B /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		9DAB93AE1C728F090058FC9B /* LineProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineProgressView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			children = (
 				9DDF138E1C614F2B0024F643 /* FirebaseConstants.swift */,
 				9DDF136D1C614CF00024F643 /* SignUp.swift */,
-				9D8192511C6436F60050B942 /* UpdateData.swift */,
 				9D2A53331C6902FD00543E9C /* Login.swift */,
 				9DC72CC51C74C39500738701 /* Server.swift */,
 				9DCBF9AC1C7B587500EF7E0E /* Translator.swift */,
@@ -398,7 +395,6 @@
 				9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
-				9D8192521C6436F60050B942 /* UpdateData.swift in Sources */,
 				9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */,
 				9DDF13831C614D410024F643 /* DashboardViewController.swift in Sources */,
 				9DDF13811C614D410024F643 /* AchieveGoalViewController.swift in Sources */,

@@ -14,35 +14,29 @@ class Post {
     var postId: String?
     var postContent: String?
     var dateTime: NSDate?
-    var user: User?
+    var uid: String?
+    var firstName: String?
+    var lastName: String?
     
-    var currentUser = CurrentUser.sharedInstance
-    
-    init(postContent: String, dateTime: NSDate, user: User) {
+    init(postContent: String, dateTime: NSDate, uid: String, firstName: String?, lastName: String?) {
         
         self.postId = nil
         self.postContent = postContent
         self.dateTime = dateTime
-        self.user = user
+        self.uid = uid
+        self.firstName = firstName
+        self.lastName = lastName
     }
     
     
-    init(postId: String, postContent: String, dateTime: NSTimeInterval, uid: String, teamUsers: [TeamUser]) {
+    init(postContent: String, dateTime: NSTimeInterval, uid: String, firstName: String?, lastName: String?) {
         
-        self.postId = postId
+        self.postId = ""
         self.postContent = postContent
         self.dateTime = NSDate(timeIntervalSince1970: dateTime)
-        
-        let uid = uid
-        let teamUsers = teamUsers
-
-        for teamUser in teamUsers {
-            let user = teamUser.user
-            
-            if user!.uid == uid {
-                self.user = user
-            }
-        }
+        self.uid = uid
+        self.firstName = firstName
+        self.lastName = lastName
     }
     
     

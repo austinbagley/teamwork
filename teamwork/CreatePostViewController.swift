@@ -8,69 +8,123 @@
 
 import UIKit
 
+    // MARK: Date Helpers
 
-public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs === rhs || lhs.compare(rhs) == .OrderedSame
-}
+    public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
+        return lhs === rhs || lhs.compare(rhs) == .OrderedSame
+    }
 
-public func <(lhs: NSDate, rhs: NSDate) -> Bool {
-    return lhs.compare(rhs) == .OrderedAscending
-}
+    public func <(lhs: NSDate, rhs: NSDate) -> Bool {
+        return lhs.compare(rhs) == .OrderedAscending
+    }
 
-extension NSDate: Comparable { }
+    extension NSDate: Comparable { }
 
 
 
 class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
-    // MARK : Properties
+    // MARK: Properties
     
-    let update = UpdateData()
-    let posts = Posts.sharedInstance
+    let server = Server.sharedInstance
     
+    var uid: String?
+    var currentUserFirstName: String?
+    var currentUserLastName: String?
+    var teamId: String?
+    var post: UITextField?
+    var posts = [Post]()
+    var isRegisteredToDataModel = false
+
     
-    // MARK : Constants
+    // MARK: Constants
     
     let SEGUE_SAVE_POST = "savePost"
     let MESSAGES_CELL_IDENTIFIER = "messageCell"
     
-    // MARK : View Controller Lifecycle
+    // MARK: Outlets
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        postSize()
-        
-        update.updatePosts() {
-            self.updateUI()
-        }
-        
-    }
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var postMessage: UIBarButtonItem!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+
+    
+    // MARK: View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        self.post = postMessage.customView as? UITextField
+        postSize()
         tableView.registerNib(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: MESSAGES_CELL_IDENTIFIER)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreatePostViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreatePostViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
-        
-        
-        
-        
+        self.getPosts()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.getPosts()
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self);
     }
     
-    // MARK : Outlets
+    // MARK: Posts
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var postMessage: UIBarButtonItem!
+    @IBAction func savePost(sender: UIBarButtonItem) {
+        let text = post!.text!
+        
+        server.createPostForCurrentUser(text) { (success, message) in
+            if success {
+                self.onSuccessfulPost()
+                self.getPosts()
+            } else {
+                print(message)
+            }
+        }
+    }
     
-    // MARK : Actions
+    func getPosts() {
+     
+            self.server.getPostsForCurrentTeam() { (success, message, posts) in
+                if success {
+                    self.posts = posts!
+                    self.onSuccessfulGetPost()
+                } else {
+                    print(message)
+                }
+            }
+        
+    }
+    
+    func onSuccessfulPost() {
+        self.post!.text = ""
+        self.post!.resignFirstResponder()
+    }
+    
+    func onSuccessfulGetPost() {
+        updateUI()
+    }
+    
+    func updateUI() {
+        configureTableView()
+        sortList()
+    
+        if posts.count > 0 {
+            let row = self.posts.count - Int(1)
+            let index = NSIndexPath(forRow: row, inSection: 0)
+            self.tableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
+        
+        tableView.reloadData()
+        tableView.setNeedsLayout()
+        tableView.setNeedsDisplay()
+    }
+    
+    // MARK: Helpers
     
     func postSize() {
         let screenSize:CGRect = UIScreen.mainScreen().bounds
@@ -79,11 +133,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     func convertDateTimetoTime(dateTime: NSDate) -> String {
         let dateTime = dateTime
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = .ShortStyle
         let timeString = dateFormatter.stringFromDate(dateTime)
-        
         return timeString
     }
     
@@ -100,8 +152,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableVi
             self.bottomConstraint.constant = keyboardFrame.size.height
             self.tableViewBottomConstraint.constant = keyboardFrame.size.height + 44
             
-            if self.posts.posts.count > 0 {
-                let row = self.posts.posts.count - Int(1)
+            if self.posts.count > 0 {
+                let row = self.posts.count - Int(1)
                 let index = NSIndexPath(forRow: row, inSection: 0)
                 self.tableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             }
@@ -110,80 +162,41 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     func keyboardWillHide(notification: NSNotification) {
-//        let info = notification.userInfo!
-        
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.bottomConstraint.constant = 0
             self.tableViewBottomConstraint.constant = 44
         })
     }
     
-    @IBAction func savePost(sender: UIBarButtonItem) {
-        let post = postMessage.customView as! UITextField
-        let text = post.text!
-        
-        update.createPost(text) {
-//            self.performSegueWithIdentifier(self.SEGUE_SAVE_POST, sender: self)
-            post.text = ""
-            post.resignFirstResponder()
-            self.updateUI()
-        }
-        
-    }
-    
-    func updateUI() {
-        configureTableView()
-        sortList()
-
-        if posts.posts.count > 0 {
-            let row = self.posts.posts.count - Int(1)
-            let index = NSIndexPath(forRow: row, inSection: 0)
-            self.tableView.scrollToRowAtIndexPath(index, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-        }
-        
-        tableView.reloadData()
-        tableView.setNeedsLayout()
-        tableView.setNeedsDisplay()
-        
-    }
     
     func sortList() { // should probably be called sort and not filter
-        posts.posts.sortInPlace() { $0.dateTime < $1.dateTime } // sort the fruit by name
+        posts.sortInPlace() { $0.dateTime < $1.dateTime } // sort the fruit by name
         tableView.reloadData(); // notify the table view the data has changed
     }
     
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     // MARK : Table View Datasource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rows = posts.posts.count
-        return rows
+        return posts.count
     }
-    
-    
- 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(MESSAGES_CELL_IDENTIFIER, forIndexPath: indexPath) as! CustomMessageCellView
         
-        let time = convertDateTimetoTime(posts.posts[indexPath.row].dateTime!)
+        let time = convertDateTimetoTime(posts[indexPath.row].dateTime!)
         
-        if posts.posts[indexPath.row].user!.firstName! == CurrentUser.sharedInstance.user!.firstName! {
-            cell.userName.textColor = c1
-        } else {
-            cell.userName.textColor = c3
-        }
+//        if posts.posts[indexPath.row].firstName! == CurrentUser.sharedInstance.user!.firstName! {
+//            cell.userName.textColor = c1
+//        } else {
+//            cell.userName.textColor = c3
+//        }
     
-        cell.userName.text = posts.posts[indexPath.row].user!.firstName!
+        cell.userName.text = posts[indexPath.row].firstName!
         cell.dateTime.text = time
-        cell.messageContent.text = posts.posts[indexPath.row].postContent!
-        
+        cell.messageContent.text = posts[indexPath.row].postContent!
         return cell
-
-        
     }
     
     

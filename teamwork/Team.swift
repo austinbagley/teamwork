@@ -18,7 +18,7 @@ class Team: NSObject {
     var teamPassword: String?
     var teamEndDate: NSTimeInterval?
     var users: [TeamUser]?
-    var posts: NSDictionary?
+    var posts: [Post]?
     
     // Create
     
@@ -30,7 +30,6 @@ class Team: NSObject {
         self.teamChallengeName = teamChallengeName
         self.teamPassword = teamPassword
         self.teamEndDate = endDate.timeIntervalSince1970
-        
     }
     
     

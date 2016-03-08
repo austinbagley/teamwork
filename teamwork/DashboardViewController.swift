@@ -21,15 +21,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var goalId: String?
     var isWeightGoal: String?
-    var teamName: String?
-    var teamEndDate: NSDate?
-    var userFirstName: String?
-    var userGoalText: String?
+    var currentWeight: Double?
+    var newWeight: Double?
+    var teamId: String?
+    var uid: String?
+    var currentUserFirstName: String?
+    var currentUserLastName: String?
     var isRegisteredToDataModel = false
-    
     var teamUsers = [TeamUser]()
-    
-//    var currentUser = CurrentUser.sharedInstance
     
     var server = Server.sharedInstance
 
@@ -58,12 +57,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
-    
     // MARK: User Interactions
     
     @IBAction func logout(sender: UIBarButtonItem) {
@@ -82,30 +75,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         performSegueWithIdentifier(SEGUE_TO_POST, sender: self)
     }
     
-  
-    // MARK: Helpers
-    
-//    func updateUI() {
-//        
-//
-//        
-//        userFullName.text = "\(currentUser.user!.firstName!)" + " " + "\(currentUser.user!.lastName!)"
-//        userCurrentWeightLabel.text = "\(currentUser.currentGoal!.currentWeight!)"
-//        userGoalLabel.text = "\(String(currentUser.currentGoal!.endWeight!))"
-//        print("Current end date is: \(currentUser.currentTeam!.teamEndDate)")
-//        daysLeftLabel.text = "5" //daysToGo(currentUser.currentTeam!.teamEndDate!)
-//        teamNameLabel.text = currentUser.currentTeam!.teamName!
-//        poundsLost.text = "\(currentUser.currentGoal!.lostSoFar!)"
-//
-//        let percentage: Double = Double(currentUser.currentGoal!.lostSoFar!) / Double(currentUser.currentGoal!.totalWeightLoss!)
-//        userProgressView.percentage = Float(percentage)
-//
-//        tableView.reloadData()
-////        userProgressView.setNeedsDisplay()
-////        tableView.setNeedsDisplay()
-
-//        
-//    }
     
     
     func registerModelListeners() {
@@ -129,6 +98,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     func onUpdateUser(success: Bool, message: String?, user: User?) {
         if success {
             self.userFullName.text = "\(user!.firstName!)" + " " + "\(user!.lastName!)"
+            self.uid = user!.uid!
+            self.currentUserFirstName = user!.firstName!
+            self.currentUserLastName = user!.lastName!
+            self.teamId = user!.currentTeam!
         } else {
             self.onError(message)
         }
@@ -137,7 +110,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func onUpdateTeam(success: Bool, message: String?, team: Team?) {
         if success {
-            //TODO: Move Days to Go to Team
+            //TO DO: Move Days to Go to Team
             self.daysLeftLabel.text = self.daysToGo(team!.teamEndDate!)
             self.teamNameLabel.text = team!.teamName!
             self.teamUsers = team!.users!
@@ -160,6 +133,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             
             let percentage: Double = Double(goal!.lostSoFar!) / Double(goal!.totalWeightLoss!)
             self.isWeightGoal = goal!.isWeightGoal!
+            self.goalId = goal!.goalId!
+            self.currentWeight = goal!.currentWeight! as Double
             self.userProgressView.percentage = Float(percentage)
             self.userProgressView.setNeedsDisplay()
             
@@ -197,7 +172,26 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
   
-    // MARK : Unwind Segues
+    // MARK:  Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SEGUE_TO_WEIGHT_UPDATE {
+            let destinationNavigationController = segue.destinationViewController as? UINavigationController
+            let targetController = destinationNavigationController!.topViewController as? WeightUpdateViewController
+            targetController?.priorWeight = self.currentWeight!
+            targetController?.goalId = self.goalId!
+        }
+        
+        if segue.identifier == SEGUE_TO_POST {
+            let destinationNavigationConroller = segue.destinationViewController as? UINavigationController
+            let targetController = destinationNavigationConroller!.topViewController as? CreatePostViewController
+            targetController?.uid = self.uid!
+            targetController?.currentUserFirstName = self.currentUserFirstName!
+            targetController?.currentUserLastName = self.currentUserLastName!
+        }
+    }
+
+   
     
     @IBAction func cancelUpdate(segue: UIStoryboardSegue) {
     }

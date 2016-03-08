@@ -1253,7 +1253,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentWeight" destination="mNV-k0-fne" id="N7e-xM-k0Y"/>
-                        <segue destination="0hQ-Ke-c4P" kind="unwind" identifier="finishSave" unwindAction="finishUpdate:" id="ZMQ-ih-6YT"/>
+                        <segue destination="0hQ-Ke-c4P" kind="unwind" identifier="finishUpdate" unwindAction="finishUpdate:" id="ZMQ-ih-6YT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lY-sH-hME" userLabel="First Responder" sceneMemberID="firstResponder"/>
