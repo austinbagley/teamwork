@@ -24,51 +24,6 @@ class SignUp {
     
     // Create Team Object, Push to Parse
     
-    func createTeam(teamName: String!, teamChallengeName: String!, teamPassword: String!, endDate: NSDate!, callBack: () -> Void) -> Team {
-        
-        let team = Team(teamName: teamName, teamChallengeName: teamChallengeName, teamPassword: teamPassword, endDate: endDate!)
-        self.team = team
-        CurrentUser.sharedInstance.currentTeam = team
-        
-        // upload team to firebase
-        let ref = self.baseRef
-        let teamRef = ref.childByAppendingPath(constants.firebaseTeams)
-        let endDateInterval = team.teamEndDate
-        let uid = CurrentUser.sharedInstance.user!.uid!
-        let usersRef = ref.childByAppendingPath(constants.firebaseUsers)
-        let userRef = usersRef.childByAppendingPath(uid)
-        
-        print("current uid is: \(uid)")
-        
-        let firebaseTeam = ["teamName": team.teamName!, "teamChallengeName" : team.teamChallengeName!, "teamEndDate" : endDateInterval!, "users": [uid : "true"] ]
-        
-        teamRef.childByAutoId().setValue(firebaseTeam, withCompletionBlock : {
-            (error:NSError?, ref:Firebase!) in
-            if (error != nil) {
-                print("Data could not be saved.")
-            } else {
-                print("Team saved successfully!")
-                CurrentUser.sharedInstance.currentTeam?.id = ref.key
-                CurrentUser.sharedInstance.user?.currentTeam = ref.key
-                print("Current User Team = \(CurrentUser.sharedInstance.currentTeam)")
-                userRef.updateChildValues(["currentTeam": ref.key])
-                userRef.childByAppendingPath("teams").setValue([ref.key: "true"], withCompletionBlock : {
-                    (error: NSError?, ref: Firebase!) in
-                    if (error != nil) {
-                        print("Data could not be saved")
-                    } else {
-                        print("user updated with team id")
-                        print(CurrentUser.sharedInstance.currentTeam?.id)
-                        callBack()
-                    }
-                })
-            }
-            
-        })
-        
-        return(team)
-    }
-    
     
     func updateTeamandUser(team: Team, callBack: () -> Void) {
         
@@ -118,41 +73,7 @@ class SignUp {
     
     // Create Goal
     
-    func createWeightGoalFromSignup(startWeight: Double, endWeight: Double, callBack: () -> Void) {
-        
-        let ref = self.baseRef
-        let goalRef = ref.childByAppendingPath("goals")
-        
-        let weightGoal = Goal(startWeight: startWeight, endWeight: endWeight)
-        let firebaseGoal =
-            [
-            "uid":(CurrentUser.sharedInstance.user?.uid)! as String,
-            "teamId": (CurrentUser.sharedInstance.user?.currentTeam)! as String,
-            "isWeightGoal": "true" as String,
-            "startWeight": weightGoal.startWeight! as NSNumber,
-            "endWeight" : weightGoal.endWeight! as NSNumber,
-            "totalWeightLoss": weightGoal.totalWeightLoss! as NSNumber,
-            "currentWeight" : weightGoal.currentWeight! as NSNumber,
-            "achieveTitle": "",
-            "isAchieved": "false"
-            ]
-        
-        goalRef.childByAutoId().setValue(firebaseGoal, withCompletionBlock:  {
-            (error: NSError?, ref: Firebase!) in
-            if (error != nil) {
-                print("Data could not be saved")
-            } else {
-                print("goal created for current user")
-                
-                weightGoal.goalId = ref.key
-                weightGoal.team = CurrentUser.sharedInstance.currentTeam
-                CurrentUser.sharedInstance.currentGoal = weightGoal
-                callBack()
-            }
-        })
     
-    }
-
     
     // Pull Users & Goals from within team
     

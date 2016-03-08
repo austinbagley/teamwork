@@ -245,27 +245,140 @@ class Server {
 
     // create team object
     
-    
-    
-    
-    // create goal object
-    
+    func createAndAddUserToTeam(teamName: String!, teamChallengeName: String!, teamPassword: String!, endDate: NSDate!, completion: (success: Bool, message: String?) -> Void) {
+        
+        let team = Team(teamName: teamName, teamChallengeName: teamChallengeName, teamPassword: teamPassword, endDate: endDate!)
+        
+        let teamRef = ref.childByAppendingPath(fbTeams)
+        let endDateInterval = team.teamEndDate
+        let uid = self.currentUid!
+        let firebaseTeam = ["teamName": team.teamName!, "teamChallengeName" : team.teamChallengeName!, "teamEndDate" : endDateInterval!, "users": [uid : "true"] ]
+        
+        teamRef.childByAutoId().setValue(firebaseTeam, withCompletionBlock: { (error:NSError?, ref:Firebase!) in
+            if (error != nil) {
+                completion(success: false, message: error?.description)
+            } else {
+                let newTeamId = ref.key
+                self.addTeamToCurrentUser(newTeamId, completion: completion)
+            }
+        })
+    }
 
+    // add user to team
     
-   
+    func addCurrentUserToTeam(teamId: String?, completion: (success: Bool, message: String?) -> Void) {
+    }
+    
+    // add team to user
+    
+    func addTeamToCurrentUser(teamId: String?, completion: (success: Bool, message: String?) -> Void) {
         
+        let usersRef = ref.childByAppendingPath(fbUsers).childByAppendingPath(self.currentUid)
+        let newValue = [ teamId! : "true" ]
         
+        usersRef.childByAppendingPath("teams").setValue(newValue, withCompletionBlock : { (error: NSError?, ref: Firebase!) in
+            if (error != nil) {
+                completion(success: false, message: error?.description)
+            } else {
+                self.setCurrentTeamForCurrentUser(teamId, completion: completion)
+            }
+        })
+    }
+    
+    // set current team
+    
+    func setCurrentTeamForCurrentUser(teamId: String?, completion: (success: Bool, message: String?) -> Void) {
+        let usersRef = ref.childByAppendingPath(fbUsers).childByAppendingPath(self.currentUid)
+        let newValue = [ "currentTeam" : teamId! ]
+        usersRef.updateChildValues(newValue, withCompletionBlock: { (error: NSError?, ref: Firebase!) in
+            if error != nil {
+                completion(success: false, message: error?.description)
+            } else {
+                completion(success: true, message: nil)
+            }
+        })
+    }
+    
+    // get team names
+    
+    func getTeamNames(completion: (success: Bool, message: String?, teams: [Team]?) -> Void) {
         
-       
-    
-    
-    
+        let teamRef = ref.childByAppendingPath(fbTeams)
+        var teamsArray = [Team]()
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            
+            teamRef.observeSingleEventOfType(.Value, withBlock:  { snapshot in
+                if snapshot.exists() {
+                    let teams = snapshot.value as! NSDictionary
+                    
+                    for (id, teams) in teams {
+                        let fbTeam =
+                            Team(
+                                id: (id as! String),
+                                teamName: (teams["teamName"] as! String),
+                                teamChallengeName: (teams["teamChallengeName"] as! String),
+                                endDate: (teams["teamEndDate"] as! NSTimeInterval),
+                                users: [TeamUser]()
+                        )
+                        teamsArray.append(fbTeam)
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(success: true, message: nil, teams: teamsArray)
+                    }
+                    
+                } else {
+                    completion(success: false, message: "Failed to generate Team List, please Create New Team", teams: [Team]())
+                }
+            })
+        }
+    }
+
+
     
     // MARK: Goals
     
+    // create goal for current user
+    
+    func createWeightGoalForCurrentUser(startWeight: Double, endWeight: Double, completion: (success: Bool, message: String?) -> Void) {
+        getCurrentUser() { (success, message, user) in
+            if success {
+                self.createWeightGoalForUser(user!, startWeight: startWeight, endWeight: endWeight, completion: completion)
+            } else {
+                completion(success: false, message: message)
+            }
+        }
+    }
+    
+    private func createWeightGoalForUser(user: User, startWeight: Double, endWeight: Double, completion: (success: Bool, message: String?) -> Void) {
+        
+        let goalRef = ref.childByAppendingPath(fbGoal)
+        let weightGoal = Goal(startWeight: startWeight, endWeight: endWeight)
+        let firebaseGoal =
+            [
+                "uid":(user.uid)! as String,
+                "teamId": (user.currentTeam)! as String,
+                "isWeightGoal": "true" as String,
+                "startWeight": weightGoal.startWeight! as NSNumber,
+                "endWeight" : weightGoal.endWeight! as NSNumber,
+                "totalWeightLoss": weightGoal.totalWeightLoss! as NSNumber,
+                "currentWeight" : weightGoal.currentWeight! as NSNumber,
+                "achieveTitle": "",
+                "isAchieved": "false"
+            ]
+        
+        goalRef.childByAutoId().setValue(firebaseGoal, withCompletionBlock:  { (error: NSError?, ref: Firebase!) in
+            if (error != nil) {
+                completion(success: false, message: error?.description)
+            } else {
+                completion(success: true, message: nil)
+            }
+        })
+    }
     
     // add goal update
-
     
     func updateWeight(goalId: String, currentWeight: Double, priorWeight: Double, completion: (success: Bool, message: String?) -> Void) {
         
@@ -361,7 +474,7 @@ class Server {
         var posts = [Post]()
         
         postsRef.observeEventType(.Value, withBlock: { snapshot in
-            if snapshot.value == nil {
+            if !snapshot.exists() {
                 completion(success: false, message: "error getting posts", posts: posts)
             } else {
                 let results = snapshot.value as! NSDictionary
@@ -381,10 +494,7 @@ class Server {
                     }
                 }
             }
-            
         })
-
-        
     }
     
     

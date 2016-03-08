@@ -16,7 +16,7 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     
-    var signup = SignUp()
+    var server = Server.sharedInstance
     
     // MARK: Outlets
     
@@ -59,17 +59,14 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
         let teamPassword = self.teamPassword.text!
         let endDate = self.endDate.date
         let challenge = self.teamChallengeName.text!
-
-        signup.team = signup.createTeam(teamName, teamChallengeName: challenge, teamPassword: teamPassword, endDate: endDate, callBack: {
-            self.performSegueWithIdentifier("showGoalType", sender: self)
-        })
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SEGUE_TO_GOAL_TYPE {
-            if let destVC = segue.destinationViewController as? GoalTypeViewController {
-                destVC.team = signup.team
+        
+        server.createAndAddUserToTeam(teamName, teamChallengeName: challenge, teamPassword: teamPassword, endDate: endDate) { (success: Bool, message: String?) in
+            if success {
+                self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_TYPE, sender: self)
+            } else {
+                print(message)
             }
         }
     }
+    
 }

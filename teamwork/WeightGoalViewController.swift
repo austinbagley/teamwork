@@ -17,9 +17,7 @@ class WeightGoalViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Properties
     
-    var signUp = SignUp()
-    var team: Team?
-    var goal: Goal?
+    let server = Server.sharedInstance
     
     // MARK: Outlets
     
@@ -31,11 +29,6 @@ class WeightGoalViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let team = CurrentUser.sharedInstance.currentTeam
-        signUp.getUserList(team) {
-            // any call back here
-        }
-        
         self.startWeight.delegate = self
         self.goalWeight.delegate = self
         
@@ -46,6 +39,21 @@ class WeightGoalViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Actions
     
+    @IBAction func done(sender: UIButton) {
+        let startWeight = Double(self.startWeight.text!)!
+        let goalWeight = Double(self.goalWeight.text!)!
+        
+        server.createWeightGoalForCurrentUser(startWeight, endWeight: goalWeight) { (success, message) in
+            if success {
+               self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
+            } else {
+                print(message)
+            }
+        }
+    }
+    
+    // MARK: Helpers
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -54,20 +62,5 @@ class WeightGoalViewController: UIViewController, UITextFieldDelegate {
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
-    }
-    
-    @IBAction func done(sender: UIButton) {
-        let startWeight = Double(self.startWeight.text!)!
-        let goalWeight = Double(self.goalWeight.text!)!
-        let currentTeam = CurrentUser.sharedInstance.currentTeam!
-        
-        signUp.createWeightGoalFromSignup(startWeight, endWeight: goalWeight, callBack: ({
-            let teamList = CurrentUser.sharedInstance.teamList
-            
-            self.signUp.populateTeamData(teamList!, team: currentTeam) {
-                self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
-            }
-        }))
-
     }
 }

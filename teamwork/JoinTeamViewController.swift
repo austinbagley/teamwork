@@ -15,41 +15,46 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
     
     var user: User?
     var teams: [String]?
-    var teamList: [Team]?
+    var teamList = [Team]()
     
+    var server = Server.sharedInstance
+    
+    // MARK: Constants
     
     let SEGUE_TO_GOAL_SELECTION = "segueToGoalTypeFromJoin"
-    
     
     // MARK: Outlets
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     // MARK: View Controller lifecycle
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController!.navigationBar.hidden = false
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.setNeedsDisplay()
+        self.navigationController!.navigationBar.hidden = false
+        getTeamNames()
     }
     
     // MARK: Actions
     
-    // Build Team Names Array
+    func getTeamNames() {
+        server.getTeamNames() { (success, message, teams) in
+            if success {
+                self.teamList = teams!
+                self.tableView.reloadData()
+                self.tableView.setNeedsDisplay()
+            } else {
+                print(message)
+            }
+        }
+    }
     
     
     // MARK: Table View Data Source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-        let cells = self.teamList!.count
+        let cells = self.teamList.count
         return cells
     }
     
@@ -64,8 +69,8 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         
-        cell!.textLabel!.text = teamList![indexPath.row].teamName!
-        cell!.detailTextLabel!.text = teamList![indexPath.row].teamChallengeName!
+        cell!.textLabel!.text = teamList[indexPath.row].teamName!
+        cell!.detailTextLabel!.text = teamList[indexPath.row].teamChallengeName!
         return cell!
     }
     
@@ -77,18 +82,15 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
         var team: Team?
         let position = indexPath.row
         
-        team = teamList![position]
+        team = teamList[position].id!
         
-        print("We're sending along this team \(team!.id!)")
-        
-        CurrentUser.sharedInstance.user!.currentTeam = team!.id!
-        CurrentUser.sharedInstance.currentTeam = team!
-        
-        
-        
-        SignUp().updateTeamandUser(team!, callBack: {
-            self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_SELECTION, sender: self)
-        })
+        server.addTeamToCurrentUser(team) { (success, message) in
+            if success {
+                self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_SELECTION, sender: self)
+            } else {
+                print(message)
+            }
+        }
     }
 
     

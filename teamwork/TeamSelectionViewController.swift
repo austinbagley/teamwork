@@ -33,17 +33,7 @@ class TeamSelectionViewController: UIViewController {
     }
     
     @IBAction func joinTeam(sender: UIButton) {
-        SignUp().getTeamNames() {
         self.performSegueWithIdentifier(self.SEGUE_TO_JOIN_TEAM, sender: self)
-        }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SEGUE_TO_JOIN_TEAM {
-            if let destVC = segue.destinationViewController as? JoinTeamViewController {
-                    destVC.teamList = TeamList.sharedInstance.teamList!
-            }
-        }
-    }
-
 }

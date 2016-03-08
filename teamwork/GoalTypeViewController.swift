@@ -20,10 +20,6 @@ class GoalTypeViewController: UIViewController {
     // MARK: Properties
     
     var isWeightGoal = true
-//    var signupProcess = SignupProcess()
-    
-    var team: Team?
-    var signup = SignUp()
     
     // MARK: Outlets
     
@@ -31,24 +27,16 @@ class GoalTypeViewController: UIViewController {
     
     // MARK: View Controller lifecycle
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController!.navigationBar.hidden = false
-        self.navigationItem.setHidesBackButton(true, animated: false)
-
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.hidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     // MARK: Actions
     
     @IBAction func nextScreen(sender: UIButton) {
-//        signupProcess.setGoalType(self.isWeightGoal, callBack: {
            self.performSelectedSegue()
-//            }) 
     }
     
     @IBAction func goalTypeControl(sender: UISegmentedControl) {
@@ -67,12 +55,7 @@ class GoalTypeViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SEGUE_TO_WEIGHT_GOAL {
-            if let destVC = segue.destinationViewController as? WeightGoalViewController {
-                destVC.team = self.team            }
-        }
-    }
+    
 
     
     
