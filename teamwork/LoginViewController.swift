@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     
     var login = Login()
+    var server = Server.sharedInstance
         
     // MARK: Outlets
     
@@ -54,30 +55,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
    
     
     @IBAction func login(sender: UIButton) {
-        let username = self.username.text!
-        let pw = self.pw.text!
-        
-        login.login(username, pw: pw) {
-            self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
+        let email = self.username.text!
+        let password = self.pw.text!
+
+        server.loginUser(email, password: password) { (success, message, uid) in
+            if success {
+                self.performSegueWithIdentifier(self.SEGUE_TO_DASHBOARD, sender: self)
+            } else {
+                print(message)
+            }
         }
-    
     }
-    
-    
-    @IBAction func testTeam(sender: UIButton) {
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

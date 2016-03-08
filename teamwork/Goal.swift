@@ -10,7 +10,6 @@ import Foundation
 
 class Goal {
     
-     var user: User?
      var team: Team?
     
      var goalId: String?
@@ -26,7 +25,6 @@ class Goal {
     // Create
     
     init(startWeight: Double, endWeight: Double) {
-        self.user = nil
         self.team = nil
         self.goalId = nil
         isWeightGoal = "true"
@@ -39,8 +37,7 @@ class Goal {
         isAchieved = nil
     }
     
-    init(goalId: String, user: User?, isWeightGoal: String?, startWeight: Double?, endWeight: Double?, currentWeight: Double?, achieveTitle: String?, isAchieved: String?) {
-        self.user = user
+    init(goalId: String, isWeightGoal: String?, startWeight: Double?, endWeight: Double?, currentWeight: Double?, achieveTitle: String?, isAchieved: String?) {
         self.team = nil
         self.goalId = goalId
         self.isWeightGoal = isWeightGoal
@@ -68,7 +65,6 @@ class Goal {
     
     
     init() {
-        self.user = nil
         self.team = nil
         self.goalId = nil
         self.isWeightGoal = nil

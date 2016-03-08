@@ -126,7 +126,7 @@ class Login {
                     let isAchieved = ""
                     let achieveTitle = ""
                 
-                    let newGoal = Goal(goalId: goalId, user: user, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, currentWeight: currentWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
+                    let newGoal = Goal(goalId: goalId, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, currentWeight: currentWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
                     
                     self.currentUser.currentGoal = newGoal
                     

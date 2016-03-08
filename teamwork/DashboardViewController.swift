@@ -20,12 +20,18 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Properties
     
     var goalId: String?
-    var isWeightGoal: Bool?
+    var isWeightGoal: String?
     var teamName: String?
     var teamEndDate: NSDate?
     var userFirstName: String?
     var userGoalText: String?
-    var currentUser = CurrentUser.sharedInstance
+    var isRegisteredToDataModel = false
+    
+    var teamUsers = [TeamUser]()
+    
+//    var currentUser = CurrentUser.sharedInstance
+    
+    var server = Server.sharedInstance
 
     
     // MARK: Outlets
@@ -42,17 +48,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: View Controller Lifecycle
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController!.navigationBar.hidden = false
-        self.navigationItem.setHidesBackButton(true, animated: false)
-
-        updateUI()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerNib(UINib(nibName: "DashboardCell", bundle: nil), forCellReuseIdentifier: DASHBOARD_CELL_IDENTIFIER)
+        registerModelListeners()
+        self.navigationController!.navigationBar.hidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
+        
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
     }
     
     
@@ -65,7 +73,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func checkIn(sender: ButtonOutline) {
-        if currentUser.currentGoal!.isWeightGoal! == "true" {
+        if isWeightGoal! == "true" {
             performSegueWithIdentifier(self.SEGUE_TO_WEIGHT_UPDATE, sender: self)
         }
     }
@@ -77,30 +85,94 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
     // MARK: Helpers
     
-    func updateUI() {
-        
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 80.0; // set to whatever your "average" cell height is
-        
-        userFullName.text = "\(currentUser.user!.firstName!)" + " " + "\(currentUser.user!.lastName!)"
-        userCurrentWeightLabel.text = "\(currentUser.currentGoal!.currentWeight!)"
-        userGoalLabel.text = "\(String(currentUser.currentGoal!.endWeight!))"
-        print("Current end date is: \(currentUser.currentTeam!.teamEndDate)")
-        daysLeftLabel.text = "5" //daysToGo(currentUser.currentTeam!.teamEndDate!)
-        teamNameLabel.text = currentUser.currentTeam!.teamName!
-        poundsLost.text = "\(currentUser.currentGoal!.lostSoFar!)"
+//    func updateUI() {
+//        
+//
+//        
+//        userFullName.text = "\(currentUser.user!.firstName!)" + " " + "\(currentUser.user!.lastName!)"
+//        userCurrentWeightLabel.text = "\(currentUser.currentGoal!.currentWeight!)"
+//        userGoalLabel.text = "\(String(currentUser.currentGoal!.endWeight!))"
+//        print("Current end date is: \(currentUser.currentTeam!.teamEndDate)")
+//        daysLeftLabel.text = "5" //daysToGo(currentUser.currentTeam!.teamEndDate!)
+//        teamNameLabel.text = currentUser.currentTeam!.teamName!
+//        poundsLost.text = "\(currentUser.currentGoal!.lostSoFar!)"
+//
+//        let percentage: Double = Double(currentUser.currentGoal!.lostSoFar!) / Double(currentUser.currentGoal!.totalWeightLoss!)
+//        userProgressView.percentage = Float(percentage)
+//
+//        tableView.reloadData()
+////        userProgressView.setNeedsDisplay()
+////        tableView.setNeedsDisplay()
 
-        let percentage: Double = Double(currentUser.currentGoal!.lostSoFar!) / Double(currentUser.currentGoal!.totalWeightLoss!)
-        userProgressView.percentage = Float(percentage)
-
-        tableView.reloadData()
-//        userProgressView.setNeedsDisplay()
-//        tableView.setNeedsDisplay()
+//        
+//    }
+    
+    
+    func registerModelListeners() {
         
-        print("Percentage completed is \(percentage)")
-        print("Current weight is: \(currentUser.currentGoal!.currentWeight!)")
+        if isRegisteredToDataModel == false {
+            isRegisteredToDataModel = true
+            
+            server.getCurrentUser() { (success, message, user) in
+                if success {
+                    self.onUpdateUser(success, message: message, user: user)
+                    self.server.getTeamForCurrentUser(user!.currentTeam!, completion: self.onUpdateTeam)
+                    self.server.getGoalForTeamForCurrentUser(user!.currentTeam!, completion: self.onUpdateGoal)
+                } else {
+                    self.onError(message)
+                }
+            }
+        }
         
     }
+    
+    func onUpdateUser(success: Bool, message: String?, user: User?) {
+        if success {
+            self.userFullName.text = "\(user!.firstName!)" + " " + "\(user!.lastName!)"
+        } else {
+            self.onError(message)
+        }
+    }
+    
+    
+    func onUpdateTeam(success: Bool, message: String?, team: Team?) {
+        if success {
+            //TODO: Move Days to Go to Team
+            self.daysLeftLabel.text = self.daysToGo(team!.teamEndDate!)
+            self.teamNameLabel.text = team!.teamName!
+            self.teamUsers = team!.users!
+            self.tableView.rowHeight = UITableViewAutomaticDimension;
+            self.tableView.estimatedRowHeight = 80.0; // set to whatever your "average" cell height is
+            self.tableView.reloadData()
+            self.tableView.setNeedsLayout()
+        } else {
+            self.onError(message)
+        }
+    }
+    
+    
+    
+    func onUpdateGoal(success: Bool, message: String?, goal: Goal?) {
+        if success {
+            self.userCurrentWeightLabel.text = String(goal!.currentWeight!)
+            self.userGoalLabel.text = String(goal!.endWeight!)
+            self.poundsLost.text = String(goal!.lostSoFar!)
+            
+            let percentage: Double = Double(goal!.lostSoFar!) / Double(goal!.totalWeightLoss!)
+            self.isWeightGoal = goal!.isWeightGoal!
+            self.userProgressView.percentage = Float(percentage)
+            self.userProgressView.setNeedsDisplay()
+            
+        } else {
+            self.onError(message)
+        }
+    }
+    
+    func onError(message: String?) {
+        print(message)
+    }
+    
+    
     
     func convertDate(date: NSTimeInterval) -> String {
         let date = NSDate(timeIntervalSince1970: date)
@@ -128,20 +200,15 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK : Unwind Segues
     
     @IBAction func cancelUpdate(segue: UIStoryboardSegue) {
-        self.updateUI()
     }
     
     @IBAction func finishUpdate(segue: UIStoryboardSegue) {
-        self.updateUI()
-
     }
     
     @IBAction func savePost(segue: UIStoryboardSegue) {
-        self.updateUI()
     }
     
     @IBAction func cancelPost(segue: UIStoryboardSegue) {
-        self.updateUI()
     }
 
 
@@ -155,19 +222,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rows = CurrentUser.sharedInstance.teamUsers!.count
-        return rows
+        return teamUsers.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(DASHBOARD_CELL_IDENTIFIER, forIndexPath: indexPath) as! DashboardCellView
-        let toGo: Int = Int(Float(currentUser.teamUsers![indexPath.row].goal!.totalWeightLoss!) - Float(currentUser.teamUsers![indexPath.row].goal!.lostSoFar!))
         
-        cell.lineProgressView.percentage = Float(currentUser.teamUsers![indexPath.row].goal!.lostSoFar!) / Float(currentUser.teamUsers![indexPath.row].goal!.totalWeightLoss!)
-        cell.fullName.text = "\(currentUser.teamUsers![indexPath.row].user!.firstName!) \(currentUser.teamUsers![indexPath.row].user!.lastName!)"
+        let toGo: Int = Int(Float(teamUsers[indexPath.row].goal!.totalWeightLoss!) - Float(teamUsers[indexPath.row].goal!.lostSoFar!))
+        
+        cell.lineProgressView.percentage = Float(teamUsers[indexPath.row].goal!.lostSoFar!) / Float(teamUsers[indexPath.row].goal!.totalWeightLoss!)
+        cell.fullName.text = "\(teamUsers[indexPath.row].user!.firstName!) \(teamUsers[indexPath.row].user!.lastName!)"
         cell.toGo.text = "\(toGo)"
-        cell.poundsLost.text = "\(currentUser.teamUsers![indexPath.row].goal!.lostSoFar!)"
+        cell.poundsLost.text = "\(teamUsers[indexPath.row].goal!.lostSoFar!)"
         cell.lineProgressView.setNeedsDisplay()
         
         return cell

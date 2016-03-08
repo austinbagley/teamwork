@@ -189,7 +189,6 @@ class SignUp {
                 
                 weightGoal.goalId = ref.key
                 weightGoal.team = CurrentUser.sharedInstance.currentTeam
-                weightGoal.user = CurrentUser.sharedInstance.user
                 CurrentUser.sharedInstance.currentGoal = weightGoal
                 callBack()
             }
@@ -266,7 +265,8 @@ class SignUp {
                         id: (id as! String),
                         teamName: (teams["teamName"] as! String),
                         teamChallengeName: (teams["teamChallengeName"] as! String),
-                        endDate: (teams["teamEndDate"] as! NSTimeInterval)
+                        endDate: (teams["teamEndDate"] as! NSTimeInterval),
+                        users: [TeamUser]()
                     )
                     teamsArray.append(fbTeam)
                 }
@@ -323,7 +323,7 @@ class SignUp {
                             let isAchieved = ""
                             let achieveTitle = ""
                             
-                            let newGoal = Goal(goalId: goalId, user: newUser, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, currentWeight: currentWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
+                            let newGoal = Goal(goalId: goalId, isWeightGoal: isWeightGoal, startWeight: startWeight, endWeight: endWeight, currentWeight: currentWeight, achieveTitle: achieveTitle, isAchieved: isAchieved)
                             
                             let newTeamUser = TeamUser(user: newUser, goal: newGoal)
                             teamUsers.append(newTeamUser)

@@ -17,7 +17,7 @@ class Team: NSObject {
     var teamChallengeName: String?
     var teamPassword: String?
     var teamEndDate: NSTimeInterval?
-    var users: NSDictionary?
+    var users: [TeamUser]?
     var posts: NSDictionary?
     
     // Create
@@ -34,12 +34,13 @@ class Team: NSObject {
     }
     
     
-    init(id: String, teamName: String, teamChallengeName: String, endDate: NSTimeInterval) {
+    init(id: String, teamName: String, teamChallengeName: String, endDate: NSTimeInterval, users: [TeamUser]?) {
         self.id = id
         self.teamName = teamName
         self.teamChallengeName = teamChallengeName
         self.teamPassword = nil
         self.teamEndDate = endDate
+        self.users = users
     }
     
     override init() {
