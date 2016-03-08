@@ -28,7 +28,7 @@ class User {
     }
     
     
-    init(uid: String, email: String, currentTeam: String, firstName: String, lastName: String) {
+    init(uid: String, email: String, currentTeam: String?, firstName: String, lastName: String) {
         self.uid = uid
         self.pw = nil
         self.email = email

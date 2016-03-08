@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     
     var signUp = SignUp()
+    var server = Server.sharedInstance
     
     let SEGUE_TO_TEAM_SELECTION = "showTeamSelection"
     
@@ -56,9 +57,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         let firstName = self.firstName.text!
         let lastName = self.lastName.text!
         
-        signUp.signUpNewUser(pw, email: email, firstName: firstName, lastName: lastName, callBack: {
-            self.performSegueWithIdentifier(self.SEGUE_TO_TEAM_SELECTION, sender: self)
+//        signUp.signUpNewUser(pw, email: email, firstName: firstName, lastName: lastName, callBack: {
+//            self.performSegueWithIdentifier(self.SEGUE_TO_TEAM_SELECTION, sender: self)
+//        })
+        
+        server.createUser(email, password: pw, firstName: firstName, lastName: lastName, completion: { (success, message) in
+            if success {
+                self.performSegueWithIdentifier(self.SEGUE_TO_TEAM_SELECTION, sender: self)
+            } else {
+                print(message)
+            }
         })
+        
+        
     }
     
 }

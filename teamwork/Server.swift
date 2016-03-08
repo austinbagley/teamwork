@@ -19,54 +19,56 @@ class Server {
     let fbUsers = "users"
     let fbGoal = "goals"
     
+    // MARK: Singleton
+    
+    static let sharedInstance = Server()
+    private init() {
+    }
+    
+    var currentUid: String?
+    
     // MARK: User
     
+    // register new user
+    
+    func createUser(email: String, password: String, firstName: String, lastName: String, completion: (success: Bool, message: String?) -> Void) {
+        
+        createAuthRecordAndLogin(email, password: password) { (success, message, uid) in
+            if success {
+                self.createUser(uid!, email: email, firstName: firstName, lastName: lastName, completion: completion)
+            }
+        }
+    }
 
     // create new user
     
-    func uidForNewUserFromEmail(email: String?, password: String?, completion: (success: Bool, message: String?) -> Void) {
-        
-        var email: String?
-        var password: String?
-        
-        if email != nil && password != nil {
-            email = email!
-            password = password!
-        } else {
-            completion(success: false, message: "Please enter email and password")
-        }
+    private func createAuthRecordAndLogin(email: String, password: String, completion: (success: Bool, message: String?, uid: String?) -> Void) {
         
         ref.createUser(email, password: password, withCompletionBlock: { error in
             if (error != nil) {
-                completion(success: false, message: "\(error)")
+                completion(success: false, message: error.description, uid: nil)
             } else {
-                completion(success: true, message: "Successfully created new user")
+                self.authUser(email, password: password) { (success, message, uid) in
+                    if success {
+                        completion(success: true, message: nil, uid: uid)
+                    } else {
+                        completion(success: false, message: message, uid: nil)
+                    }
+                }
             }
         })
     }
 
     // auth user
     
-    
-    func uidForExistingUser(email: String?, password: String?, completion: (success: Bool, message: String?, uid: String?) -> Void) {
-        
-        var uid: String?
-        var email: String?
-        var password: String?
-        
-        if email != nil && password != nil {
-            email = email!
-            password = password!
-        } else {
-            completion(success: false, message: "Please enter email and password", uid: nil)
-        }
+    private func authUser(email: String, password: String, completion: (success: Bool, message: String?, uid: String?) -> Void) {
        
         ref.authUser(email, password: password) { error, authData in
             if (error != nil) {
-                completion(success: false, message: "\(error)", uid: nil)
+                completion(success: false, message: error.description, uid: nil)
             } else {
-                uid = authData.uid
-                completion(success: true, message: "Successfully logged in", uid: uid)
+                self.currentUid = authData.uid
+                completion(success: true, message: nil, uid: authData.uid)
             }
         }
     }
@@ -74,28 +76,47 @@ class Server {
     
     // Create User Object on Firebase
     
-    func createUser(uid: String?, email: String?, firstName: String?, lastName: String?, completion: (success: Bool, message: String?) -> Void) {
+    private func createUser(uid: String, email: String, firstName: String, lastName: String, completion: (success: Bool, message: String?) -> Void) {
         
-        var firebaseUser: [String: String]?
-        var uid: String?
+        let firebaseUser = ["uid": uid, "email": email, "username": email, "firstName": firstName, "lastName": lastName]
         let usersRef = ref.childByAppendingPath(fbUsers)
-        
-        if uid != nil && email != nil && firstName != nil && lastName != nil {
-            firebaseUser = ["uid": uid!, "email": email!, "username": email!, "firstName": firstName!, "lastName": lastName!]
-            uid = uid!
-        }
         
         usersRef.childByAppendingPath(uid).setValue(firebaseUser, withCompletionBlock: { error, result in
             if error != nil {
-                completion(success: false, message: "\(error)")
+                completion(success: false, message: error.description)
             } else {
-                completion(success: true, message: "Successfully added user to database")
+                completion(success: true, message: nil)
+            }
+        })
+    }
+    
+    // get user object
+    
+    func getCurrentUser(completion: (success: Bool, message: String?, user: User?) -> Void) {
+        
+        let userRef = ref.childByAppendingPath(fbUsers).childByAppendingPath(self.currentUid)
+        
+        userRef.observeEventType(.Value, withBlock: { result in
+            if result != nil {
+                let userObject = result.value as! NSDictionary
+                let newUser = User(uid: ((userObject["uid"]) as! String), email: ((userObject["email"]) as! String), currentTeam: ((userObject["currentTeam"]) as! String), firstName: ((userObject["firstName"]) as! String), lastName: ((userObject["lastName"]) as! String))
+                completion(success: true, message: "successfully retrieved user object", user: newUser)
+            } else {
+                completion(success: false, message: "error retrieving user object", user: nil)
             }
         })
     }
     
     
-    // get user object
+    // login user
+    
+    func loginUser(email: String, password: String, completion: (success: Bool, message: String?, uid: String?) -> Void) {
+        authUser(email, password: password, completion: completion)
+    }
+    
+    
+    
+    
     
     
     
