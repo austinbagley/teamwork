@@ -97,13 +97,11 @@ class Server {
         getUser(self.currentUid!, completion: completion)
     }
     
-    
     // login user
     
     func loginUser(email: String, password: String, completion: (success: Bool, message: String?, uid: String?) -> Void) {
         authUser(email, password: password, completion: completion)
     }
-    
     
     // get current team for current user
     
@@ -244,13 +242,10 @@ class Server {
     }
 
 
-    
-    
-    
-    
-    
-    
+
     // create team object
+    
+    
     
     
     // create goal object

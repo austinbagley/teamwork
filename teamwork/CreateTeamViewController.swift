@@ -27,12 +27,6 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: View Controller lifecycle
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController!.navigationBar.hidden = false
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,25 +36,21 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateTeamViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
+        self.navigationController!.navigationBar.hidden = false
+
     }
     
     // MARK: Actions
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-       
         textField.resignFirstResponder()
-        
         if let nextField = view.viewWithTag(textField.tag + 1) {
             nextField.becomeFirstResponder()
         }
-        
         return true
-        
     }
     
     func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     

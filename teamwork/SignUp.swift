@@ -22,49 +22,6 @@ class SignUp {
         }
     }
     
-    // Signup user 
-    
-    func signUpNewUser(password: String?, email: String?, firstName: String?, lastName: String?, callBack: () -> Void) {
-        let user = User(pw: password!, email: email!, firstName: firstName!, lastName: lastName!)
-        let ref = self.baseRef
-        let usersRef = ref.childByAppendingPath(constants.firebaseUsers)
-        
-        ref.createUser(user.email, password: user.pw,
-            withValueCompletionBlock: { error, result in
-                if error != nil {
-                    // There was an error creating the account
-                    print(error)
-                } else {
-                    let uid = result["uid"] as? String
-                    print("Successfully created user account with uid: \(uid)")
-                    user.uid = uid!
-                    CurrentUser.sharedInstance.user = user
-                    CurrentUser.sharedInstance.user!.uid = result["uid"] as? String
-                    
-                    ref.authUser(user.email!, password: user.pw!, withCompletionBlock: { error, result in
-                        if error != nil {
-                            print(error)
-                        } else {
-                            
-                            print("the current user is \(CurrentUser.sharedInstance.user!.uid))")
-                            // Create User Object on Firebase
-                            let firebaseUser = ["uid": user.uid!, "email": user.email!, "username": user.email!, "firstName": user.firstName!, "lastName": user.lastName!]
-
-                            usersRef.childByAppendingPath(user.uid!).setValue(firebaseUser, withCompletionBlock: { error, result in
-                                if error != nil {
-                                    print(error)
-                                } else {
-                                    print("Successfully added user to database")
-                                    callBack()
-                                    
-                                }
-                            })
-                        }
-                    })
-                }
-        })
-    }
-    
     // Create Team Object, Push to Parse
     
     func createTeam(teamName: String!, teamChallengeName: String!, teamPassword: String!, endDate: NSDate!, callBack: () -> Void) -> Team {

@@ -28,7 +28,6 @@
 		9DB352AF1C73972000905E17 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB352AE1C73972000905E17 /* BasicButton.swift */; };
 		9DC72CC61C74C39500738701 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC72CC51C74C39500738701 /* Server.swift */; };
 		9DCBF9AD1C7B587500EF7E0E /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBF9AC1C7B587500EF7E0E /* Translator.swift */; };
-		9DCF3FF31C6BB648001B52B3 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF3FF21C6BB648001B52B3 /* Posts.swift */; };
 		9DDF13721C614CF00024F643 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136C1C614CF00024F643 /* Goal.swift */; };
 		9DDF13731C614CF00024F643 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136D1C614CF00024F643 /* SignUp.swift */; };
 		9DDF13741C614CF00024F643 /* SubGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF136E1C614CF00024F643 /* SubGoal.swift */; };
@@ -75,7 +74,6 @@
 		9DB352AE1C73972000905E17 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		9DC72CC51C74C39500738701 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		9DCBF9AC1C7B587500EF7E0E /* Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
-		9DCF3FF21C6BB648001B52B3 /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		9DDF136C1C614CF00024F643 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		9DDF136D1C614CF00024F643 /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		9DDF136E1C614CF00024F643 /* SubGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubGoal.swift; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 			children = (
 				9D8E449E1C629108005CDA52 /* CurrentUser.swift */,
 				9DEE9FBC1C6459EA001BC4C3 /* TeamList.swift */,
-				9DCF3FF21C6BB648001B52B3 /* Posts.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -381,7 +378,6 @@
 				9D8E449F1C629108005CDA52 /* CurrentUser.swift in Sources */,
 				9DDF13751C614CF00024F643 /* Team.swift in Sources */,
 				9DDF13861C614D410024F643 /* LoginViewController.swift in Sources */,
-				9DCF3FF31C6BB648001B52B3 /* Posts.swift in Sources */,
 				9D2A53341C6902FD00543E9C /* Login.swift in Sources */,
 				9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */,
 				9DAB93AF1C728F090058FC9B /* LineProgressView.swift in Sources */,
