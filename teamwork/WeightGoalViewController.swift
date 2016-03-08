@@ -39,7 +39,7 @@ class WeightGoalViewController: UIViewController, UITextFieldDelegate {
         self.startWeight.delegate = self
         self.goalWeight.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeightGoalViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
     }

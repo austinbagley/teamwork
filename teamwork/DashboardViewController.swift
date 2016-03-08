@@ -85,7 +85,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         userFullName.text = "\(currentUser.user!.firstName!)" + " " + "\(currentUser.user!.lastName!)"
         userCurrentWeightLabel.text = "\(currentUser.currentGoal!.currentWeight!)"
         userGoalLabel.text = "\(String(currentUser.currentGoal!.endWeight!))"
-        daysLeftLabel.text = daysToGo(currentUser.currentTeam!.teamEndDate!)
+        print("Current end date is: \(currentUser.currentTeam!.teamEndDate)")
+        daysLeftLabel.text = "5" //daysToGo(currentUser.currentTeam!.teamEndDate!)
         teamNameLabel.text = currentUser.currentTeam!.teamName!
         poundsLost.text = "\(currentUser.currentGoal!.lostSoFar!)"
 
@@ -93,17 +94,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         userProgressView.percentage = Float(percentage)
 
         tableView.reloadData()
-        
-        userProgressView.setNeedsDisplay()
-        tableView.setNeedsDisplay()
-        tableView.setNeedsLayout()
+//        userProgressView.setNeedsDisplay()
+//        tableView.setNeedsDisplay()
         
         print("Percentage completed is \(percentage)")
         print("Current weight is: \(currentUser.currentGoal!.currentWeight!)")
         
     }
     
-    func convertDate(date: NSDate) -> String {
+    func convertDate(date: NSTimeInterval) -> String {
+        let date = NSDate(timeIntervalSince1970: date)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .LongStyle
         let dateString = dateFormatter.stringFromDate(date)
@@ -111,9 +111,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    func daysToGo(teamEndDate: NSDate) -> String {
+    func daysToGo(teamEndDate: NSTimeInterval) -> String {
+        
         let start = NSDate()
-        let end = teamEndDate
+        let end = NSDate(timeIntervalSince1970: teamEndDate)
         let cal = NSCalendar.currentCalendar()
         let unit: NSCalendarUnit = NSCalendarUnit.Day
         let components = cal.components(unit, fromDate: start, toDate: end, options: .MatchFirst)
@@ -144,14 +145,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
 
-    // MARK : Table View Delegate
+    // MARK: Table View Delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
      
         // TODO :
     }
     
-    // MARK : Table view data source
+    // MARK: Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = CurrentUser.sharedInstance.teamUsers!.count

@@ -8,34 +8,44 @@
 
 import Foundation
 
-class Team {
+class Team: NSObject {
     
     // Constants
     
-    var teamId: String?
+    var id: String?
     var teamName: String?
     var teamChallengeName: String?
     var teamPassword: String?
-    var teamEndDate: NSDate?
+    var teamEndDate: NSTimeInterval?
+    var users: NSDictionary?
+    var posts: NSDictionary?
     
     // Create
     
     init(teamName: String, teamChallengeName: String, teamPassword: String, endDate: NSDate) {
-        self.teamId = nil
+        let endDate: NSDate = endDate
+        
+        self.id = nil
         self.teamName = teamName
         self.teamChallengeName = teamChallengeName
         self.teamPassword = teamPassword
-        self.teamEndDate = endDate
+        self.teamEndDate = endDate.timeIntervalSince1970
+        
     }
     
     
-    init(teamId: String, teamName: String, teamChallengeName: String, endDate: NSDate) {
-        self.teamId = teamId
+    init(id: String, teamName: String, teamChallengeName: String, endDate: NSTimeInterval) {
+        self.id = id
         self.teamName = teamName
         self.teamChallengeName = teamChallengeName
         self.teamPassword = nil
         self.teamEndDate = endDate
     }
     
+    override init() {
+        
+    }
+    
+   
     
 }

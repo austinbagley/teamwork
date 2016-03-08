@@ -29,7 +29,7 @@ class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
         
         self.currentWeight.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeightUpdateViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         

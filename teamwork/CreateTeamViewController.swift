@@ -40,7 +40,7 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
         self.teamPassword.delegate = self
         self.teamChallengeName.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateTeamViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
     }

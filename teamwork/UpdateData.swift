@@ -105,10 +105,10 @@ class UpdateData {
     
     func updatePosts(callBack: () -> Void) {
         
-        let teamId = currentUser.user!.currentTeam!
+        let id = currentUser.user!.currentTeam!
 
         let ref = baseRef
-        let postsRef = ref.childByAppendingPath(fb.firebaseTeams).childByAppendingPath(teamId).childByAppendingPath("posts")
+        let postsRef = ref.childByAppendingPath(fb.firebaseTeams).childByAppendingPath(id).childByAppendingPath("posts")
         
         postsRef.observeEventType(.Value, withBlock: { snapshot in
             

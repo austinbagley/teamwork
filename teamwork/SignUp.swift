@@ -76,7 +76,7 @@ class SignUp {
         // upload team to firebase
         let ref = self.baseRef
         let teamRef = ref.childByAppendingPath(constants.firebaseTeams)
-        let endDateInterval = team.teamEndDate?.timeIntervalSince1970
+        let endDateInterval = team.teamEndDate
         let uid = CurrentUser.sharedInstance.user!.uid!
         let usersRef = ref.childByAppendingPath(constants.firebaseUsers)
         let userRef = usersRef.childByAppendingPath(uid)
@@ -91,7 +91,7 @@ class SignUp {
                 print("Data could not be saved.")
             } else {
                 print("Team saved successfully!")
-                CurrentUser.sharedInstance.currentTeam?.teamId = ref.key
+                CurrentUser.sharedInstance.currentTeam?.id = ref.key
                 CurrentUser.sharedInstance.user?.currentTeam = ref.key
                 print("Current User Team = \(CurrentUser.sharedInstance.currentTeam)")
                 userRef.updateChildValues(["currentTeam": ref.key])
@@ -101,7 +101,7 @@ class SignUp {
                         print("Data could not be saved")
                     } else {
                         print("user updated with team id")
-                        print(CurrentUser.sharedInstance.currentTeam?.teamId)
+                        print(CurrentUser.sharedInstance.currentTeam?.id)
                         callBack()
                     }
                 })
@@ -119,8 +119,8 @@ class SignUp {
         let ref = self.baseRef
         let teamRef = ref.childByAppendingPath("teams")
         let uid = (CurrentUser.sharedInstance.user?.uid)! as String
-        let teamId = team.teamId! as String
-        let targetTeamRef = teamRef.childByAppendingPath(team.teamId).childByAppendingPath("users")
+        let id = team.id! as String
+        let targetTeamRef = teamRef.childByAppendingPath(team.id).childByAppendingPath("users")
         let newUser = [ uid : "true"]
         let userRef = ref.childByAppendingPath("users").childByAppendingPath(uid)
         
@@ -136,13 +136,13 @@ class SignUp {
                 print("updated team with new user")
                 // Update User
                 
-                userRef.childByAppendingPath("teams").setValue([teamId: "true"], withCompletionBlock: {
+                userRef.childByAppendingPath("teams").setValue([id: "true"], withCompletionBlock: {
                     (error: NSError?, ref: Firebase!) in
                     if (error != nil) {
                         print("Data could not be saved")
                     } else {
                         print("updated user with team list")
-                        userRef.updateChildValues(["currentTeam": teamId], withCompletionBlock: {
+                        userRef.updateChildValues(["currentTeam": id], withCompletionBlock: {
                             (error: NSError?, ref: Firebase!) in
                             if (error != nil) {
                                 print("issue updating current team")
@@ -218,7 +218,7 @@ class SignUp {
 
         let ref = self.baseRef
         let teamsRef = ref.childByAppendingPath("teams")
-        let currentTeamUsersRef = teamsRef.childByAppendingPath(team?.teamId).childByAppendingPath("users")
+        let currentTeamUsersRef = teamsRef.childByAppendingPath(team?.id).childByAppendingPath("users")
         
         
         currentTeamUsersRef.observeEventType(.Value, withBlock: { snapshot in
@@ -263,10 +263,10 @@ class SignUp {
                 for (id, teams) in teams {
                     let fbTeam =
                     Team(
-                        teamId: (id as! String),
+                        id: (id as! String),
                         teamName: (teams["teamName"] as! String),
                         teamChallengeName: (teams["teamChallengeName"] as! String),
-                        endDate: (NSDate(timeIntervalSince1970: (teams["teamEndDate"] as! NSTimeInterval)))
+                        endDate: (teams["teamEndDate"] as! NSTimeInterval)
                     )
                     teamsArray.append(fbTeam)
                 }

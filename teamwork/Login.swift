@@ -77,19 +77,22 @@ class Login {
     
     func getCurrentTeamForUser(user: User?, callBack: () -> Void) {
         
-        let teamId = user?.currentTeam
-        let teamRef = baseRef.childByAppendingPath(fb.firebaseTeams).childByAppendingPath(teamId)
+        let id = user?.currentTeam
+        let teamRef = baseRef.childByAppendingPath(fb.firebaseTeams).childByAppendingPath(id)
         
         teamRef.observeEventType(.Value, withBlock: { result in
             
+            let teamKey = result.key as String
             let teamObject = result.value as! NSDictionary
             
-            let newTeam = Team(
-                teamId: (result.key as String),
-                teamName: (teamObject["teamName"] as! String),
-                teamChallengeName: (teamObject["teamChallengeName"] as! String),
-                endDate: (NSDate(timeIntervalSince1970: (teamObject["teamEndDate"] as! NSTimeInterval)))
-            )
+            let newTeam: Team = Translator.convertToObject(teamObject, key: teamKey)
+            
+//            let newTeam = Team(
+//                id: (result.key as String),
+//                teamName: (teamObject["teamName"] as! String),
+//                teamChallengeName: (teamObject["teamChallengeName"] as! String),
+//                endDate: (NSDate(timeIntervalSince1970: (teamObject["teamEndDate"] as! NSTimeInterval)))
+//            )
             
             self.currentUser.currentTeam = newTeam
         
@@ -100,7 +103,7 @@ class Login {
     
     func getCurrentGoalForUser(user: User?, callBack: () -> Void) {
         
-        let teamId = user!.currentTeam!
+        let id = user!.currentTeam!
         let uid = user!.uid!
         
         let goalRef = baseRef.childByAppendingPath(fb.firebaseGoals)
@@ -115,7 +118,7 @@ class Login {
                 
                 let goalTeamId = goalObject["teamId"] as! String
                 
-                if goalTeamId == teamId {
+                if goalTeamId == id {
                     let isWeightGoal = goalObject["isWeightGoal"] as! String
                     let startWeight = goalObject["startWeight"] as! Double
                     let endWeight = goalObject["endWeight"] as! Double

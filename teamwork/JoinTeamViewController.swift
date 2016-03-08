@@ -79,9 +79,9 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
         
         team = teamList![position]
         
-        print("We're sending along this team \(team!.teamId!)")
+        print("We're sending along this team \(team!.id!)")
         
-        CurrentUser.sharedInstance.user!.currentTeam = team!.teamId!
+        CurrentUser.sharedInstance.user!.currentTeam = team!.id!
         CurrentUser.sharedInstance.currentTeam = team!
         
         

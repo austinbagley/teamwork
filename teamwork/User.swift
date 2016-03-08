@@ -37,6 +37,10 @@ class User {
         self.lastName = lastName
     }
     
+    init() {
+        
+    }
+    
     
 }
 
