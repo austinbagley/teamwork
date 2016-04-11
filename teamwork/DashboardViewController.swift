@@ -9,7 +9,7 @@
 import UIKit
 
 
-class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DashboardViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constants
     
@@ -53,7 +53,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         registerModelListeners()
         self.navigationController!.navigationBar.hidden = false
         self.navigationItem.setHidesBackButton(true, animated: false)
-
+        addSlideMenuButton()
         
     }
     

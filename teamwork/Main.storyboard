@@ -1388,6 +1388,101 @@
             </objects>
             <point key="canvasLocation" x="4784.5" y="2071.5"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="HCW-If-VBw">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="mkG-mU-LqC" customClass="MenuViewController" customModule="teamwork" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qXL-eW-Oqd"/>
+                        <viewControllerLayoutGuide type="bottom" id="3pW-gZ-I0y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YEx-FT-Yqu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-xR-IPp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="nnC-GC-Hc5"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nnC-GC-Hc5"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onCloseMenuClick:" destination="mkG-mU-LqC" eventType="touchUpInside" id="YyU-vc-mTR"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kZ9-JA-0fH">
+                                <rect key="frame" x="16" y="36" width="568" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="7VZ-6L-ArJ"/>
+                                </constraints>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellMenu" id="Ooj-2v-Tpa">
+                                        <rect key="frame" x="0.0" y="22" width="568" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ooj-2v-Tpa" id="x4x-ed-wWQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="568" height="53.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rj7-Hf-PbD">
+                                                    <rect key="frame" x="8" y="8" width="38" height="38"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Th-Ml-6EC">
+                                                    <rect key="frame" x="54" y="16" width="208" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7VZ-6L-ArJ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="mkG-mU-LqC" id="Kue-bh-ulw"/>
+                                    <outlet property="delegate" destination="mkG-mU-LqC" id="1mu-m6-88r"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3pW-gZ-I0y" firstAttribute="top" secondItem="YH5-xR-IPp" secondAttribute="bottom" id="2Hg-G3-A0D"/>
+                            <constraint firstItem="YH5-xR-IPp" firstAttribute="leading" secondItem="YEx-FT-Yqu" secondAttribute="leading" id="3H2-8S-rmQ"/>
+                            <constraint firstItem="kZ9-JA-0fH" firstAttribute="leading" secondItem="YEx-FT-Yqu" secondAttribute="leading" constant="16" id="E8g-QT-gPN"/>
+                            <constraint firstAttribute="trailing" secondItem="YH5-xR-IPp" secondAttribute="trailing" id="eBT-zx-97K"/>
+                            <constraint firstItem="kZ9-JA-0fH" firstAttribute="top" secondItem="qXL-eW-Oqd" secondAttribute="bottom" constant="16" id="kqw-fI-aQy"/>
+                            <constraint firstItem="3pW-gZ-I0y" firstAttribute="top" secondItem="kZ9-JA-0fH" secondAttribute="bottom" constant="16" id="nDt-C4-WAd"/>
+                            <constraint firstItem="YH5-xR-IPp" firstAttribute="top" secondItem="YEx-FT-Yqu" secondAttribute="top" id="oqd-Jx-Amf"/>
+                            <constraint firstAttribute="trailing" secondItem="kZ9-JA-0fH" secondAttribute="trailing" constant="16" id="x1y-we-Kff"/>
+                            <constraint firstAttribute="trailing" secondItem="YH5-xR-IPp" secondAttribute="trailing" id="ymr-re-RZz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eBT-zx-97K"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="btnCloseMenuOverlay" destination="YH5-xR-IPp" id="pEH-8C-QEg"/>
+                        <outlet property="tblMenuOptions" destination="kZ9-JA-0fH" id="F9F-5h-Bcb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DHq-f9-TjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2567" y="1956"/>
+        </scene>
     </scenes>
     <resources>
         <image name="byuCet" width="902" height="254"/>

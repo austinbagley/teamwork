@@ -46,6 +46,7 @@
 		9DFD9D351CBBF44B0076140E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D311CBBF44B0076140E /* HomeVC.swift */; };
 		9DFD9D361CBBF44B0076140E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D321CBBF44B0076140E /* MenuViewController.swift */; };
 		9DFD9D371CBBF44B0076140E /* PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D331CBBF44B0076140E /* PlayVC.swift */; };
+		9DFD9D3A1CBBF8060076140E /* Slider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD9D391CBBF8060076140E /* Slider.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		9DFD9D311CBBF44B0076140E /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9DFD9D321CBBF44B0076140E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9DFD9D331CBBF44B0076140E /* PlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVC.swift; sourceTree = "<group>"; };
+		9DFD9D391CBBF8060076140E /* Slider.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Slider.storyboard; sourceTree = "<group>"; };
 		A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,10 +169,7 @@
 		9DDF13301C614AB80024F643 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9DFD9D301CBBF44B0076140E /* BaseViewController.swift */,
-				9DFD9D311CBBF44B0076140E /* HomeVC.swift */,
-				9DFD9D321CBBF44B0076140E /* MenuViewController.swift */,
-				9DFD9D331CBBF44B0076140E /* PlayVC.swift */,
+				9DFD9D381CBBF7710076140E /* Drawer */,
 				9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */,
 				9DDF137D1C614D410024F643 /* LoginViewController.swift */,
 				9DDF138C1C614DBB0024F643 /* RegisterViewController.swift */,
@@ -192,6 +191,7 @@
 		9DDF13311C614AC20024F643 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9DFD9D391CBBF8060076140E /* Slider.storyboard */,
 				9DDF138A1C614D4F0024F643 /* Main.storyboard */,
 				9D070A751C69CFC1003DE60A /* DashboardCellView.swift */,
 				9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */,
@@ -235,6 +235,17 @@
 				9D52B0651C7B7D0C00687576 /* DateTools.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		9DFD9D381CBBF7710076140E /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				9DFD9D321CBBF44B0076140E /* MenuViewController.swift */,
+				9DFD9D301CBBF44B0076140E /* BaseViewController.swift */,
+				9DFD9D311CBBF44B0076140E /* HomeVC.swift */,
+				9DFD9D331CBBF44B0076140E /* PlayVC.swift */,
+			);
+			name = Drawer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +315,7 @@
 				9DDF138B1C614D4F0024F643 /* Main.storyboard in Resources */,
 				9DAB93B31C72E0BE0058FC9B /* DashboardCell.xib in Resources */,
 				9D6E79901C6C17D200F76A78 /* CustomMessageCell.xib in Resources */,
+				9DFD9D3A1CBBF8060076140E /* Slider.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
