@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6B35A23C36957EDE1674E6B03ADA6953E77AE091",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6B35A23C36957EDE1674E6B03ADA6953E77AE091" : 0,
+    "8DE6F6E40E6B75FF74858BB82ED5C8595DE64F5E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E8F1DA8D-21E0-40F0-8A2D-ABF9A2624915",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6B35A23C36957EDE1674E6B03ADA6953E77AE091" : "teamwork\/",
+    "8DE6F6E40E6B75FF74858BB82ED5C8595DE64F5E" : "TeamGoal\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "teamwork",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "teamwork.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:austinbagley\/teamwork.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6B35A23C36957EDE1674E6B03ADA6953E77AE091"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/austinbagley\/project-timbuktu.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8DE6F6E40E6B75FF74858BB82ED5C8595DE64F5E"
+    }
+  ]
+}

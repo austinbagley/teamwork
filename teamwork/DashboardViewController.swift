@@ -60,9 +60,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: User Interactions
     
     @IBAction func logout(sender: UIBarButtonItem) {
-        Login().logout() {
-            self.performSegueWithIdentifier("logout", sender: self)
-        }
+        server.currentUid = ""
+        self.performSegueWithIdentifier("logout", sender: self)
     }
     
     @IBAction func checkIn(sender: ButtonOutline) {

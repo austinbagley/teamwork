@@ -16,7 +16,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     
-    var login = Login()
     var server = Server.sharedInstance
         
     // MARK: Outlets
