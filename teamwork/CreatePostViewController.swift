@@ -22,7 +22,7 @@ import UIKit
 
 
 
-class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class CreatePostViewController: BaseViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
     // MARK: Properties
@@ -55,12 +55,15 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUser()
         self.post = postMessage.customView as? UITextField
         postSize()
         tableView.registerNib(UINib(nibName: "CustomMessageCell", bundle: nil), forCellReuseIdentifier: MESSAGES_CELL_IDENTIFIER)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreatePostViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreatePostViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
         self.getPosts()
+        addSlideMenuButton()
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -125,6 +128,23 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     // MARK: Helpers
+    
+    
+    func loadUser() {
+        server.getCurrentUser() { (success, message, user) in
+            if success {
+                self.uid = user!.uid!
+                self.currentUserFirstName = user!.firstName!
+                self.currentUserLastName = user!.lastName!
+            } else {
+                self.onError(message)
+            }
+        }
+    }
+    
+    func onError(message: String?) {
+        print(message)
+    }
     
     func postSize() {
         let screenSize:CGRect = UIScreen.mainScreen().bounds

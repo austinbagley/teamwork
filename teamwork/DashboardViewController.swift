@@ -173,25 +173,6 @@ class DashboardViewController: BaseViewController, UITableViewDelegate, UITableV
   
     // MARK:  Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SEGUE_TO_WEIGHT_UPDATE {
-            let destinationNavigationController = segue.destinationViewController as? UINavigationController
-            let targetController = destinationNavigationController!.topViewController as? WeightUpdateViewController
-            targetController?.priorWeight = self.currentWeight!
-            targetController?.goalId = self.goalId!
-        }
-        
-        if segue.identifier == SEGUE_TO_POST {
-            let destinationNavigationConroller = segue.destinationViewController as? UINavigationController
-            let targetController = destinationNavigationConroller!.topViewController as? CreatePostViewController
-            targetController?.uid = self.uid!
-            targetController?.currentUserFirstName = self.currentUserFirstName!
-            targetController?.currentUserLastName = self.currentUserLastName!
-        }
-    }
-
-   
-    
     @IBAction func cancelUpdate(segue: UIStoryboardSegue) {
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
+class WeightUpdateViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: Properties
     
@@ -32,17 +32,40 @@ class WeightUpdateViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadUserAndGoal()
+        addSlideMenuButton()
         self.currentWeight.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeightUpdateViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeightUpdateViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
         
         
     }
     
     // MARK : Actions
     
+    func loadUserAndGoal() {
+        server.getCurrentUser() { (success, message, user) in
+            if success {
+               self.server.getGoalForTeamForCurrentUser(user!.currentTeam!, completion: self.onUpdateGoal)
+            } else {
+                self.onError(message)
+            }
+        }
+    }
+    
+    func onUpdateGoal(success: Bool, message: String?, goal: Goal?) {
+        if success {
+            self.priorWeight = goal!.currentWeight! as Double
+            self.goalId = goal!.goalId!
+        } else {
+            self.onError(message)
+        }
+    }
+    
+    func onError(message: String?) {
+        print(message)
+    }
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

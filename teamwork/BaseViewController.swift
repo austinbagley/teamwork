@@ -10,6 +10,8 @@ import UIKit
 
 class BaseViewController: UIViewController, SlideMenuDelegate {
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,16 +28,31 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         print("View Controller is : \(topViewController) \n", terminator: "")
         switch(index){
         case 0:
-            print("Home\n", terminator: "")
 
-            self.openViewControllerBasedOnIdentifier("Home")
+            self.openViewControllerBasedOnIdentifier("dashboard")
             
             break
         case 1:
-            print("Play\n", terminator: "")
-            
-            self.openViewControllerBasedOnIdentifier("PlayVC")
-            
+            self.openViewControllerBasedOnIdentifier("messages")
+            break
+        case 2:
+            self.openViewControllerBasedOnIdentifier("updateWeight")
+            break
+        case 3:
+            self.openViewControllerBasedOnIdentifier("changeGoal")
+            break
+        case 4:
+            self.openViewControllerBasedOnIdentifier("switchTeams")
+            break
+        case 5:
+            self.openViewControllerBasedOnIdentifier("team")
+            break
+        case 6:
+            self.openViewControllerBasedOnIdentifier("profile")
+            break
+        case 7:
+            self.openViewControllerBasedOnIdentifier("start")
+            Server.sharedInstance.currentUid = ""
             break
         default:
             print("default\n", terminator: "")
@@ -46,6 +63,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         let destViewController : UIViewController = self.storyboard!.instantiateViewControllerWithIdentifier(strIdentifier)
         
         let topViewController : UIViewController = self.navigationController!.topViewController!
+        
         
         if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
             print("Same VC")
