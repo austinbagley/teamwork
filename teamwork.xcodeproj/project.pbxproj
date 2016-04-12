@@ -44,7 +44,6 @@
 		9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */; };
 		9DFD9D341CBBF44B0076140E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D301CBBF44B0076140E /* BaseViewController.swift */; };
 		9DFD9D361CBBF44B0076140E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D321CBBF44B0076140E /* MenuViewController.swift */; };
-		9DFD9D3A1CBBF8060076140E /* Slider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD9D391CBBF8060076140E /* Slider.storyboard */; };
 		9DFD9D3C1CBC23920076140E /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D3B1CBC23920076140E /* UpdateProfileViewController.swift */; };
 		9DFD9D3E1CBC23A20076140E /* ChangeWeightGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D3D1CBC23A20076140E /* ChangeWeightGoalViewController.swift */; };
 		9DFD9D401CBC23AF0076140E /* SwitchTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D3F1CBC23AF0076140E /* SwitchTeamViewController.swift */; };
@@ -91,7 +90,6 @@
 		9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamUser.swift; sourceTree = "<group>"; };
 		9DFD9D301CBBF44B0076140E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9DFD9D321CBBF44B0076140E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		9DFD9D391CBBF8060076140E /* Slider.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Slider.storyboard; sourceTree = "<group>"; };
 		9DFD9D3B1CBC23920076140E /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		9DFD9D3D1CBC23A20076140E /* ChangeWeightGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeWeightGoalViewController.swift; sourceTree = "<group>"; };
 		9DFD9D3F1CBC23AF0076140E /* SwitchTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTeamViewController.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 		9DDF13311C614AC20024F643 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9DFD9D391CBBF8060076140E /* Slider.storyboard */,
 				9DDF138A1C614D4F0024F643 /* Main.storyboard */,
 				9D070A751C69CFC1003DE60A /* DashboardCellView.swift */,
 				9DAB93B21C72E0BE0058FC9B /* DashboardCell.xib */,
@@ -318,7 +315,6 @@
 				9DDF138B1C614D4F0024F643 /* Main.storyboard in Resources */,
 				9DAB93B31C72E0BE0058FC9B /* DashboardCell.xib in Resources */,
 				9D6E79901C6C17D200F76A78 /* CustomMessageCell.xib in Resources */,
-				9DFD9D3A1CBBF8060076140E /* Slider.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

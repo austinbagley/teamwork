@@ -42,7 +42,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             self.openViewControllerBasedOnIdentifier("changeGoal")
             break
         case 4:
-            self.openViewControllerBasedOnIdentifier("switchTeams")
+            self.openViewControllerBasedOnIdentifier("switchTeam")
             break
         case 5:
             self.openViewControllerBasedOnIdentifier("team")
@@ -75,7 +75,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     func addSlideMenuButton(){
         let btnShowMenu = UIButton(type: UIButtonType.System)
         btnShowMenu.setImage(self.defaultMenuImage(), forState: UIControlState.Normal)
-        btnShowMenu.frame = CGRectMake(0, 0, 30, 30)
+        btnShowMenu.frame = CGRectMake(0, 0, 22, 22)
         btnShowMenu.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
         self.navigationItem.leftBarButtonItem = customBarItem;
@@ -83,18 +83,19 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
 
     func defaultMenuImage() -> UIImage {
         var defaultMenuImage = UIImage()
-        
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 22), false, 0.0)
+        let radius: CGFloat = 2
+    
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(22, 22), false, 0.0)
         
         UIColor.blackColor().setFill()
-        UIBezierPath(rect: CGRectMake(0, 3, 30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 10, 30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 17, 30, 1)).fill()
+        UIBezierPath(roundedRect: CGRectMake(0, 4, 22, 2), cornerRadius: radius).fill()
+        UIBezierPath(roundedRect: CGRectMake(0, 11, 22, 2), cornerRadius: radius).fill()
+        UIBezierPath(roundedRect: CGRectMake(0, 18, 22, 2), cornerRadius: radius).fill()
         
-        UIColor.whiteColor().setFill()
-        UIBezierPath(rect: CGRectMake(0, 4, 30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 11,  30, 1)).fill()
-        UIBezierPath(rect: CGRectMake(0, 18, 30, 1)).fill()
+//        UIColor.whiteColor().setFill()
+//        UIBezierPath(roundedRect: CGRectMake(0, 4, 24, 1), cornerRadius: radius).fill()
+//        UIBezierPath(roundedRect: CGRectMake(0, 11,  24, 1), cornerRadius: radius).fill()
+//        UIBezierPath(roundedRect: CGRectMake(0, 18, 24, 1), cornerRadius: radius).fill()
         
         defaultMenuImage = UIGraphicsGetImageFromCurrentImageContext()
         

@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        firebase.enableFirebasePersistance()
         
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Normal)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
 
         

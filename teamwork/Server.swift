@@ -24,7 +24,6 @@ class Server {
     static let sharedInstance = Server()
     private init() {
     }
-    
     var currentUid: String?
     
     
@@ -239,9 +238,6 @@ class Server {
         
     }
 
-
-    
-    
     
     func getUserForTeam(uid: String, teamId: String, completion: (success: Bool, message: String?, teamUser: TeamUser?) -> Void) {
  
@@ -318,6 +314,66 @@ class Server {
             }
         })
     }
+    
+    // get all teams
+    
+    func getTeamNamesForCurrentUser(completion: (success: Bool, message: String?, teams: [Team]?) -> Void) {
+        let teamsRef = ref.childByAppendingPath(fbTeams)
+
+        self.getTeamIdsForCurrentUser() { (success, message, teamIds) in
+            if success {
+                let teamCount = teamIds!.count
+                var teamsArray = [Team]()
+                for teamId in teamIds! {
+                    let teamRef = teamsRef.childByAppendingPath(teamId)
+                    teamRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+                        if snapshot.exists() {
+                            let teams = snapshot.value as! NSDictionary
+                            let fbTeam =
+                                Team(
+                                    id: (teamId),
+                                    teamName: (teams["teamName"] as! String),
+                                    teamChallengeName: (teams["teamChallengeName"] as! String),
+                                    endDate: (teams["teamEndDate"] as! NSTimeInterval),
+                                    users: [TeamUser]()
+                            )
+                            teamsArray.append(fbTeam)
+                            
+                            if teamsArray.count == teamCount {
+                                print(teamsArray.count)
+                                completion(success: true, message: nil, teams: teamsArray)
+                            }
+                            
+                        }
+                    })
+                }
+            } else {
+                completion(success: false, message: message, teams: nil)
+            }
+        }
+    }
+    
+    private func getTeamIdsForCurrentUser(completion: (success: Bool, message: String?, teamIds: [String]?) -> Void) {
+        let userRef = ref.childByAppendingPath(fbUsers).childByAppendingPath(currentUid!).childByAppendingPath("teams")
+        var teamIds = [String]()
+
+        userRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if snapshot.exists() {
+                let teams = snapshot.value as! NSDictionary
+                
+                for (id, _) in teams {
+                    let teamId = id as! String
+                    teamIds.append(teamId)
+                }
+                
+                completion(success: true, message: nil, teamIds: teamIds)
+            } else {
+                completion(success: false, message: "failed to generate team ids", teamIds: nil)
+            }
+        })
+        
+    }
+    
     
     // get team names
     

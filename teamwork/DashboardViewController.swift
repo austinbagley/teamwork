@@ -74,8 +74,6 @@ class DashboardViewController: BaseViewController, UITableViewDelegate, UITableV
         performSegueWithIdentifier(SEGUE_TO_POST, sender: self)
     }
     
-    
-    
     func registerModelListeners() {
         
         if isRegisteredToDataModel == false {
