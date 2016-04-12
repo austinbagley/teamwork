@@ -48,7 +48,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             self.openViewControllerBasedOnIdentifier("team")
             break
         case 6:
-            self.openViewControllerBasedOnIdentifier("profile")
+            self.openViewControllerBasedOnIdentifier("updateProfile")
             break
         case 7:
             self.openViewControllerBasedOnIdentifier("start")
@@ -144,4 +144,8 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             sender.enabled = true
             }, completion:nil)
     }
+    
+    
+    
+    
 }

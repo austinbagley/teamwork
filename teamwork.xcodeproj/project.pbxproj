@@ -43,10 +43,11 @@
 		9DDF13911C615A4F0024F643 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDF13901C615A4F0024F643 /* User.swift */; };
 		9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */; };
 		9DFD9D341CBBF44B0076140E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D301CBBF44B0076140E /* BaseViewController.swift */; };
-		9DFD9D351CBBF44B0076140E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D311CBBF44B0076140E /* HomeVC.swift */; };
 		9DFD9D361CBBF44B0076140E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D321CBBF44B0076140E /* MenuViewController.swift */; };
-		9DFD9D371CBBF44B0076140E /* PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D331CBBF44B0076140E /* PlayVC.swift */; };
 		9DFD9D3A1CBBF8060076140E /* Slider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DFD9D391CBBF8060076140E /* Slider.storyboard */; };
+		9DFD9D3C1CBC23920076140E /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D3B1CBC23920076140E /* UpdateProfileViewController.swift */; };
+		9DFD9D3E1CBC23A20076140E /* ChangeWeightGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D3D1CBC23A20076140E /* ChangeWeightGoalViewController.swift */; };
+		9DFD9D401CBC23AF0076140E /* SwitchTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFD9D3F1CBC23AF0076140E /* SwitchTeamViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,10 +90,11 @@
 		9DDF13901C615A4F0024F643 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9DEE9FBE1C646704001BC4C3 /* TeamUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamUser.swift; sourceTree = "<group>"; };
 		9DFD9D301CBBF44B0076140E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		9DFD9D311CBBF44B0076140E /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9DFD9D321CBBF44B0076140E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		9DFD9D331CBBF44B0076140E /* PlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVC.swift; sourceTree = "<group>"; };
 		9DFD9D391CBBF8060076140E /* Slider.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Slider.storyboard; sourceTree = "<group>"; };
+		9DFD9D3B1CBC23920076140E /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		9DFD9D3D1CBC23A20076140E /* ChangeWeightGoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeWeightGoalViewController.swift; sourceTree = "<group>"; };
+		9DFD9D3F1CBC23AF0076140E /* SwitchTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTeamViewController.swift; sourceTree = "<group>"; };
 		A541D46EAA1B4FF8B480FF78 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAFA339D81023BA12ED77659 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +186,9 @@
 				9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */,
 				9D57DE871C6B9F4A0022A722 /* CreatePostViewController.swift */,
 				9DAB93B01C72D4730058FC9B /* Extensions.swift */,
+				9DFD9D3B1CBC23920076140E /* UpdateProfileViewController.swift */,
+				9DFD9D3D1CBC23A20076140E /* ChangeWeightGoalViewController.swift */,
+				9DFD9D3F1CBC23AF0076140E /* SwitchTeamViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -242,8 +247,6 @@
 			children = (
 				9DFD9D321CBBF44B0076140E /* MenuViewController.swift */,
 				9DFD9D301CBBF44B0076140E /* BaseViewController.swift */,
-				9DFD9D311CBBF44B0076140E /* HomeVC.swift */,
-				9DFD9D331CBBF44B0076140E /* PlayVC.swift */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -385,15 +388,14 @@
 				9DDF13851C614D410024F643 /* JoinTeamViewController.swift in Sources */,
 				9DB352AF1C73972000905E17 /* BasicButton.swift in Sources */,
 				9D084FA81C73E37900481288 /* ButtonOutline.swift in Sources */,
-				9DFD9D371CBBF44B0076140E /* PlayVC.swift in Sources */,
 				9D6E798E1C6C172200F76A78 /* CustomMessageCellView.swift in Sources */,
 				9DC72CC61C74C39500738701 /* Server.swift in Sources */,
 				9D070A761C69CFC1003DE60A /* DashboardCellView.swift in Sources */,
 				9DDF13871C614D410024F643 /* MilestoneViewController.swift in Sources */,
 				9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */,
-				9DFD9D351CBBF44B0076140E /* HomeVC.swift in Sources */,
 				9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */,
 				9DDF13831C614D410024F643 /* DashboardViewController.swift in Sources */,
+				9DFD9D3E1CBC23A20076140E /* ChangeWeightGoalViewController.swift in Sources */,
 				9DDF13811C614D410024F643 /* AchieveGoalViewController.swift in Sources */,
 				9DDF13881C614D410024F643 /* TeamSelectionViewController.swift in Sources */,
 				9DDF13741C614CF00024F643 /* SubGoal.swift in Sources */,
@@ -403,8 +405,10 @@
 				9D52B0661C7B7D0C00687576 /* DateTools.swift in Sources */,
 				9DEE9FBF1C646704001BC4C3 /* TeamUser.swift in Sources */,
 				9D1D9CD61C6B8DA9000232FA /* Post.swift in Sources */,
+				9DFD9D3C1CBC23920076140E /* UpdateProfileViewController.swift in Sources */,
 				9DDF13891C614D410024F643 /* WeightGoalViewController.swift in Sources */,
 				9DAB93AD1C728ABE0058FC9B /* CircleProgressView.swift in Sources */,
+				9DFD9D401CBC23AF0076140E /* SwitchTeamViewController.swift in Sources */,
 				9DAB93B11C72D4730058FC9B /* Extensions.swift in Sources */,
 				9DDF13911C615A4F0024F643 /* User.swift in Sources */,
 			);

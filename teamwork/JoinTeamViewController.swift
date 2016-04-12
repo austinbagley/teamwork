@@ -16,7 +16,6 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
     var user: User?
     var teams: [String]?
     var teamList = [Team]()
-    
     var server = Server.sharedInstance
     
     // MARK: Constants

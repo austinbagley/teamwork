@@ -184,6 +184,10 @@ class DashboardViewController: BaseViewController, UITableViewDelegate, UITableV
     
     @IBAction func cancelPost(segue: UIStoryboardSegue) {
     }
+    
+    @IBAction func returnToDashboard(segue: UIStoryboardSegue) {
+        
+    }
 
 
     // MARK: Table View Delegate

@@ -198,6 +198,26 @@ class Server {
         })
     }
     
+    // update user
+    
+    func updateUserEmailAndName(email: String, firstName: String, lastName: String) {
+        
+        let usersRef = ref.childByAppendingPath(fbUsers)
+        let userRef = usersRef.childByAppendingPath(currentUid)
+        let newData = [
+            "email" : "\(email)",
+            "firstName" : "\(firstName)",
+            "lastName" : "\(lastName)"
+        ]
+        userRef.updateChildValues(newData)
+    }
+    
+    func switchUserTeam(teamId: String) {
+        let usersRef = ref.childByAppendingPath(fbUsers)
+        let userRef = usersRef.childByAppendingPath(currentUid)
+        let newData = [ "currentTeam" : "\(teamId)"]
+        userRef.updateChildValues(newData)
+    }
     
     // MARK: Team
     
@@ -415,6 +435,25 @@ class Server {
     
     
     // add user to team
+    
+    
+    
+    // change (update) goal
+    
+    func changeWeightGoal(goalId: String, startWeight: Double, newEndWeight: Double) {
+        
+        let goalsRef = ref.childByAppendingPath(fbGoal)
+        let goalRef = goalsRef.childByAppendingPath(goalId)
+        let newTotalWeightLoss = startWeight - newEndWeight
+        
+        let newData = [
+            "endWeight" : "\(newEndWeight)",
+            "totalWeightLoss" : "\(newTotalWeightLoss)"
+        ]
+        
+        goalRef.updateChildValues(newData)
+    
+    }
     
     
     
