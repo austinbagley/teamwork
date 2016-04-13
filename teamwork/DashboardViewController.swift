@@ -44,6 +44,8 @@ class DashboardViewController: BaseViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var userGoalLabel: UILabel!
     @IBOutlet weak var userProgressView: CircleProgressView!
     
+
+    
     
     // MARK: View Controller Lifecycle
     
@@ -54,6 +56,8 @@ class DashboardViewController: BaseViewController, UITableViewDelegate, UITableV
         self.navigationController!.navigationBar.hidden = false
         self.navigationItem.setHidesBackButton(true, animated: false)
         addSlideMenuButton()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
         
     }
     

@@ -23,5 +23,5 @@ class DashboardCellView: UITableViewCell {
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var lineProgressView: LineProgressView!
     
-    
+
 }

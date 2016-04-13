@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,15 +15,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-P4-tp6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tCLogo" translatesAutoresizingMaskIntoConstraints="NO" id="7Wd-NN-cGl">
+                                <rect key="frame" x="72" y="50" width="231" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="saZ-95-hbe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Wd-NN-cGl" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="30" id="0Sw-wW-7Rc"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="rFv-P4-tp6" secondAttribute="bottom" id="Hvp-GP-VHC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Wd-NN-cGl" secondAttribute="trailing" constant="56" id="OTi-hv-NaV"/>
+                            <constraint firstItem="rFv-P4-tp6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="RI1-SS-mBH"/>
+                            <constraint firstAttribute="trailing" secondItem="rFv-P4-tp6" secondAttribute="trailing" id="eq4-q6-tHe"/>
+                            <constraint firstItem="7Wd-NN-cGl" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="56" id="mxo-Mj-9ak"/>
+                            <constraint firstItem="rFv-P4-tp6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ru5-bd-nQI"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splash" width="750" height="1334"/>
+        <image name="tCLogo" width="325" height="135"/>
+    </resources>
 </document>
