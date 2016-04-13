@@ -893,7 +893,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Austin Bagley" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="pkW-h4-OGc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="pkW-h4-OGc">
                                         <rect key="frame" x="16" y="16" width="174" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="174" id="Evi-SZ-258"/>
@@ -1166,6 +1166,7 @@
                                     </tableView>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIy-1x-1e0">
                                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                        <color key="backgroundColor" red="0.19215686269999999" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8Kf-Nf-Dzg"/>
                                         </constraints>
@@ -1185,6 +1186,8 @@
                                                 </connections>
                                             </barButtonItem>
                                         </items>
+                                        <color key="tintColor" red="0.19215686269999999" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.19215686269999999" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </toolbar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1630,7 +1633,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gJX-YY-EZh"/>
-        <segue reference="9St-2y-YU8"/>
-        <segue reference="zRL-TC-TQ3"/>
+        <segue reference="wp0-zD-dNZ"/>
+        <segue reference="Rea-JU-7Xk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,19 +36,19 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         case 2:
             self.openViewControllerBasedOnIdentifier("updateWeight")
             break
+//        case 3:
+//            self.openViewControllerBasedOnIdentifier("changeGoal")
+//            break
+//        case 3:
+//            self.openViewControllerBasedOnIdentifier("switchTeam")
+//            break
         case 3:
-            self.openViewControllerBasedOnIdentifier("changeGoal")
-            break
-        case 4:
-            self.openViewControllerBasedOnIdentifier("switchTeam")
-            break
-        case 5:
             self.openViewControllerBasedOnIdentifier("team")
             break
-        case 6:
+        case 4:
             self.openViewControllerBasedOnIdentifier("updateProfile")
             break
-        case 7:
+        case 5:
             self.openViewControllerBasedOnIdentifier("start")
             Server.sharedInstance.currentUid = ""
             break

@@ -64,7 +64,6 @@ class CreatePostViewController: BaseViewController, UITextFieldDelegate, UITable
         self.getPosts()
         addSlideMenuButton()
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.grayColor()], forState: UIControlState.Normal)
 
     }
     
