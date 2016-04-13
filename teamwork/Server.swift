@@ -192,7 +192,14 @@ class Server {
                     }
                 }
             } else {
-                completion(success: false, message: "couldn't get goal", goal: nil)
+                self.createWeightGoalForUidandTeam(uid, teamId: teamId, startWeight: 99, endWeight: 99) { (success, message, goal) in
+                    if success {
+                        completion(success: true, message: nil, goal: goal)
+                    } else {
+                        completion(success: false, message: message, goal: goal)
+                    }
+                }
+//                completion(success: false, message: "couldn't get goal", goal: nil)
             }
         })
     }
@@ -247,7 +254,8 @@ class Server {
                     if success {
                         let newTeamUser = TeamUser(user: user, goal: goal)
                         completion(success: true, message: nil, teamUser: newTeamUser)
-                    } else {
+                        
+                    } else {  //ERROR RIGHT HERE!!!!!
                         completion(success: false, message: message, teamUser: nil)
                     }
                 }
@@ -283,6 +291,16 @@ class Server {
     // add user to team
     
     func addCurrentUserToTeam(teamId: String?, completion: (success: Bool, message: String?) -> Void) {
+        let teamRef = ref.childByAppendingPath(fbTeams).childByAppendingPath(teamId!).childByAppendingPath("users")
+        let newData = ["\(self.currentUid!)":"\(true)"]
+        
+        teamRef.updateChildValues(newData, withCompletionBlock: { (error: NSError?, ref: Firebase!) in
+            if error != nil {
+                completion(success: false, message: error?.description)
+            } else {
+                completion(success: true, message: nil)
+            }
+        })
     }
     
     // add team to user
@@ -292,13 +310,22 @@ class Server {
         let usersRef = ref.childByAppendingPath(fbUsers).childByAppendingPath(self.currentUid)
         let newValue = [ teamId! : "true" ]
         
-        usersRef.childByAppendingPath("teams").setValue(newValue, withCompletionBlock : { (error: NSError?, ref: Firebase!) in
-            if (error != nil) {
-                completion(success: false, message: error?.description)
+        addCurrentUserToTeam(teamId) { (success, message) in
+            if success {
+                
+                usersRef.childByAppendingPath("teams").setValue(newValue, withCompletionBlock : { (error: NSError?, ref: Firebase!) in
+                    if (error != nil) {
+                        completion(success: false, message: error?.description)
+                    } else {
+                        self.setCurrentTeamForCurrentUser(teamId, completion: completion)
+                    }
+                })
+                
             } else {
-                self.setCurrentTeamForCurrentUser(teamId, completion: completion)
+                completion(success: false, message: message)
             }
-        })
+        }
+        
     }
     
     // set current team
@@ -340,7 +367,6 @@ class Server {
                             teamsArray.append(fbTeam)
                             
                             if teamsArray.count == teamCount {
-                                print(teamsArray.count)
                                 completion(success: true, message: nil, teams: teamsArray)
                             }
                             
@@ -453,6 +479,36 @@ class Server {
             }
         })
     }
+    
+    
+    private func createWeightGoalForUidandTeam(uid: String, teamId: String, startWeight: Double, endWeight: Double, completion: (success: Bool, message: String?, goal: Goal?) -> Void) {
+        
+        let goalRef = ref.childByAppendingPath(fbGoal)
+        let weightGoal = Goal(startWeight: startWeight, endWeight: endWeight)
+        let firebaseGoal =
+            [
+                "uid":(uid) as String,
+                "teamId": (teamId) as String,
+                "isWeightGoal": "true" as String,
+                "startWeight": weightGoal.startWeight! as NSNumber,
+                "endWeight" : weightGoal.endWeight! as NSNumber,
+                "totalWeightLoss": weightGoal.totalWeightLoss! as NSNumber,
+                "currentWeight" : weightGoal.currentWeight! as NSNumber,
+                "achieveTitle": "",
+                "isAchieved": "false"
+            ]
+        
+        goalRef.childByAutoId().setValue(firebaseGoal, withCompletionBlock:  { (error: NSError?, ref: Firebase!) in
+            if (error != nil) {
+                completion(success: false, message: error?.description, goal: nil)
+            } else {
+                let newGoalId = ref.key as String
+                let newGoal = Goal(goalId: newGoalId, isWeightGoal: "true", startWeight: startWeight, endWeight: endWeight, currentWeight: startWeight, achieveTitle: "", isAchieved: "false")
+                completion(success: true, message: nil, goal: newGoal)
+            }
+        })
+    }
+
     
     // add goal update
     

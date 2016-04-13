@@ -13,6 +13,8 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
     // MARK: Constants
     
     let SEGUE_TO_GOAL_TYPE = "showGoalType"
+    let SEGUE_TO_WEIGHT = "straightToWeight"
+
     
     // MARK: Properties
     
@@ -62,7 +64,7 @@ class CreateTeamViewController: UIViewController, UITextFieldDelegate {
         
         server.createAndAddUserToTeam(teamName, teamChallengeName: challenge, teamPassword: teamPassword, endDate: endDate) { (success: Bool, message: String?) in
             if success {
-                self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_TYPE, sender: self)
+                self.performSegueWithIdentifier(self.SEGUE_TO_WEIGHT, sender: self)
             } else {
                 print(message)
             }

@@ -12,6 +12,7 @@
 		9D084FA81C73E37900481288 /* ButtonOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D084FA71C73E37900481288 /* ButtonOutline.swift */; };
 		9D1D9CD61C6B8DA9000232FA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1D9CD51C6B8DA9000232FA /* Post.swift */; };
 		9D2A53361C6922B400543E9C /* WeightUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */; };
+		9D49E9581CBE1E410024555E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D49E9571CBE1E410024555E /* TextFieldView.swift */; };
 		9D52B0661C7B7D0C00687576 /* DateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D52B0651C7B7D0C00687576 /* DateTools.swift */; };
 		9D57DE881C6B9F4A0022A722 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D57DE871C6B9F4A0022A722 /* CreatePostViewController.swift */; };
 		9D5FE29C1C6122DD0023B040 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FE29B1C6122DD0023B040 /* AppDelegate.swift */; };
@@ -56,6 +57,7 @@
 		9D15160B1C61257100BF42D8 /* teamwork-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "teamwork-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D1D9CD51C6B8DA9000232FA /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9D2A53351C6922B400543E9C /* WeightUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightUpdateViewController.swift; sourceTree = "<group>"; };
+		9D49E9571CBE1E410024555E /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		9D52B0651C7B7D0C00687576 /* DateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTools.swift; sourceTree = "<group>"; };
 		9D57DE871C6B9F4A0022A722 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		9D5FE2981C6122DD0023B040 /* teamwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teamwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 				9DAB93AE1C728F090058FC9B /* LineProgressView.swift */,
 				9DB352AE1C73972000905E17 /* BasicButton.swift */,
 				9D084FA71C73E37900481288 /* ButtonOutline.swift */,
+				9D49E9571CBE1E410024555E /* TextFieldView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DDF13721C614CF00024F643 /* Goal.swift in Sources */,
+				9D49E9581CBE1E410024555E /* TextFieldView.swift in Sources */,
 				9DDF13751C614CF00024F643 /* Team.swift in Sources */,
 				9DDF13861C614D410024F643 /* LoginViewController.swift in Sources */,
 				9DDF138D1C614DBB0024F643 /* RegisterViewController.swift in Sources */,

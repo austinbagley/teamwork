@@ -24,8 +24,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
     }
     
     func slideMenuItemSelectedAtIndex(index: Int32) {
-        let topViewController : UIViewController = self.navigationController!.topViewController!
-        print("View Controller is : \(topViewController) \n", terminator: "")
         switch(index){
         case 0:
 
@@ -54,8 +52,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             self.openViewControllerBasedOnIdentifier("start")
             Server.sharedInstance.currentUid = ""
             break
-        default:
-            print("default\n", terminator: "")
+        default: break
         }
     }
     
@@ -66,7 +63,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
         
         
         if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
-            print("Same VC")
         } else {
             self.navigationController!.pushViewController(destViewController, animated: true)
         }

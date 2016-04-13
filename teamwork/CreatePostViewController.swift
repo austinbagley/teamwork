@@ -63,6 +63,8 @@ class CreatePostViewController: BaseViewController, UITextFieldDelegate, UITable
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CreatePostViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
         self.getPosts()
         addSlideMenuButton()
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.grayColor()], forState: UIControlState.Normal)
 
     }
     

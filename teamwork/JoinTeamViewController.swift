@@ -21,6 +21,7 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Constants
     
     let SEGUE_TO_GOAL_SELECTION = "segueToGoalTypeFromJoin"
+    let SEGUE_TO_WEIGHT = "straightToWeight"
     
     // MARK: Outlets
     
@@ -86,7 +87,7 @@ class JoinTeamViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.server.addTeamToCurrentUser(teamId) { (success, message) in
             if success {
-                self.performSegueWithIdentifier(self.SEGUE_TO_GOAL_SELECTION, sender: self)
+                self.performSegueWithIdentifier(self.SEGUE_TO_WEIGHT, sender: self)
             } else {
                 print(message)
             }
